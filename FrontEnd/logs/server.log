@@ -1,0 +1,285 @@
+HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8h12m21s720ms419µs400ns).
+HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h20m10s920ms954µs500ns).
+Shutting down ExecutorService 'applicationTaskExecutor'
+Shutting down EhCache CacheManager
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting MainExecution on DESKTOP-KVGV4PO with PID 27944 (C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd\target\classes started by ksmit in C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd)
+No active profile set, falling back to default profiles: default
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.31]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 529 ms
+HikariPool-2 - Starting...
+HikariPool-2 - Start completed.
+HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+HHH000182: No default (no-argument) constructor for class: com.power.models.RecordKey (class must be instantiated by Interceptor)
+HHH000038: Composite-id class does not override equals(): com.power.models.RecordKey
+HHH000039: Composite-id class does not override hashCode(): com.power.models.RecordKey
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+Initializing EhCache CacheManager
+Configuration problem for cache userRoles: MaxEntriesLocalHeap equal or greater than MaxEntriesLocalDisk. This will result in useless disk storage.
+Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1fa1e28a, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f9b0b5e, org.springframework.security.web.header.HeaderWriterFilter@518fcca0, org.springframework.security.web.authentication.logout.LogoutFilter@1e1538f3, com.power.front.filter.RequestFilter@6c9f3bc2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@610e9fe2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4e4bb5af, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6460a831, org.springframework.security.web.session.SessionManagementFilter@325cb278, org.springframework.security.web.access.ExceptionTranslationFilter@59ccfceb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@31761667]
+Initializing ExecutorService 'applicationTaskExecutor'
+Adding welcome page: class path resource [resources/index.html]
+LiveReload server is running on port 35729
+Starting ProtocolHandler ["http-nio-8080"]
+Tomcat started on port(s): 8080 (http) with context path ''
+Started MainExecution in 1.276 seconds (JVM running for 91455.805)
+Condition evaluation unchanged
+Shutting down ExecutorService 'applicationTaskExecutor'
+Shutting down EhCache CacheManager
+HikariPool-2 - Shutdown initiated...
+HikariPool-2 - Shutdown completed.
+Starting MainExecution on DESKTOP-KVGV4PO with PID 27944 (C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd\target\classes started by ksmit in C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd)
+No active profile set, falling back to default profiles: default
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.31]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 391 ms
+HikariPool-3 - Starting...
+HikariPool-3 - Start completed.
+HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+HHH000182: No default (no-argument) constructor for class: com.power.models.RecordKey (class must be instantiated by Interceptor)
+HHH000038: Composite-id class does not override equals(): com.power.models.RecordKey
+HHH000039: Composite-id class does not override hashCode(): com.power.models.RecordKey
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+Initializing EhCache CacheManager
+Configuration problem for cache userRoles: MaxEntriesLocalHeap equal or greater than MaxEntriesLocalDisk. This will result in useless disk storage.
+Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@30a97b30, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b9430c8, org.springframework.security.web.header.HeaderWriterFilter@79126e28, org.springframework.security.web.authentication.logout.LogoutFilter@1d3d2c25, com.power.front.filter.RequestFilter@8849098, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9bb0530, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@63b25901, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@87cdf94, org.springframework.security.web.session.SessionManagementFilter@26c444f4, org.springframework.security.web.access.ExceptionTranslationFilter@6ea78b49, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@545057f]
+Initializing ExecutorService 'applicationTaskExecutor'
+Adding welcome page: class path resource [resources/index.html]
+LiveReload server is running on port 35729
+Starting ProtocolHandler ["http-nio-8080"]
+Tomcat started on port(s): 8080 (http) with context path ''
+Started MainExecution in 0.861 seconds (JVM running for 91465.531)
+Condition evaluation unchanged
+Application shutdown requested.
+Shutting down ExecutorService 'applicationTaskExecutor'
+Shutting down EhCache CacheManager
+HikariPool-3 - Shutdown initiated...
+HikariPool-3 - Shutdown completed.
+Starting MainExecution on DESKTOP-KVGV4PO with PID 16152 (C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd\target\classes started by ksmit in C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd)
+No active profile set, falling back to default profiles: default
+The Class-Path manifest attribute in C:\Users\ksmit\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.31]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1366 ms
+HHH000412: Hibernate ORM core version 5.4.12.Final
+HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+HikariPool-1 - Starting...
+HikariPool-1 - Start completed.
+HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+HHH000182: No default (no-argument) constructor for class: com.power.models.RecordKey (class must be instantiated by Interceptor)
+HHH000038: Composite-id class does not override equals(): com.power.models.RecordKey
+HHH000039: Composite-id class does not override hashCode(): com.power.models.RecordKey
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'requestFilter': Unsatisfied dependency expressed through field 'authUtil'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.power.Util.AuthenticationTokenUtil' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Stopping service [Tomcat]
+The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@13.0.2/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@13.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:235)
+ java.base@13.0.2/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@13.0.2/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@13.0.2/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@13.0.2/java.lang.Thread.run(Thread.java:830)
+The web application [ROOT] appears to have started a thread named [HikariPool-1 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@13.0.2/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@13.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:235)
+ java.base@13.0.2/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@13.0.2/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:458)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@13.0.2/java.lang.Thread.run(Thread.java:830)
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field authUtil in com.power.front.filter.RequestFilter required a bean of type 'com.power.Util.AuthenticationTokenUtil' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.power.Util.AuthenticationTokenUtil' in your configuration.
+
+Starting MainExecution on DESKTOP-KVGV4PO with PID 28640 (C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd\target\classes started by ksmit in C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd)
+No active profile set, falling back to default profiles: default
+The Class-Path manifest attribute in C:\Users\ksmit\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.31]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1281 ms
+HHH000412: Hibernate ORM core version 5.4.12.Final
+HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+HikariPool-1 - Starting...
+HikariPool-1 - Start completed.
+HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+HHH000182: No default (no-argument) constructor for class: com.power.models.RecordKey (class must be instantiated by Interceptor)
+HHH000038: Composite-id class does not override equals(): com.power.models.RecordKey
+HHH000039: Composite-id class does not override hashCode(): com.power.models.RecordKey
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'requestFilter': Unsatisfied dependency expressed through field 'authUtil'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.power.Util.AuthenticationTokenUtil' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+Stopping service [Tomcat]
+The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@13.0.2/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@13.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:235)
+ java.base@13.0.2/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@13.0.2/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@13.0.2/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1054)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@13.0.2/java.lang.Thread.run(Thread.java:830)
+The web application [ROOT] appears to have started a thread named [HikariPool-1 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@13.0.2/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@13.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:235)
+ java.base@13.0.2/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2123)
+ java.base@13.0.2/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:458)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1053)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1114)
+ java.base@13.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+ java.base@13.0.2/java.lang.Thread.run(Thread.java:830)
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field authUtil in com.power.front.filter.RequestFilter required a bean of type 'com.power.Util.AuthenticationTokenUtil' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.power.Util.AuthenticationTokenUtil' in your configuration.
+
+Starting MainExecution on DESKTOP-KVGV4PO with PID 12556 (C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd\target\classes started by ksmit in C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd)
+No active profile set, falling back to default profiles: default
+The Class-Path manifest attribute in C:\Users\ksmit\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Starting MainExecution on DESKTOP-KVGV4PO with PID 3004 (C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd\target\classes started by ksmit in C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd)
+No active profile set, falling back to default profiles: default
+The Class-Path manifest attribute in C:\Users\ksmit\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.31]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1307 ms
+HHH000412: Hibernate ORM core version 5.4.12.Final
+HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+HikariPool-1 - Starting...
+HikariPool-1 - Start completed.
+HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+HHH000182: No default (no-argument) constructor for class: com.power.models.RecordKey (class must be instantiated by Interceptor)
+HHH000038: Composite-id class does not override equals(): com.power.models.RecordKey
+HHH000039: Composite-id class does not override hashCode(): com.power.models.RecordKey
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginController': Unsatisfied dependency expressed through field 'accountService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.power.services.AccountService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Stopping service [Tomcat]
+
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field accountService in com.power.front.controller.LoginController required a bean of type 'com.power.services.AccountService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.power.services.AccountService' in your configuration.
+
+Starting MainExecution on DESKTOP-KVGV4PO with PID 9684 (C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd\target\classes started by ksmit in C:\Users\ksmit\workspace\java\BGEUserDataApplication\FrontEnd)
+No active profile set, falling back to default profiles: default
+The Class-Path manifest attribute in C:\Users\ksmit\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/C:/Users/ksmit/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.31]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1338 ms
+HHH000412: Hibernate ORM core version 5.4.12.Final
+HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+HikariPool-1 - Starting...
+HikariPool-1 - Start completed.
+HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+HHH000182: No default (no-argument) constructor for class: com.power.models.RecordKey (class must be instantiated by Interceptor)
+HHH000038: Composite-id class does not override equals(): com.power.models.RecordKey
+HHH000039: Composite-id class does not override hashCode(): com.power.models.RecordKey
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+Initializing EhCache CacheManager
+Configuration problem for cache userRoles: MaxEntriesLocalHeap equal or greater than MaxEntriesLocalDisk. This will result in useless disk storage.
+Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7d8dcec4, org.springframework.security.web.context.SecurityContextPersistenceFilter@7d011ac8, org.springframework.security.web.header.HeaderWriterFilter@748e6c18, org.springframework.security.web.authentication.logout.LogoutFilter@18ebad3b, com.power.front.filter.RequestFilter@43c01d03, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@37feb930, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@40757289, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66601b54, org.springframework.security.web.session.SessionManagementFilter@65fbf069, org.springframework.security.web.access.ExceptionTranslationFilter@17a4ee23, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@20b63445]
+Initializing ExecutorService 'applicationTaskExecutor'
+Adding welcome page: class path resource [resources/index.html]
+LiveReload server is running on port 35729
+Starting ProtocolHandler ["http-nio-8080"]
+Tomcat started on port(s): 8080 (http) with context path ''
+Started MainExecution in 3.772 seconds (JVM running for 4.807)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 6 ms
+Application shutdown requested.
+Shutting down ExecutorService 'applicationTaskExecutor'
+Shutting down EhCache CacheManager
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.

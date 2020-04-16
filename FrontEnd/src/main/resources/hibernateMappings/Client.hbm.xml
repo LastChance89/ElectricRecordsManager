@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+	<class name="com.power.models.Client" table="client">
+		<meta attribute="class-description">
+			description here
+		</meta>
+
+		<id name="accountNumber" type="long" column="ACCOUNT_NUMBER">
+			<generator class="identity" />
+		</id>
+
+		<property name="name" column="NAME" type="string" />
+		<property name="address" column="ADDRESS" type="string" />
+		<!-- <property name = "accountNumber" column = "ACCOUNT_NUMBER" type = 
+			"long"/> -->
+		<property name="service" column="SERVICE" type="string" />
+
+	</class>
+
+
+
+
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+.login{
+    padding-left: 20%;
+    width: 100%;
+    padding-top: 8%;	
+}
+
+.buttonComponent{
+    width: 20em;
+    font-size: 10px;
+}
+
+.container{
+    width:100%;
+}
+
+
+.passwordField{
+    margin-top: 8px;
+}

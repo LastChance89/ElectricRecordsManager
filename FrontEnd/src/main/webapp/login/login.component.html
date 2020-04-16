@@ -1,0 +1,25 @@
+<div class="login">
+	<div class="container"> 
+		<!-- <h1>User Screen.</h1> Replace this with a real title or something -->
+		<p *ngIf="errorMsg">{{errorMsg}}</p>
+		<div>
+			<input (keyup.enter) = "authorizeLogin($event)" placeholder="Enter user name" [(ngModel)]="userName">
+		</div>
+		<div class="passwordField">
+			<input (keyup.enter) = "authorizeLogin($event)" type="password" placeholder="Enter password" [(ngModel)]="password">
+		</div>
+
+		<div class = "loginButton">
+			<Button class="buttonComponent" (click) = "authorizeLogin($event)">Login</Button>
+		</div>
+		<div> 	
+			<a href="javascript:void(0);" (click)="showShowHideModel()">Create Account</a>
+		</div>
+
+
+	</div>
+
+
+
+
+</div>

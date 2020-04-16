@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN"> 
+	<Appenders> 
+		<RollingFIle name = "ServerAppender" fileName = "logs/server.log"
+		filePattern = "logs/server%d{MM-dd-yyyy}-%i.log">
+		<Policies> 
+		    <TimeBasedTriggeringPolicy interval="1" />
+			<SizeBasedTriggeringPolicy size="10MB"/>
+		</Policies>
+		</RollingFIle>
+		<Console name="Console" target = "SYSTEM_OUT">
+		</Console>
+	</Appenders>
+	<Loggers> 
+		<Root level="info">
+			<AppenderRef ref="ServerAppender"/>
+			<AppenderRef ref="Console"/>
+		</Root>	
+	</Loggers>
+</Configuration>
