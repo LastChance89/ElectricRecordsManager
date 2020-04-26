@@ -15,7 +15,6 @@ public interface MainService {
 	public void insertRecordData();
 	public boolean loadUserAndData( List<MultipartFile> file);
 	public List<Map<String, Object>> getUserRecords(Long accNum);
-	boolean getUserCredentials(String userName, String password);
 	public List<SimpleGrantedAuthority> getRoles(String userName);
 	public Map<Integer,List<Map<String,String>>> getGridMeta();
 	public List<Client> getAllUsers();

@@ -15,10 +15,15 @@ import com.power.services.MainService;
  * 
  * @author ksmitw
  * Custom Authenticator class to check database for user credentials. 
+ * Moved into part of authenticaiton Service. 
  */
 @Component
-public class CustomAuthenticator implements AuthenticationManager  {
+public class CustomAuthenticator 
+//implements AuthenticationManager  
+{
 
+	/*
+	
 	private Logger logger = LogManager.getLogger(CustomAuthenticator.class);
 	
 	@Autowired
@@ -38,7 +43,7 @@ public class CustomAuthenticator implements AuthenticationManager  {
 		
 		return null; 
 	}
-
+*/
 
 
 	

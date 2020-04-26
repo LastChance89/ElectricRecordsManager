@@ -56,7 +56,6 @@ public class RequestFilter extends OncePerRequestFilter {
 			userName = authUtil.getUserNameFromToken(tokenHeader);
 		}
 		catch(Exception e) {
-			//@TODO: Add log4j here. 
 			logger.error("ERROR: ",e);
 			
 		}

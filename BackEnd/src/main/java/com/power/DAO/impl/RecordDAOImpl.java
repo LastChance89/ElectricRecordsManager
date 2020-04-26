@@ -19,10 +19,10 @@ import com.power.models.Record;
 public class RecordDAOImpl extends SharedDaoImpl implements RecordDao {
 
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired 
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 	
 	private final String insert_user_Records = "INSERT INTO POWER_INFO VALUES (?,?,?,?,?,?,?,?,?)";
 	
@@ -46,9 +46,7 @@ public class RecordDAOImpl extends SharedDaoImpl implements RecordDao {
 		for(Record record: records) {
 			counter ++;
 			session.save(record);
-			
 			if(counter%5000 ==0) {
-				//release memory
 				session.flush();
 				session.clear();
 			}

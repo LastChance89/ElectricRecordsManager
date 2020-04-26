@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.power.models.Client;
 import com.power.models.Record;
+import com.power.models.User;
 
 
 
@@ -31,7 +32,7 @@ public class HibernateBeanConf {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean(); 
 		sessionFactory.setDataSource(dataSource);
 		sessionFactory.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
-		sessionFactory.setAnnotatedClasses(Client.class,Record.class); 
+		sessionFactory.setAnnotatedClasses(Client.class,Record.class,User.class); 
 		//sessionFactory.setPackagesToScan("com.power.models"); 
 		return sessionFactory;
 	}

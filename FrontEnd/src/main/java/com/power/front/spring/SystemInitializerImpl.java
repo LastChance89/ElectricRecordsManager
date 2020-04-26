@@ -11,7 +11,7 @@ import com.power.services.MainService;
 @Service
 public class SystemInitializerImpl{
 	@Autowired
-	private MainService power;
+	private MainService mainService;
 	
 	@Autowired
 	PersistentData storedApplicationConfiguration;
@@ -19,7 +19,7 @@ public class SystemInitializerImpl{
 	
 	@PostConstruct // Executes this method at startup, so we get persistaent data. 
 	public void init() {
-		storedApplicationConfiguration.setGridMeta(power.getGridMeta());
+		storedApplicationConfiguration.setGridMeta(mainService.getGridMeta());
 	}
 
 

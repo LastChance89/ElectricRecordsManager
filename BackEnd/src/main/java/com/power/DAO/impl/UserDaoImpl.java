@@ -1,5 +1,10 @@
 package com.power.DAO.impl;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -11,15 +16,43 @@ import com.power.models.User;
 @Component
 public class UserDaoImpl extends SharedDaoImpl implements UserDao{
 
-	
-	private final String userQuery = "SELECT * FROM USER WHERE USERNAME = ? AND PASSWORD = ?";
+	private final Logger logger = LogManager.getLogger(UserDaoImpl.class);
+			
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 	
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	private SessionFactory sessionFactory; 
+	
+	private final String userQuery = "SELECT USERNAME FROM USER WHERE USERNAME = ?";
 	
 	@Override
-	public Boolean getUserCredentials(String userName, String password) {
-		return jdbcTemplate.query(userQuery, new Object[] {userName,password}, new UserResultSetExtractor());
+	public Boolean getUserCredentials(User user) {
+		return jdbcTemplate.query(userQuery + " AND PASSWORD = ?", new Object[] {user.getUserName(),user.getPassword()}, new UserResultSetExtractor());
+	}
+
+
+	@Override
+	public Boolean checkUserNameExists(String userName) {
+		// TODO Auto-generated method stub
+		return jdbcTemplate.query(userQuery, new Object[] {userName}, new UserResultSetExtractor());
+	}
+
+	@Override
+	public Boolean createNewUser(User user) {
+	
+		try {
+			Session session = sessionFactory.openSession();
+			Transaction transaction = session.beginTransaction();
+			session.save(user);
+			transaction.commit();
+			return true;
+		}
+		
+		catch(Exception e) {
+			logger.error("ERROR: " , e);
+			return false;
+		}
 	}
 
 }

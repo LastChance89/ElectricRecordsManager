@@ -2,21 +2,34 @@ package com.power.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "user")
 public class User {
 	
+	@Id
 	private String userName;	
+	@Column(name="password")
 	private String password;
-	private List<String> roles;
+	@Column(name="hint")
+	private String hint; 
+	
+	//@TODO: Determine what to do With this.
+	//private List<String> roles;
 	
 	public User() {
 		
 	}
 	
-	public User (String userName, String password, List<String> roles) {
+	public User (String userName, String password, String hint) {
 		this.userName = userName;
 		this.password = password;
-		this.roles = roles;
+		this.hint = hint;
+		//this.roles = roles;
 	}
 	
 	public String getUserName() {
@@ -31,13 +44,17 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<String> getRoles() {
-		return roles;
-	}
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
+	/*
+	 * public List<String> getRoles() { return roles; } public void
+	 * setRoles(List<String> roles) { this.roles = roles; }
+	 */
+
+	public String getHint() {
+		return hint;
 	}
 
-	
+	public void setHint(String hint) {
+		this.hint = hint;
+	}
 	
 }

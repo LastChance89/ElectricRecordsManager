@@ -19,7 +19,6 @@ import com.power.DAO.UserRoleDao;
 import com.power.Util.CSVReaderUtil;
 import com.power.models.Client;
 import com.power.models.Record;
-import com.power.persistentData.PersistentData;
 import com.power.services.MainService;
 
 @Service
@@ -42,8 +41,6 @@ public class MainServiceImpl implements MainService {
 	@Autowired
 	GridMetaDAO gridMetaDao;
 
-	@Autowired
-	PersistentData persistentData;
 
 	@Override
 	// Method to load a user and their data through the first time.
@@ -95,11 +92,6 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public Map<Integer, List<Map<String, String>>> getGridMeta() {
 		return gridMetaDao.getGridMeta();
-	}
-
-	@Override
-	public boolean getUserCredentials(String userName, String password) {
-		return userDao.getUserCredentials(userName, password);
 	}
 
 	public void setupNewUser(Map<Client,List<Record>> clients) {

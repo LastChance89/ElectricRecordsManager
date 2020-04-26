@@ -1,7 +1,5 @@
 package com.power.models;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,8 +23,6 @@ public class Record {
 	public Double cost;
 	@Column(name="notes")
 	public String note;
-	
-
 	
 	public Record() {	
 	}
@@ -78,7 +74,6 @@ public class Record {
 	public RecordKey getRecordKey() {
 		return recordKey;
 	}
-
 
 	public void setRecordKey(RecordKey recordKey) {
 		this.recordKey = recordKey;

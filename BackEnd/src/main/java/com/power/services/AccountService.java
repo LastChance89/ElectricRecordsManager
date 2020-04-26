@@ -6,5 +6,6 @@ import com.power.models.User;
 
 public interface AccountService {
 	public  ResponseEntity<?> userLogin(User user);
-	public ResponseEntity<?> createUserAccount();
+	public ResponseEntity<String> createUserAccount(User user);
+	//public boolean authenticate(User user);
 }

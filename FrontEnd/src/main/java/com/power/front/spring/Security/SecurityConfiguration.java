@@ -48,10 +48,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 		 .csrf().disable()
 		 .authorizeRequests()
 		 .antMatchers("/#/login").permitAll()
+		 .antMatchers("/#/account").permitAll()
 		 .antMatchers("/").permitAll()
 		 .antMatchers("/assets/*").permitAll()
 		 .antMatchers("/dist/*").permitAll()
 		 .antMatchers("/power/authorization/userLogin").permitAll()  
+		 .antMatchers("/power/authorization/createAccount").permitAll()
 		 .anyRequest().authenticated()
 		 .and()
 		 .addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);	 
