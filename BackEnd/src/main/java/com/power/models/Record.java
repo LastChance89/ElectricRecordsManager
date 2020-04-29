@@ -14,15 +14,15 @@ public class Record {
 	private RecordKey recordKey;
 	
 	@Column(name="type")
-	public String type; 
+	private String type; 
 	@Column(name = "power_usage")
-	public Double powerUsage;
+	private Double powerUsage;
 	@Column(name="units")
-	public String units;
+	private String units;
 	@Column(name="cost")
-	public Double cost;
+	private Double cost;
 	@Column(name="notes")
-	public String note;
+	private String note;
 	
 	public Record() {	
 	}

@@ -16,7 +16,7 @@ import com.power.DAO.GridMetaDAO;
 import com.power.DAO.RecordDao;
 import com.power.DAO.UserDao;
 import com.power.DAO.UserRoleDao;
-import com.power.Util.CSVReaderUtil;
+import com.power.Util.ClientLoaderUtil;
 import com.power.models.Client;
 import com.power.models.Record;
 import com.power.services.MainService;
@@ -50,7 +50,7 @@ public class MainServiceImpl implements MainService {
 
 		// for (MultipartFile file: files) {
 		try {
-			setupNewUser(CSVReaderUtil.readInData(files));
+			setupNewUser(ClientLoaderUtil.readInData(files));
 		} catch (IOException e) {
 			logger.error("ERROR: ",e);
 		} catch (Exception e) { 
