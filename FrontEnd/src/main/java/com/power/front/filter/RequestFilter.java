@@ -12,13 +12,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.User;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.power.front.spring.userDetails.CustomUserDetailsService;
+import com.power.models.User;
 import com.power.services.MainService;
 import com.power.Util.AuthenticationTokenUtil;
 
@@ -43,8 +44,8 @@ public class RequestFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		String userName = null;
-		
-		UserDetails userDetails = null;
+		User user = null;
+		//UserDetails userDetails = null;
 	
 		//We know the user is logged in and good to go. 
 		//Verify this is working with the logged in user, not just what ever user is pinging the server. 
@@ -64,13 +65,15 @@ public class RequestFilter extends OncePerRequestFilter {
 			
 		}
 		
-		if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) { 
-			userDetails = new User(userName, "", authUtil.getRoles(tokenHeader));
+		//&& SecurityContextHolder.getContext().getAuthentication() == null
+		if (userName != null) { 
+			user = new User(userName, authUtil.getRoles(tokenHeader));
+			//userDetails = new User(userName, "", authUtil.getRoles(tokenHeader));
 		}
 		 
-		if(authUtil.validate(tokenHeader, userDetails)) {
+		if(authUtil.validate(tokenHeader, user)) {
 			UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(
-					userDetails,null,userDetails.getAuthorities());
+					user,null,user.getRoles());
 			upToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 			SecurityContextHolder.getContext().setAuthentication(upToken);
 		}

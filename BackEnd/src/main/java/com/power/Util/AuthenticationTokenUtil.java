@@ -70,8 +70,8 @@ public class AuthenticationTokenUtil  implements Serializable{
 	
 	
 	//@TODO: Fix this. 
-	public Boolean validate(String token, UserDetails userDetails) {
-		return  getUserNameFromToken(token).equals(userDetails.getUsername()) && !isTokenExpired(token);
+	public Boolean validate(String token, User user) {
+		return  getUserNameFromToken(token).equals(user.getUserName()) && !isTokenExpired(token);
 	}
 	
 	

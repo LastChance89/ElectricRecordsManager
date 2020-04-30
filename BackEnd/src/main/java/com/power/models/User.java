@@ -35,6 +35,17 @@ public class User {
 		//this.roles = roles;
 	}
 	
+	public User (String userName, String password, String hint,List<SimpleGrantedAuthority> roles) {
+		this.userName = userName; 
+		this.password = password; 
+		this.hint = hint; 
+		this.roles = roles; 
+	}
+	public User (String userName,List<SimpleGrantedAuthority> roles) {
+		this.userName = userName; 
+		this.roles = roles; 
+	}
+	
 	public String getUserName() {
 		return userName;
 	}
