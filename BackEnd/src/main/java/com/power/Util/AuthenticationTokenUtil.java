@@ -1,15 +1,21 @@
 package com.power.Util;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+
+import com.power.models.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -31,34 +37,49 @@ public class AuthenticationTokenUtil  implements Serializable{
 		return getAllClaimsFromToken(token).getExpiration();
 	}
 	
-	private Boolean isTokenExpired(String token) {
+	public List<SimpleGrantedAuthority> getRoles(String token) {
+		List<SimpleGrantedAuthority> roleList = new ArrayList<SimpleGrantedAuthority>();
+		@SuppressWarnings("unchecked")
+		ArrayList<Object> roles =  (ArrayList<Object>) getAllClaimsFromToken(token).get("roles");
+		for(Object role: roles) {
+			roleList.add(new SimpleGrantedAuthority(String.valueOf(role)));
+		}
+		return roleList;
+	}
+	
+	public Boolean isTokenExpired(String token) {
 		Date expiration = getExperationDateFromToken(token);
 		return expiration.before(new Date());
 	}
 	
-	//@TODO: Create my own custom user details so I can have useful information.
-	//public String createToken(UserDetails userDetails) {
-	public String createToken(String userName) {
-		return generateToken(userName);
-	}
-	
-	private String generateToken(String userName) {
-		return Jwts.builder().setClaims(new HashMap<String,Object>())
-				.setSubject(userName).setIssuedAt(new Date(System.currentTimeMillis())) //start
-				.setExpiration(new Date(System.currentTimeMillis() *3600000)) //expire
+	public String createToken(User user) {
+		return Jwts.builder().setClaims(new HashMap<String,Object>(){{put("roles",user.getRoles());}})
+				.setSubject(user.getUserName()).setIssuedAt(new Date(System.currentTimeMillis())) //start
+				.setExpiration(new Date(System.currentTimeMillis() +900000)) //expire
 				.signWith(SignatureAlgorithm.HS512, secret) //Hash
 				.compact();
 	}
 	
+	public String createToken(String userName, List<SimpleGrantedAuthority> roleList) {
+		return Jwts.builder().setClaims(new HashMap<String,Object>(){{put("roles",roleList);}})
+				.setSubject(userName).setIssuedAt(new Date(System.currentTimeMillis())) //start
+				.setExpiration(new Date(System.currentTimeMillis() +900000)) //expire
+				.signWith(SignatureAlgorithm.HS512, secret) //Hash
+				.compact();
+	}
+	
+	
+	//@TODO: Fix this. 
 	public Boolean validate(String token, UserDetails userDetails) {
 		return  getUserNameFromToken(token).equals(userDetails.getUsername()) && !isTokenExpired(token);
 	}
 	
 	
-	public Claims getAllClaimsFromToken(String token) {
+	private Claims getAllClaimsFromToken(String token) {
 		return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
 	}
 	
+	//Might not be needed. Verify and check. 
 	public void setContext(UsernamePasswordAuthenticationToken token) {
 		SecurityContext security = new SecurityContextImpl();
 		security.setAuthentication(token);

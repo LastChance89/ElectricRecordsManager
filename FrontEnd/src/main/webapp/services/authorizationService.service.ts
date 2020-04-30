@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User }from '../models/User.model'
 import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 
@@ -22,11 +23,12 @@ export class AuthorizationService {
 	}
 
 
-	createAccount(userName, password, hint){
-		let payload ={"userName":userName,"password":password,"hint":hint}
-		return this.http.post('http://localhost:8080/power/checkLogin/createAccount',payload);
+	createAccount(user:User){
+		//let payload ={"userName":userName,"password":password,"hint":hint}
+		return this.http.post<User>('http://localhost:8080/power/authorization/createAccount',user);
 	}
 
+	//@TODO: Make me correct. 
 	handleEerror() {
 		console.log("B");
 	}

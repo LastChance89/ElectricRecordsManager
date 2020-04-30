@@ -20,7 +20,7 @@ import com.power.services.MainService;
 @RestController
 //@CrossOrigin 
 @RequestMapping("/power/data")
-public class PowerController {
+public class MainController {
 	
 	@Autowired
 	private MainService mainService;

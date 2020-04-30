@@ -1,5 +1,7 @@
 package com.power.DAO.impl;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -7,10 +9,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.power.DAO.UserDao;
 import com.power.extractors.UserResultSetExtractor;
+import com.power.extractors.UserRoleExtractor;
 import com.power.models.User;
 
 @Component
@@ -25,6 +29,8 @@ public class UserDaoImpl extends SharedDaoImpl implements UserDao{
 	private SessionFactory sessionFactory; 
 	
 	private final String userQuery = "SELECT USERNAME FROM USER WHERE USERNAME = ?";
+	private final String roleQuery = "SELECT ROLE FROM ROLES WHERE USERNAME = ?";
+
 	
 	@Override
 	public Boolean getUserCredentials(User user) {
@@ -54,5 +60,12 @@ public class UserDaoImpl extends SharedDaoImpl implements UserDao{
 			return false;
 		}
 	}
+
+
+	@Override
+	public List<SimpleGrantedAuthority> getRoles(String userName) {
+		return jdbcTemplate.query(roleQuery, new Object[] {userName}, new UserRoleExtractor());
+	}
+
 
 }

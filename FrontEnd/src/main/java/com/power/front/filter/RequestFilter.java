@@ -12,13 +12,14 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.power.front.spring.userDetails.CustomUserDetailsService;
-
+import com.power.services.MainService;
 import com.power.Util.AuthenticationTokenUtil;
 
 
@@ -27,8 +28,11 @@ public class RequestFilter extends OncePerRequestFilter {
 
 	private final Logger logger = LogManager.getLogger(RequestFilter.class);
 	
+	/*
+	 * @Autowired private CustomUserDetailsService userDetailsService;
+	 */
 	@Autowired
-	private CustomUserDetailsService userDetailsService;
+	MainService mainService;
 
 	@Autowired
 	private AuthenticationTokenUtil authUtil;
@@ -60,9 +64,8 @@ public class RequestFilter extends OncePerRequestFilter {
 			
 		}
 		
-		if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) 
-		{ 
-			userDetails =userDetailsService.loadUserByUsername(userName); 
+		if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) { 
+			userDetails = new User(userName, "", authUtil.getRoles(tokenHeader));
 		}
 		 
 		if(authUtil.validate(tokenHeader, userDetails)) {

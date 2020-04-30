@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {powerMenu} from '../powerMenu/powerMenu.component';
 import {HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/http";
 import {ClientService} from '../services/clientService.service'
 import {AuthorizationService} from '../services/authorizationService.service';
@@ -23,11 +22,12 @@ import {UserDashboardComponent} from '../user/user-dashboard.component'
 import {SharedPopupModalComponent} from '../shared-popup-modal/shared-popup-modal.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AccountComponent} from '../account/account.component'
+import {NavigationMenuComponent} from'../navigation-menu/navigation-menu.component'
 
 @NgModule({
   declarations: [
     AppComponent, 
-    powerMenu,
+    NavigationMenuComponent,
     User,
     userSearch,
     LoginComponent,

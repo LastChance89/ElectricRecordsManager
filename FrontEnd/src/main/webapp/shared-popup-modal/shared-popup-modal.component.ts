@@ -23,8 +23,6 @@ export class SharedPopupModalComponent {
         this.selectedFiles.push(files[i]);
         
       }
-
-     
     }
 
     loadUsers(){
@@ -35,16 +33,9 @@ export class SharedPopupModalComponent {
       this.selectedFiles.forEach(element => {
         fromData.append("files", element,element.name);
       });
-
-      //fromData.append('files', JSON.stringify(this.selectedFiles));
-      //fromData.append('files',this.selectedFiles[0]); //another loop? bleh.... JSON.Stringify
-
       this.clientService.initalLoadClient(fromData).subscribe(result => {
-
         console.log(result);
-
         this.isLoading = result;
-
       } )
     }
 

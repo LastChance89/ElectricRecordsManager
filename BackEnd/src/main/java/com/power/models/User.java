@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Entity
 @Table(name = "user")
@@ -18,8 +21,8 @@ public class User {
 	@Column(name="hint")
 	private String hint; 
 	
-	//@TODO: Determine what to do With this.
-	//private List<String> roles;
+	@Transient
+	private List<SimpleGrantedAuthority> roles;
 	
 	public User() {
 		
@@ -44,10 +47,15 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	/*
-	 * public List<String> getRoles() { return roles; } public void
-	 * setRoles(List<String> roles) { this.roles = roles; }
-	 */
+	
+	 public List<SimpleGrantedAuthority> getRoles() { 
+		 return roles; 
+	} 
+	
+	 public void setRoles(List<SimpleGrantedAuthority> roles){ 
+		 this.roles = roles; 
+	 }
+	
 
 	public String getHint() {
 		return hint;

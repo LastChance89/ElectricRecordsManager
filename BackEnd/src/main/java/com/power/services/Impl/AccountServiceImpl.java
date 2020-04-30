@@ -1,6 +1,7 @@
 package com.power.services.Impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.power.DAO.UserDao;
@@ -38,7 +40,9 @@ public class AccountServiceImpl implements AccountService {
 		ResponseEntity<?> response = null;
 		if (authenticate(user)) {
 			try {
-				String token =  authenticationTokenUtil.createToken(user.getUserName());
+				List<SimpleGrantedAuthority> roles = userDao.getRoles(user.getUserName());
+				user.setRoles(roles);
+				String token =  authenticationTokenUtil.createToken(user);
 				//Instantiate for serializability
 				Map<String,String> responseToken = new HashMap<String,String>();
 				responseToken.put("token",token);

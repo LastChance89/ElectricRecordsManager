@@ -15,7 +15,6 @@ import com.power.DAO.ClientDao;
 import com.power.DAO.GridMetaDAO;
 import com.power.DAO.RecordDao;
 import com.power.DAO.UserDao;
-import com.power.DAO.UserRoleDao;
 import com.power.Util.ClientLoaderUtil;
 import com.power.models.Client;
 import com.power.models.Record;
@@ -34,10 +33,7 @@ public class MainServiceImpl implements MainService {
 
 	@Autowired
 	UserDao userDao;
-
-	@Autowired
-	UserRoleDao userRoleDao;
-
+	
 	@Autowired
 	GridMetaDAO gridMetaDao;
 
@@ -104,7 +100,7 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	public List<SimpleGrantedAuthority> getRoles(String userName) {
-		return userRoleDao.getRoles(userName);
+		return userDao.getRoles(userName);
 	}
 
 	@Override

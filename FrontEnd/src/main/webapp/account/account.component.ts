@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from '../services/authorizationService.service'
+import { User } from '../models/User.model';
 
 @Component({
   selector: 'app-account',
@@ -8,9 +9,8 @@ import {AuthorizationService} from '../services/authorizationService.service'
 })
 export class AccountComponent implements OnInit {
 
-  userName: string; 
-  password: string; 
-  hint: string; 
+  
+  user: User  = new User();
 
   constructor(private authorizationService :AuthorizationService ) { }
 
@@ -19,7 +19,7 @@ export class AccountComponent implements OnInit {
 
   createUser(){
 
-    this.authorizationService.createAccount(this.userName,this.password,this.hint).subscribe(result =>{
+    this.authorizationService.createAccount(this.user).subscribe(result =>{
       console.log(result);
     })
     
