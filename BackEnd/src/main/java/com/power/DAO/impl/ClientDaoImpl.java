@@ -23,9 +23,6 @@ public class ClientDaoImpl extends SharedDaoImpl implements ClientDao {
 	@Autowired
 	SessionFactory sessionFactory;
 
-	//private Session currentSession = sessionFactory.getCurrentSession();
-	
-	// insert_user,accountNumber,userName,address,service
 	@Override
 	public void saveUser(Client user) {
 		Session currentSession = sessionFactory.getCurrentSession();
@@ -34,14 +31,15 @@ public class ClientDaoImpl extends SharedDaoImpl implements ClientDao {
 		currentSession.getTransaction().commit();
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
+	@SuppressWarnings("unchecked")
 	public  List<Client> getAllUsers(){
 		Session currentSession = sessionFactory.getCurrentSession();
 		//NOTE: Client is case sensitive to that of the class name. 
 		return currentSession.createQuery("from Client").getResultList();
 	}
 	
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<Client> getSearchedUsersData(Map<String, String> inputMap) {
 		

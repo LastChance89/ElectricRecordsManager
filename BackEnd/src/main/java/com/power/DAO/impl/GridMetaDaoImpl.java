@@ -12,17 +12,15 @@ import com.power.extractors.GridMetaResultsExtractor;
 import com.power.models.GridMeta;
 
 @Component
-public class GridMetaDAOImpl implements GridMetaDAO {
+public class GridMetaDaoImpl implements GridMetaDAO {
 
 	@Autowired
 	JdbcTemplate jdbctemplate;
 	
 	private final String getGridMetadata = "SELECT * FROM GRID_META";
 	
-	//@TODO: Make me dynamic
 	@Override
 	public Map<Integer,List<Map<String,String>>>getGridMeta() {
 		return jdbctemplate.query(getGridMetadata,  new Object[] {}, new GridMetaResultsExtractor());
 	}
-
 }

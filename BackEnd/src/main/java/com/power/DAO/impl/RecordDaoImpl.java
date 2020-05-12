@@ -16,7 +16,7 @@ import com.power.models.Record;
 
 @Component
 
-public class RecordDAOImpl extends SharedDaoImpl implements RecordDao {
+public class RecordDaoImpl extends SharedDaoImpl implements RecordDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -24,12 +24,9 @@ public class RecordDAOImpl extends SharedDaoImpl implements RecordDao {
 	@Autowired 
 	private SessionFactory sessionFactory;
 	
-	private final String insert_user_Records = "INSERT INTO POWER_INFO VALUES (?,?,?,?,?,?,?,?,?)";
-	
-	private final String retreive_user_records = "SELECT * FROM POWER_INFO WHERE ACCOUNT_NUMBER =(?) LIMIT 10";
-	
-	private final String getRecordsMonthSum = "SELECT DATE_FORMAT(RECORD_DATE,'%Y%m') as DATE, SUM(COST) AS COST, SUM(POWER_USAGE) AS POWER_USAGE " + 
-			"FROM POWER_INFO " + 
+	//TODO Setup this as a string builder so we can make this dynamic. 
+	private final String getRecordsMonthSum = "SELECT DATE_FORMAT(RECORD_DATE,'%d/%m/%y') as DATE, SUM(COST) AS COST, SUM(POWER_USAGE) AS POWER_USAGE " + 
+			"FROM RECORDS " + 
 			"WHERE ACCOUNT_NUMBER = ? " + 
 			"GROUP BY DATE";
 	
@@ -60,6 +57,4 @@ public class RecordDAOImpl extends SharedDaoImpl implements RecordDao {
 		return  jdbcTemplate.query(getRecordsMonthSum, new Object[] {accNum}, new RecordResultsExtractor());
 
 	}
-	
-	
 }

@@ -6,9 +6,6 @@ import {ClientInfo} from '../../models/clientInfo.model'
 
 import {Observable } from 'rxjs'
 
-
-
-
 @Component({
   selector: 'user-search',
   templateUrl: './user-search.component.html',
@@ -34,8 +31,6 @@ export class userSearch  {
 	getUser() {
 		this.clientService.getClient(this.searchField,this.searchCritera,this.inputValue).subscribe(clientInfo => {
 		this.retrievedUsers.emit(clientInfo);
-	})
-	
-  }
-
+		})
+  	}
 }

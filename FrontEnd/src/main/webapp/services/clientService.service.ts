@@ -33,6 +33,7 @@ export class ClientService {
 		return this.http.post('http://localhost:8080/power/data/getAllUsers','');
 	}
 
+	//Need to impliment me. 
 	public handleError(){
 	console.log("bleh");
 	}

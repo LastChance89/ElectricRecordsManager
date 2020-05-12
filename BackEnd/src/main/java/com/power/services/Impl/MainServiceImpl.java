@@ -44,7 +44,6 @@ public class MainServiceImpl implements MainService {
 
 		boolean sucsesfull = false;
 
-		// for (MultipartFile file: files) {
 		try {
 			setupNewUser(ClientLoaderUtil.readInData(files));
 		} catch (IOException e) {
@@ -53,7 +52,6 @@ public class MainServiceImpl implements MainService {
 			logger.error("ERROR ",e);
 		}
 		sucsesfull = true;
-		/// }
 		return sucsesfull;
 	}
 
@@ -81,7 +79,7 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public List<Map<String, Object>> getUserRecords(Long accNum) {
+	public List<Map<String,Object>> getUserRecords(Long accNum) {
 		return recordDao.getClientRecords(accNum);
 	}
 

@@ -25,6 +25,7 @@ public class GridMetaResultsExtractor implements ResultSetExtractor<Map<Integer,
 			Map<String,String> gridMap = new HashMap<String,String>();
 			gridMap.put("headerName", rs.getString("COLUMN_LABEL"));
 			gridMap.put("field", rs.getString("COLUMN_NAME"));
+			//TODO: Implement me at a later time. 
 			//gridMap.put("width",String.valueOf(rs.getInt("COLUMN_WIDTH")));
 			//gridMap.put("type", rs.getString("TYPE"));//@TOD: Make me enum, + figure out formating for the grid. todo later
 			
@@ -35,8 +36,6 @@ public class GridMetaResultsExtractor implements ResultSetExtractor<Map<Integer,
 				gridDefinitions.get(rs.getInt("GRID_ID")).add(gridMap);
 			}
 		}
-		
-
 		return gridDefinitions;
 	}
 

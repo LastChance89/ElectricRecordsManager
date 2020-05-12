@@ -23,7 +23,9 @@ import {SharedPopupModalComponent} from '../shared-popup-modal/shared-popup-moda
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AccountComponent} from '../account/account.component'
 import {NavigationMenuComponent} from'../navigation-menu/navigation-menu.component'
-
+import {GridRenderer} from '../grid/custom-grid-renderer.component'
+import {GridComponent} from '../grid/grid.component'
+import {RecordService} from '../services/recordServices.service'
 @NgModule({
   declarations: [
     AppComponent, 
@@ -35,7 +37,9 @@ import {NavigationMenuComponent} from'../navigation-menu/navigation-menu.compone
     RecordDisplay,
     UserDashboardComponent,
     SharedPopupModalComponent,
-    AccountComponent
+    AccountComponent,
+    GridRenderer,
+    GridComponent
   ],
   imports: [
     BrowserModule,
@@ -44,12 +48,12 @@ import {NavigationMenuComponent} from'../navigation-menu/navigation-menu.compone
     RouterModule.forRoot([]),
     FormsModule,
     AgGridModule,
-    NgbModule
+    NgbModule,
   ],
-  entryComponents: [SharedPopupModalComponent],
+  entryComponents: [SharedPopupModalComponent,GridRenderer],
   
   providers: [ClientService,LoggedInAuthenticatorService, 
-  AuthorizationService,ClientInfo,GridService,
+  AuthorizationService,ClientInfo,GridService, RecordService,
   {provide: HTTP_INTERCEPTORS, useClass:AuthenticationInterceptorService ,multi: true},
   {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

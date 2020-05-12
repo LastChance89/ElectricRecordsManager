@@ -5,6 +5,7 @@ import { LoggedInAuthenticatorService } from '../services/logged-in-authenticato
 import { MainPageComponent } from '../main-page/main-page.component'
 import { UserDashboardComponent } from '../user/user-dashboard.component'
 import { AccountComponent } from '../account/account.component'
+import {RecordDisplay} from '../records/recordDisplay/record-display.component'
 
 const routes: Routes = [
 
@@ -30,8 +31,10 @@ const routes: Routes = [
 	{
 		path: 'login/createAccount',
 		component: AccountComponent,
-		
-
+	},
+	{
+		path: 'records/:accNum',
+		component: RecordDisplay
 	}
 ];
 

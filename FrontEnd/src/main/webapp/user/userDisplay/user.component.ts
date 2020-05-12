@@ -5,6 +5,9 @@ import { Observable } from 'rxjs'
 
 import {ClientInfo} from '../../models/ClientInfo.model'
 import {GridService} from '../../services/gridService.service'
+import { ColDef } from 'ag-grid-community';
+import {GridRenderer} from '../../grid/custom-grid-renderer.component'
+
 
 @Component({
   selector: 'user',
@@ -18,8 +21,7 @@ import {GridService} from '../../services/gridService.service'
 export class User  implements OnInit {
 	constructor(private clientService: ClientService, private gridService: GridService) { }
 	
-	gridColumns :any;
-	//_userList: any;
+	gridColumns : ColDef[];
 	recordList: any[];
 
 
@@ -30,41 +32,38 @@ export class User  implements OnInit {
 	
 	@Output() records = new EventEmitter();
 
-	/*
-	ngOnChanges(changes: SimpleChanges){
-		for(const name in changes){
-			if(changes.hasOwnProperty(name)){
-				switch(name){
-					case 'clientInfo':{
-						if(changes['clientInfo'].currentValue != changes['clientInfo'].previousValue){
-							this.userList = []
-							changes['clientInfo'].currentValue.forEach(element => {
-								this.userList.push(element);
-							});
-						}
-						
-					}
-				}
-			}
-		}
-	}
-*/
+
 	ngOnInit(){
 		this.gridService.getGridMetaData(2).subscribe(gridMeta => {
 			this.gridColumns = gridMeta;
+			this.setupColumns();
 			});
 		this.clientService.getAllUsers().subscribe(userList => {
 			this._userList = userList
 		});
 	}
 
+	//Most likely move. 
 	getUserRecords(e){
-		e.preventDefault();
-		console.log("Pants");
-		this.clientService.getClientRecords(this.clientInfo.accountNumber).subscribe(recordList=>{
-		this.records.emit(recordList);
-		})
-
+			e.preventDefault();
+			this.clientService.getClientRecords(this.clientInfo.accountNumber).subscribe(recordList=>{
+			this.records.emit(recordList);
+			})
 	}
 
+
+	setupColumns(){
+        this.gridColumns.forEach(column => {
+          if(column.field === 'accountNumber'){
+            column.cellRendererFramework = GridRenderer;
+            column.cellRendererParams = {
+            inRouterLink: column
+            }
+          }
+        });
+	}
+	
+	gridRowFunction(accNum){
+		console.log("HEY LISTEN!");
+	}
 }

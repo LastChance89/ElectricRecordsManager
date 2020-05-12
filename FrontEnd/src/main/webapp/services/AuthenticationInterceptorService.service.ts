@@ -9,7 +9,8 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 	//This is checking if the session storage has a username and a token. Cna make this only token. 
     if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
-     //Creates a new request, adds a header so the backend knows its authorized. 
+     //Creates a new request, adds a header so the backend knows its authorized.
+     //Need to fire off a update the time in the spring framework. 
       req = req.clone({
         setHeaders: {
           Authorization: sessionStorage.getItem('token')

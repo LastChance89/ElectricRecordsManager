@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.power.models.Client;
+import com.power.models.Record;
 import com.power.services.MainService;
 
 //this will become a rest controller at somepoint. 
@@ -37,7 +37,7 @@ public class MainController {
 
 	@PostMapping(value="/getRecords")
 	public 	List<Map<String,Object>> retrieveClientRecords(@RequestBody Map<String,String> jsonString){
-		Long accNum = Long.valueOf(jsonString.get("accountNumber"));
+		Long accNum = Long.valueOf(jsonString.get("accNum"));
 		return mainService.getUserRecords(accNum);
 	}	
 	
