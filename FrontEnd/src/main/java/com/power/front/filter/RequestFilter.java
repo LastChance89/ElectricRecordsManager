@@ -29,9 +29,6 @@ public class RequestFilter extends OncePerRequestFilter {
 
 	private final Logger logger = LogManager.getLogger(RequestFilter.class);
 	
-	/*
-	 * @Autowired private CustomUserDetailsService userDetailsService;
-	 */
 	@Autowired
 	MainService mainService;
 

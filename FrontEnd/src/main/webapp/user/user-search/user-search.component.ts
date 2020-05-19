@@ -22,7 +22,6 @@ export class userSearch  {
 	searchCritera:string="EQUAL";
 	
 	setRetrievedUsers(a){
-		console.log("FIRE!");
 
 	}
 

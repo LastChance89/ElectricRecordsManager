@@ -26,6 +26,7 @@ import {NavigationMenuComponent} from'../navigation-menu/navigation-menu.compone
 import {GridRenderer} from '../grid/custom-grid-renderer.component'
 import {GridComponent} from '../grid/grid.component'
 import {RecordService} from '../services/recordServices.service'
+
 @NgModule({
   declarations: [
     AppComponent, 

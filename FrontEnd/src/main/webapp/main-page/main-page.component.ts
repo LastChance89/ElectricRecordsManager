@@ -16,7 +16,6 @@ export class MainPageComponent implements OnInit {
   	//This is what transfers the session across multiple tabs, removing makes the spring context null
   	this.authorizationService.setupContext().subscribe(
   	response =>{
-  		console.log(response);
   		console.log("ContextSetup");
   	});
   }

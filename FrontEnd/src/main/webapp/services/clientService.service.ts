@@ -25,7 +25,6 @@ export class ClientService {
 	/*Passin the thing here.*/
 	getClientRecords(accountNumber): Observable<any>{
 	let payload = {"accountNumber":accountNumber}
-	console.log(payload);
 	return this.http.post<UserRecord>('http://localhost:8080/power/data/getRecords',payload );
 	}
 	

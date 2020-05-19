@@ -15,7 +15,7 @@ export class LoggedInAuthenticatorService implements CanActivate{
 		//no sessionStorage initaliaized. 
 		if(sessionStorage.length == 0){
 			this.authorizationService.checkLogin().subscribe(response => {
-					console.log(response);		
+					//console.log(response);		
 					//Did we get valid response? 
 					if(response['token']){
 						//Create new session token, return true. 

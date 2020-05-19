@@ -8,7 +8,9 @@ public enum Message {
 	SERVER_ERROR("An error has occurred. Contact your administrator."),
 	USER_CREATION_ERROR("Error creating user. Contact your administrator."),
 	USER_CREATION_SUCSESS("User Account successfully created"),
-	USER_EXISTS("User name already exists.")
+	USER_EXISTS("User name already exists."),
+	UNAORTHOIZED("User Is not authorized or has timed out. Please login."),
+	TOKEN_EXPIRED("Your session has expired. Please log in again.")
 	;
 	
 	private String message; 

@@ -30,4 +30,5 @@ public class LoginController {
 	public ResponseEntity<?> createAccount(@RequestBody User user){
 		return accountService.createUserAccount(user);
 	}
+		
 }

@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
           //Cross Tab capabilities. 
           sessionStorage.setItem('username', this.userName);
           sessionStorage.setItem('token', responseData['token']);
-          console.log(sessionStorage);
           this.router.navigate(['application']);
       },
       error => {

@@ -28,6 +28,11 @@ export class AuthorizationService {
 		return this.http.post<User>('http://localhost:8080/power/authorization/createAccount',user);
 	}
 
+	validateAndRefresh(token){
+		let payload = {"token":token};
+		return this.http.post<any>('http://localhost:8080/power/checkLogin/keepAcitve', token);
+	}
+
 	//@TODO: Make me correct. 
 	handleEerror() {
 		console.log("B");

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import com.power.models.User;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -47,15 +48,27 @@ public class AuthenticationTokenUtil  implements Serializable{
 		return roleList;
 	}
 	
+	/*
+	 * Have to do try catch around both token expire functions because of the 
+	 * getExperationDateFromToken method which if the token is expired, does not let 
+	 * you actually do anything and just errors out. 
+	 * Therefore we have to do try catch. 
+	 */
+	
 	public Boolean isTokenExpired(String token) {
-		Date expiration = getExperationDateFromToken(token);
-		return expiration.before(new Date());
+		try {
+			Date expiration = getExperationDateFromToken(token);
+			return expiration.before(new Date());
+		}
+		catch(ExpiredJwtException e) {
+			return true;
+		}
 	}
 	
 	public String createToken(User user) {
 		return Jwts.builder().setClaims(new HashMap<String,Object>(){{put("roles",user.getRoles());}})
 				.setSubject(user.getUserName()).setIssuedAt(new Date(System.currentTimeMillis())) //start
-				.setExpiration(new Date(System.currentTimeMillis() +900000)) //expire
+				.setExpiration(new Date(System.currentTimeMillis() +900000)) //expire in 15 min
 				.signWith(SignatureAlgorithm.HS512, secret) //Hash
 				.compact();
 	}
@@ -68,10 +81,15 @@ public class AuthenticationTokenUtil  implements Serializable{
 				.compact();
 	}
 	
-	
-	//@TODO: Fix this. 
+	//Generic exception so for now we can just catch w/e we need. 
 	public Boolean validate(String token, User user) {
-		return  getUserNameFromToken(token).equals(user.getUserName()) && !isTokenExpired(token);
+		try {
+			return  getUserNameFromToken(token).equals(user.getUserName()) && !isTokenExpired(token);
+		}
+		catch(Exception e) {
+			return false;
+		}
+	
 	}
 	
 	
@@ -84,6 +102,5 @@ public class AuthenticationTokenUtil  implements Serializable{
 		SecurityContext security = new SecurityContextImpl();
 		security.setAuthentication(token);
 		SecurityContextHolder.setContext(security);
-	}
-	
+	}	
 }

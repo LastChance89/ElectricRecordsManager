@@ -64,6 +64,5 @@ export class User  implements OnInit {
 	}
 	
 	gridRowFunction(accNum){
-		console.log("HEY LISTEN!");
 	}
 }

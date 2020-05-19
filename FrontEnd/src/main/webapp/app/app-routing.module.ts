@@ -34,7 +34,8 @@ const routes: Routes = [
 	},
 	{
 		path: 'records/:accNum',
-		component: RecordDisplay
+		component: RecordDisplay,
+		canActivate: [LoggedInAuthenticatorService]
 	}
 ];
 
