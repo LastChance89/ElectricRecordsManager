@@ -1,72 +1,63 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpBackend, HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angular/common/http';
 import { AuthorizationService } from './authorizationService.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { Router} from '@angular/router';
 
 @Injectable()
 export class AuthenticationInterceptorService implements HttpInterceptor {
 
-  private httpClient: HttpClient;
-  private refreshedToken;
+  constructor(private authorizationService: AuthorizationService, private router: Router) {
 
-  constructor(private handler: HttpBackend, private authorizationService: AuthorizationService) {
-    this.httpClient = new HttpClient(handler);
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    //This is checking if the session storage has a username and a token. Cna make this only token. 
+    //Check username and token just to ensure a user was properly authenticated. 
     if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
       // Every intecept we update the experation time if the toekn is not expired.  
       const helper = new JwtHelperService();
-      //console.log("token EXP example: "  + helper.getTokenExpirationDate(sessionStorage.getItem('token')));
-
-      console.log("Original Request Here boys:   " + req.url)
-
-      console.log("Expired? " + helper.getTokenExpirationDate(sessionStorage.getItem('token')))
-
+      
       //Ensure the token is not expired. 
       if (!helper.isTokenExpired(sessionStorage.getItem('token'))) {
-        //This is the endpoint we want to hit. 
-        const httpRequest = new HttpRequest(<any>req.method, 'http://localhost:8080/power/checkLogin/keepAcitve', sessionStorage.getItem('token'));
-        //Here is where we will call the backend service to refresht the token. 
-        this.handler.handle(httpRequest).subscribe(result => {
+        this.authorizationService.validateAndRefresh(req).subscribe(result => {
           //Verify we have correct return type. 
           if (result instanceof HttpResponse) {
             //TODO: Send me back to login page. 
             if (result.status === 401 || result.status == 403) {
-
+                this.router.navigate(['login']);
             }
             else {
-              //console.log(result);
-              //result.status && result.body.token
-              console.log("Original Request : " + req);
-
-              //we udpate the session storage as well as the request, that way hte request has the new
-              // token to send to the backend as well as the updated session storage keeping it. 
+              /*
+              I Update the session storage as well as the request header so that the token 
+              can exist across pages as well as new tabs / windows. 
+              */
               sessionStorage.setItem('token', result.body["token"]);
-
-              req = req.clone({
-                setHeaders: {
-                  Authorization: result.body["token"]
-                }
-              })
-              
+              req = this.setupNewRequest(req);
             }
           }
+          //This is needed because getting some strange result I need to trouble shoot. For now works. 
           else {
-            req = req.clone({
-              setHeaders: {
-                Authorization: sessionStorage.getItem('token')
-              }
-            })
+            req = this.setupNewRequest(req);
           }
         })
       }
+      else{
+        //get rid of the sessio. 
+        sessionStorage.clear();
+        this.router.navigate(['login']);
+      }
     }
- 
     //Move along sir. 
     return next.handle(req);
-
   }
-  
+
+
+  setupNewRequest(req: HttpRequest<any>) {
+    return req.clone({
+      setHeaders: {
+        Authorization: sessionStorage.getItem('token')
+      }
+    })
+  }
+
 }

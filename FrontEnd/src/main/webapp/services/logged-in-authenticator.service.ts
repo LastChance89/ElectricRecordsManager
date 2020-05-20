@@ -19,7 +19,7 @@ export class LoggedInAuthenticatorService implements CanActivate{
 					//Did we get valid response? 
 					if(response['token']){
 						//Create new session token, return true. 
-						sessionStorage.setItem('username','BLHE');//@TODOFix me with response
+						sessionStorage.setItem('username',response['user']);
   						sessionStorage.setItem('token',response['token']);
 						return true; 
 					}	

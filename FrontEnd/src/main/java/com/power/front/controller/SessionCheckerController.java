@@ -34,8 +34,9 @@ public class SessionCheckerController {
 		if (authentication.isAuthenticated()) {
 			Map<String, String> response = new HashMap<String, String>();
 			List<SimpleGrantedAuthority> roles = (List<SimpleGrantedAuthority>) authentication.getAuthorities();
-			//@TODO tomorrow: FIx the authentication.getPrincipal().toString(), thi sis wrong. 
-			response.put("token", authenticationTokenUtil.createToken(authentication.getPrincipal().toString(), roles));
+			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			response.put("token", authenticationTokenUtil.createToken(user.getUserName(), roles));
+			response.put("user", user.getUserName());
 			return ResponseEntity.ok(response);
 		}
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.SERVER_ERROR.getMessage());
