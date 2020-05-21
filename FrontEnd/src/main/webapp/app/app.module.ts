@@ -26,7 +26,7 @@ import {NavigationMenuComponent} from'../navigation-menu/navigation-menu.compone
 import {GridRenderer} from '../grid/custom-grid-renderer.component'
 import {GridComponent} from '../grid/grid.component'
 import {RecordService} from '../services/recordServices.service'
-
+import {SystemSettingServiceService} from '../services/system-setting-service.service'
 @NgModule({
   declarations: [
     AppComponent, 
@@ -54,7 +54,7 @@ import {RecordService} from '../services/recordServices.service'
   entryComponents: [SharedPopupModalComponent,GridRenderer],
   
   providers: [ClientService,LoggedInAuthenticatorService, 
-  AuthorizationService,ClientInfo,GridService, RecordService,
+  AuthorizationService,ClientInfo,GridService, RecordService,SystemSettingServiceService,
   {provide: HTTP_INTERCEPTORS, useClass:AuthenticationInterceptorService ,multi: true},
   {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

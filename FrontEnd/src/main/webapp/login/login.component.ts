@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../services/authorizationService.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {SystemSettingServiceService} from '../services/system-setting-service.service'
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authorizationService: AuthorizationService,
+  constructor(private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService,
 
     private router: Router) { }
 
@@ -28,8 +29,7 @@ export class LoginComponent implements OnInit {
     this.authorizationService.submitAuthorization(this.userName, this.password).subscribe(
       responseData => {
           //Cross Tab capabilities. 
-          sessionStorage.setItem('username', this.userName);
-          sessionStorage.setItem('token', responseData['token']);
+          this.systemSetter.setupSession(this.userName, responseData['token'])
           this.router.navigate(['application']);
       },
       error => {

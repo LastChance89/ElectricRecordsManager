@@ -3,11 +3,12 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angula
 import { AuthorizationService } from './authorizationService.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router} from '@angular/router';
+import {SystemSettingServiceService} from './system-setting-service.service'
 
 @Injectable()
 export class AuthenticationInterceptorService implements HttpInterceptor {
 
-  constructor(private authorizationService: AuthorizationService, private router: Router) {
+  constructor(private authorizationService: AuthorizationService, private router: Router,private systemSetter: SystemSettingServiceService) {
 
   }
 
@@ -42,8 +43,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
         })
       }
       else{
-        //get rid of the sessio. 
-        sessionStorage.clear();
+        this.systemSetter.clearSession();
         this.router.navigate(['login']);
       }
     }

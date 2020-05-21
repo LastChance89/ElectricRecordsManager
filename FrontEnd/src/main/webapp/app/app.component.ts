@@ -1,4 +1,6 @@
-import { HostListener, Component } from '@angular/core';
+import { HostListener, Component,ChangeDetectorRef  } from '@angular/core';
+import {SystemSettingServiceService} from '../services/system-setting-service.service'
+
 
 @Component({
   selector: 'app-root',
@@ -7,12 +9,12 @@ import { HostListener, Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  
-  
- 
-  
-  showMenu(){
-  	return sessionStorage.getItem("username");
+  show = false;
+  constructor(private systemSetter: SystemSettingServiceService){
+    systemSetter.changeEmitted$.subscribe(result =>{
+      this.show = result;
+    })
+
   }
   
 }

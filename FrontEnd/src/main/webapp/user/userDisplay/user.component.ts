@@ -62,7 +62,4 @@ export class User  implements OnInit {
           }
         });
 	}
-	
-	gridRowFunction(accNum){
-	}
 }

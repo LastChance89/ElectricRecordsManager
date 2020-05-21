@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import {AuthorizationService} from '../services/authorizationService.service';
-import {map} from 'rxjs/operators';
+import {SystemSettingServiceService} from './system-setting-service.service'
 
 @Injectable()
 export class LoggedInAuthenticatorService implements CanActivate{
 
-  constructor(private router: Router,private authorizationService: AuthorizationService) { }
+  constructor(private router: Router,private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService) { }
   
   isLoggedIn: boolean = false;
   canActivate() :boolean{
- 	 
-    
 		//no sessionStorage initaliaized. 
 		if(sessionStorage.length == 0){
 			this.authorizationService.checkLogin().subscribe(response => {
 					//console.log(response);		
 					//Did we get valid response? 
 					if(response['token']){
-						//Create new session token, return true. 
-						sessionStorage.setItem('username',response['user']);
-  						sessionStorage.setItem('token',response['token']);
+						this.systemSetter.setupSession(response['user'],response['token']);
 						return true; 
 					}	
 					//No? go back to login. 
@@ -30,8 +26,7 @@ export class LoggedInAuthenticatorService implements CanActivate{
 				},
 				error =>{
 					this.router.navigate(['login']);
-				}
-				);
+				});
 		}
 		//If we have sessionStorage, we check the token to see if it exists. 
   		else if(sessionStorage.getItem('token')){  		

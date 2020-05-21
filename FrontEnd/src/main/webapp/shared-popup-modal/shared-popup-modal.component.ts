@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from 'events';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {ClientService} from '../services/clientService.service'
 
 @Component({
