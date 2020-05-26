@@ -1,9 +1,24 @@
+<div class = "header"> 
+	<h1>Electricity Usage Record Tracker</h1> 
+</div>
 
-<div > 
-	<div class = "menu" *ngIf="show">
+<div class = "mainContainer"> 
+	<div class = "menu" *ngIf="showMenu">
 		<app-navigation-menu> </app-navigation-menu>
 	</div>
 	<div class = "content">
 		<router-outlet></router-outlet>
+	</div>
+</div>
+
+<!--Footer-->
+<div> 
+	<!--Well log int eh user information here.-->
+	<div class="logged-in-user" *ngIf="loggedInUser != null">
+		<p>Logged  in as {{loggedInUser}}</p>
+		<a href="javascript:void(0)" (click)="logout()">Logout</a>
+	</div>
+	<div class="git-link"> 
+		<a href="https://github.com/LastChance89/BGEUserDataApplication">GitHub Repo</a>
 	</div>
 </div>

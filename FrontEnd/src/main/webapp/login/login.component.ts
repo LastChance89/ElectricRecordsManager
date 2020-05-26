@@ -11,8 +11,20 @@ import {SystemSettingServiceService} from '../services/system-setting-service.se
 export class LoginComponent implements OnInit {
 
   constructor(private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService,
-
-    private router: Router) { }
+    private router: Router) {
+      this.authorizationService.checkLogin().subscribe(response => {
+        if(response['token']){
+          this.systemSetter.setupSession(response['user'],response['token']);
+          this.router.navigate(['application']);
+        }	
+        else{
+          this.router.navigate(['login']);
+        }
+      },
+      error =>{
+        this.router.navigate(['login']);
+      });
+     }
 
 
   userName: string;
@@ -21,24 +33,17 @@ export class LoginComponent implements OnInit {
 
   errorMsg: string;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   authorizeLogin(e) {
     e.preventDefault();
     this.authorizationService.submitAuthorization(this.userName, this.password).subscribe(
       responseData => {
-          //Cross Tab capabilities. 
           this.systemSetter.setupSession(this.userName, responseData['token'])
           this.router.navigate(['application']);
       },
       error => {
-          if(error.status === 401){
             this.errorMsg = error.error;
-          }
-          else{
-            this.errorMsg = error.error;
-          }
         }
       )
   }
@@ -46,6 +51,4 @@ export class LoginComponent implements OnInit {
   isUserLoggedIn() {
     return sessionStorage.getItem('username') !== null;
   }
-
-
 }

@@ -22,16 +22,13 @@ export class RecordDisplay{
 	x :any;
 	ngOnInit() {
 		this.accNum =parseInt(this.route.snapshot.paramMap.get('accNum'),10);
-	
 		this.gridService.getGridMetaData(1).subscribe(gridMeta => {
-		 this.gridColumns = gridMeta;
-		 });
-		
+			this.gridColumns = gridMeta;
+		});
 		if(this.accNum != undefined){
 			this.recordService.getUserRecords(this.accNum).subscribe(records => {
 				this.records = records;
 			})
 		}
-		
 	}
 }

@@ -30,5 +30,10 @@ public class LoginController {
 	public ResponseEntity<?> createAccount(@RequestBody User user){
 		return accountService.createUserAccount(user);
 	}
+
+	@PostMapping(value="/logOut")
+	public ResponseEntity<?> logOutUser(){
+		return accountService.logOutUser();
+	}
 		
 }

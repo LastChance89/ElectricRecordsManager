@@ -43,20 +43,12 @@ public class AuthenticationTokenUtilTest {
 	public void createTokenAndVerifyTest() {
 		User user = new User("TestUser","Password","hint",roles);
 		String token = authenticationTokenUtil.createToken(user);
-		
 		String userName = authenticationTokenUtil.getUserNameFromToken(token);
-		
 		assertEquals(userName,"TestUser");
-		
-		//Only need to confirm the experation date has been created. 
+		//Only need to confirm the Experation date has been created. 
 		assertNotNull(authenticationTokenUtil.getExperationDateFromToken(token));
-		
 		assertFalse(authenticationTokenUtil.isTokenExpired(token));
-		
-	
-		authenticationTokenUtil.validate(token, user);
-		
-		 
+		authenticationTokenUtil.validate(token, user); 
 	}
 
 }

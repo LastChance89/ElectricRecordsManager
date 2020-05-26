@@ -14,13 +14,11 @@ export class AuthorizationComponent implements OnInit {
   password: String; 
   sucsesfulLogin: boolean;
   ngOnInit() {
-  
   }
   
   authorizeLogin(){
   	authorizationService.submitAuthorization().subscribe(sucsesfulLogin => {
-  	this.sucsesfulLogin = sucsesfulLogin;
-  	console.log(this.sucsesfulLogin);
+      this.sucsesfulLogin = sucsesfulLogin;
   	})
   }
   

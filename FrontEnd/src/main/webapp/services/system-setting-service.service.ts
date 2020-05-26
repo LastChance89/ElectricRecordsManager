@@ -1,5 +1,6 @@
 import { Injectable,EventEmitter,Output } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,40 +8,29 @@ import { Subject } from 'rxjs';
 
 export class SystemSettingServiceService {
 
-  constructor() { }
-
-  serverUrl = null;
-
-  @Output() event = new EventEmitter();
-
-
-  private showMainMenu = new Subject<boolean>(); 
+  constructor(private http: HttpClient) { }  
+  private showMainMenu = new Subject<any[]>(); 
 
   changeEmitted$ = this.showMainMenu.asObservable();
-
   setupSession(username, token){
-    console.log("IM in token setter");
     sessionStorage.setItem('username',username);
     sessionStorage.setItem('token',token);
-    this.showMainMenu.next(true);
+
+    this.showMainMenu.next([username,true]);
   }
 
   clearSession(){
-    console.log("im clearing");
     sessionStorage.clear();
-    this.showMainMenu.next(false);
+    this.showMainMenu.next([null,false]);
   }
 
   updateToken(token){
-    console.log("IM updating")
     sessionStorage.setItem('token',token);
   }
 
-
-  //Will read properties on startup. 
-  readProperitesFile(){
-
+  //Needed so the menu keeps staying during refresh. 
+  keepMenuOn(){
+    this.showMainMenu.next([sessionStorage.getItem('username'),true]);
   }
-
-
+ 
 }

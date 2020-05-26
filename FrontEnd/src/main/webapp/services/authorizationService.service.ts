@@ -9,39 +9,30 @@ import { ValueCache } from 'ag-grid-community';
 @Injectable()
 export class AuthorizationService {
 
-	private httpClient: HttpClient;
-	constructor(private http: HttpClient, private handler: HttpBackend) { 
-		this.httpClient = new HttpClient(handler);
+	constructor(private http: HttpClient, private httpBackend: HttpBackend) { 
 	}
 
 	submitAuthorization(userName, password): Observable<any> {
 		let payload = { "userName": userName, "password": password };
-		return this.http.post<Response>('http://localhost:8080/power/authorization/userLogin', payload)
-		
+		return this.http.post<Response>('/power/authorization/userLogin', payload)
 	}
 	checkLogin() {
-		return this.http.post('http://localhost:8080/power/checkLogin/checkLoggedIn', '');
+		return this.http.post('/power/checkLogin/checkLoggedIn', '');
 	}
 
 	setupContext() {
-		return this.http.post('http://localhost:8080/power/checkLogin/setContext', '');
+		return this.http.post('/power/checkLogin/setContext', '');
 	}
 
-
 	createAccount(user:User){
-		//let payload ={"userName":userName,"password":password,"hint":hint}
-		return this.http.post<User>('http://localhost:8080/power/authorization/createAccount',user);
+		return this.http.post<User>('/power/authorization/createAccount',user);
 	}
 
 	validateAndRefresh(req){
-		//Use backend handler instead of post to ensure the method is not caught by intercept resulting in infinite loop. 
-		const httpRequest = new HttpRequest(<any>req.method, 'http://localhost:8080/power/checkLogin/keepAcitve', sessionStorage.getItem('token'));
-		return this.handler.handle(httpRequest);
+		//We use a HttpBackend handler in order for the HTTPInterceptor to not intercept and cause an infinate loop
+		return this.httpBackend.handle(new HttpRequest(<any>req.method, '/power/checkLogin/keepAcitve', sessionStorage.getItem('token')));
 	}
-
-	//@TODO: Make me correct. 
-	handleEerror() {
-		console.log("B");
+	logUserOut(){
+		return this.http.post<boolean>('/power/authorization/logOut','')
 	}
-
 }

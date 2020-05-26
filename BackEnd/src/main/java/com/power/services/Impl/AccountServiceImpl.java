@@ -11,8 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.power.DAO.UserDao;
 import com.power.Util.AuthenticationTokenUtil;
 import com.power.messages.Message;
@@ -85,7 +88,7 @@ public class AccountServiceImpl implements AccountService {
 				
 				boolean createSuccsess = userDao.createNewUser(user);
 				if (createSuccsess) {
-					response = ResponseEntity.ok(Message.USER_CREATION_SUCSESS.getMessage());
+					response = ResponseEntity.ok(formatMessage(new HashMap<String,String>(){{put("message",Message.USER_CREATION_SUCSESS.getMessage());}}));
 				}
 				else {
 					response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.USER_CREATION_ERROR.getMessage());
@@ -103,4 +106,28 @@ public class AccountServiceImpl implements AccountService {
 		}
 		return response;
 	}
+
+	@Override
+	public ResponseEntity<String> logOutUser() {
+		SecurityContextHolder.clearContext();	
+		ResponseEntity response = null;
+		
+		//response.status(HttpStatus.INTERNAL_SERVER_ERROR).body("")
+		return SecurityContextHolder.getContext().getAuthentication() == null ? 
+			ResponseEntity.ok().body(formatMessage(new HashMap<String,String>(){{put("message",Message.USER_LOGGED_SUCSESS.getMessage());}})) :
+			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.USER_FAILED_LOGOUT.getMessage());
+	}
+	
+	//Created this because did not want to go about making it to a Map method when the only thing im 
+	//really returning is a message. 
+	public String formatMessage(Map<String,String> outputString) {
+		String mapToStringValue = null; 
+		try {
+			mapToStringValue =new ObjectMapper().writeValueAsString(outputString);
+		} catch (JsonProcessingException e) {
+			logger.error("ERROR", e);
+		}
+		return mapToStringValue;
+	}
+	
 }

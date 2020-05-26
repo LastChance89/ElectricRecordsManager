@@ -11,18 +11,12 @@ import { SharedPopupModalComponent } from '../shared-popup-modal/shared-popup-mo
 export class NavigationMenuComponent {
 
   constructor(private modalService: NgbModal) { }
-
-  title = 'powerMenu';
   show: boolean = false;
-
-
-
   //might not need this based on input?
   showShowHideModel() {
     let options: NgbModalOptions = {
       backdrop: 'static',
       centered: true,
-
     };
     const modalRef = this.modalService.open(SharedPopupModalComponent, options);
   }

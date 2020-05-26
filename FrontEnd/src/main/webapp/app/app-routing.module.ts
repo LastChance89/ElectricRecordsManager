@@ -8,35 +8,12 @@ import { AccountComponent } from '../account/account.component'
 import {RecordDisplay} from '../records/recordDisplay/record-display.component'
 
 const routes: Routes = [
-
-	{
-		path: '', redirectTo: 'login', pathMatch: 'full'
-
-	},
-	{
-		path: 'login',
-		component: LoginComponent,
-
-	},
-	{
-		path: 'user',
-		component: UserDashboardComponent,
-		canActivate: [LoggedInAuthenticatorService]
-	},
-	{
-		path: 'application',
-		component: MainPageComponent,
-		canActivate: [LoggedInAuthenticatorService]
-	},
-	{
-		path: 'login/createAccount',
-		component: AccountComponent,
-	},
-	{
-		path: 'records/:accNum',
-		component: RecordDisplay,
-		canActivate: [LoggedInAuthenticatorService]
-	}
+	{path: '', redirectTo: 'login', pathMatch: 'full'},
+	{path: 'login',component: LoginComponent,},
+	{path: 'login/createAccount',component: AccountComponent,},
+	{path: 'user',component: UserDashboardComponent,canActivate: [LoggedInAuthenticatorService]},
+	{path: 'application',component: MainPageComponent,canActivate: [LoggedInAuthenticatorService]},
+	{path: 'records/:accNum',component: RecordDisplay,canActivate: [LoggedInAuthenticatorService]}
 ];
 
 @NgModule({

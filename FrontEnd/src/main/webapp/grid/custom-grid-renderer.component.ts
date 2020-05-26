@@ -10,18 +10,16 @@ export class GridRenderer implements AgRendererComponent{
  
     constructor() { }
 
-    params: any;
-    url = '/records';
+    private params: any;
+    private url = '/records';
     
     agInit(params: any){
         this.params = params;
         this.url = this.url+'/'+ this.params.value;
     }
-
     refresh(params: any): boolean {
         return false;
       }
-
 }
 
 

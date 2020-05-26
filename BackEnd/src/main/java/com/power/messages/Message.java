@@ -10,7 +10,9 @@ public enum Message {
 	USER_CREATION_SUCSESS("User Account successfully created"),
 	USER_EXISTS("User name already exists."),
 	UNAORTHOIZED("User Is not authorized or has timed out. Please login."),
-	TOKEN_EXPIRED("Your session has expired. Please log in again.")
+	TOKEN_EXPIRED("Your session has expired. Please log in again."),
+	USER_LOGGED_SUCSESS("You have been logged out successfully."),
+	USER_FAILED_LOGOUT("User logout has failed. Contact your administrator")
 	;
 	
 	private String message; 

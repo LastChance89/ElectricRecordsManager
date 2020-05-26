@@ -11,13 +11,15 @@ export class MainPageComponent implements OnInit {
   constructor(private authorizationService: AuthorizationService) { }
 
   ngOnInit() {
-   	
-  	//Now we do a quick check that login was really sucsesfull, and this SHOULD set the context. 
-  	//This is what transfers the session across multiple tabs, removing makes the spring context null
+    //Sets context. Required for moving to the new page. 
+    //Add error handling here
   	this.authorizationService.setupContext().subscribe(
-  	response =>{
-  		console.log("ContextSetup");
-  	});
+      response =>{
+      },
+      error =>{
+        console.log("Unable to setup UserContext")
+      }
+    );
   }
 
 }

@@ -16,14 +16,13 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
     //Check username and token just to ensure a user was properly authenticated. 
     if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
       // Every intecept we update the experation time if the toekn is not expired.  
-      const helper = new JwtHelperService();
+      const jwtHelper = new JwtHelperService();
       
       //Ensure the token is not expired. 
-      if (!helper.isTokenExpired(sessionStorage.getItem('token'))) {
+      if (!jwtHelper.isTokenExpired(sessionStorage.getItem('token'))) {
         this.authorizationService.validateAndRefresh(req).subscribe(result => {
           //Verify we have correct return type. 
           if (result instanceof HttpResponse) {
-            //TODO: Send me back to login page. 
             if (result.status === 401 || result.status == 403) {
                 this.router.navigate(['login']);
             }
@@ -36,8 +35,9 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
               req = this.setupNewRequest(req);
             }
           }
-          //This is needed because getting some strange result I need to trouble shoot. For now works. 
+          //This is needed because getting some ;trange result I need to trouble shoot. For now works. 
           else {
+            this.systemSetter.keepMenuOn();
             req = this.setupNewRequest(req);
           }
         })
@@ -47,7 +47,6 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
         this.router.navigate(['login']);
       }
     }
-    //Move along sir. 
     return next.handle(req);
   }
 

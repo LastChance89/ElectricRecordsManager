@@ -44,6 +44,7 @@ public class SessionCheckerController {
 
 	// change this to ResponseEntity so we can return error page if context holder
 	// null / invalid.
+	//This method is so that the spring security context stays persistant after login page. 
 	@PostMapping("/setContext")
 	public boolean setContext() {
 		return SecurityContextHolder.getContext() != null
