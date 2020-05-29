@@ -20,6 +20,7 @@ import {RecordDisplay} from '../records/recordDisplay/record-display.component'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {UserDashboardComponent} from '../user/user-dashboard.component'
 import {SharedPopupModalComponent} from '../shared-popup-modal/shared-popup-modal.component'
+import {MessageModalComponent} from '../modals/message-modal/message-modal.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AccountComponent} from '../account/account.component'
 import {NavigationMenuComponent} from'../navigation-menu/navigation-menu.component'
@@ -38,6 +39,7 @@ import {SystemSettingServiceService} from '../services/system-setting-service.se
     RecordDisplay,
     UserDashboardComponent,
     SharedPopupModalComponent,
+    MessageModalComponent,
     AccountComponent,
     GridRenderer,
     GridComponent
@@ -51,7 +53,7 @@ import {SystemSettingServiceService} from '../services/system-setting-service.se
     AgGridModule,
     NgbModule,
   ],
-  entryComponents: [SharedPopupModalComponent,GridRenderer],
+  entryComponents: [SharedPopupModalComponent,GridRenderer,MessageModalComponent],
   
   providers: [ClientService,LoggedInAuthenticatorService, 
   AuthorizationService,ClientInfo,GridService, RecordService,SystemSettingServiceService,

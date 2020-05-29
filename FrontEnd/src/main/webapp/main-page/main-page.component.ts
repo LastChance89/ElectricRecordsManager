@@ -11,10 +11,11 @@ export class MainPageComponent implements OnInit {
   constructor(private authorizationService: AuthorizationService) { }
 
   ngOnInit() {
-    //Sets context. Required for moving to the new page. 
+    //Sets context. Required for moving to the new page and keeping sessions setup correctly. 
     //Add error handling here
   	this.authorizationService.setupContext().subscribe(
       response =>{
+        console.log("context initalized")
       },
       error =>{
         console.log("Unable to setup UserContext")
@@ -22,4 +23,11 @@ export class MainPageComponent implements OnInit {
     );
   }
 
+  logout(){
+    this.authorizationService.logUserOut().subscribe(result =>{
+    }
+    ,error => {
+      console.log("Unable to logout user.")
+    })
+  }
 }

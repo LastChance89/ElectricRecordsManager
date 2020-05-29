@@ -29,10 +29,13 @@ export class AuthorizationService {
 	}
 
 	validateAndRefresh(req){
+		
+		//return this.http.post<Response>('/power/checkLogin/keepAcitve', sessionStorage.getItem('token'));
 		//We use a HttpBackend handler in order for the HTTPInterceptor to not intercept and cause an infinate loop
 		return this.httpBackend.handle(new HttpRequest(<any>req.method, '/power/checkLogin/keepAcitve', sessionStorage.getItem('token')));
 	}
 	logUserOut(){
 		return this.http.post<boolean>('/power/authorization/logOut','')
 	}
+
 }

@@ -25,21 +25,27 @@ import com.power.models.User;
 @RequestMapping("/power/checkLogin")
 public class SessionCheckerController {
 
+	
+	 
+	
 	@Autowired
 	private AuthenticationTokenUtil authenticationTokenUtil;
 
 	@PostMapping("/checkLoggedIn")
 	public ResponseEntity<?> checkLogin(Authentication authentication) {
-		// public boolean checkLogin(Authentication authentication){
-		if (authentication.isAuthenticated()) {
-			Map<String, String> response = new HashMap<String, String>();
-			List<SimpleGrantedAuthority> roles = (List<SimpleGrantedAuthority>) authentication.getAuthorities();
-			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			response.put("token", authenticationTokenUtil.createToken(user.getUserName(), roles));
-			response.put("user", user.getUserName());
-			return ResponseEntity.ok(response);
+		//If its anonymousUser, authentication is null and not checked, so we check first to not throw npe.
+		if(!isAnonymous()){
+			if (authentication.isAuthenticated())  {
+				Map<String, String> response = new HashMap<String, String>();
+				List<SimpleGrantedAuthority> roles = (List<SimpleGrantedAuthority>) authentication.getAuthorities();
+				User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				response.put("token", authenticationTokenUtil.createToken(user.getUserName(), roles));
+				response.put("user", user.getUserName());
+				return ResponseEntity.ok(response);
+			}
 		}
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.SERVER_ERROR.getMessage());
+		//Check if its Anonymous. If it is, were on the login page for the first time, dont throw the error. 
+		return isAnonymous() ? ResponseEntity.ok("initalLogin"): ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.SERVER_ERROR.getMessage());
 	}
 
 	// change this to ResponseEntity so we can return error page if context holder
@@ -63,9 +69,9 @@ public class SessionCheckerController {
 		// Context exists and is authenticated
 		if (!authenticationTokenUtil.isTokenExpired(token)) {
 			if (SecurityContextHolder.getContext() != null
-					&& SecurityContextHolder.getContext().getAuthentication().isAuthenticated()
-					&& !SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")
-					) {
+				&& SecurityContextHolder.getContext().getAuthentication().isAuthenticated()
+				&& !isAnonymous()) 
+			{
 				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 				User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -81,9 +87,13 @@ public class SessionCheckerController {
 				response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Message.UNAORTHOIZED);
 			}
 		} else {
-			response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Message.UNAORTHOIZED);
+			response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Message.TOKEN_EXPIRED);
 		}
 		return response;
 	}
-
+ 
+	private boolean isAnonymous() {
+		return SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") ? true : false;
+	}
+	
 }

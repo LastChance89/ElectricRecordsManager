@@ -10,6 +10,7 @@ import { SharedPopupModalComponent } from '../shared-popup-modal/shared-popup-mo
 })
 export class NavigationMenuComponent {
 
+  
   constructor(private modalService: NgbModal) { }
   show: boolean = false;
   //might not need this based on input?

@@ -96,7 +96,7 @@ public class AccountServiceImpl implements AccountService {
 			}
 			else {
 				logger.info("Username " + user.getUserName() + " already exists");
-				response = ResponseEntity.ok().body(Message.USER_EXISTS.getMessage());
+				response = ResponseEntity.status(HttpStatus.CONFLICT).body(Message.USER_EXISTS.getMessage());
 			}
 
 		} catch (Exception e) {
@@ -110,9 +110,6 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public ResponseEntity<String> logOutUser() {
 		SecurityContextHolder.clearContext();	
-		ResponseEntity response = null;
-		
-		//response.status(HttpStatus.INTERNAL_SERVER_ERROR).body("")
 		return SecurityContextHolder.getContext().getAuthentication() == null ? 
 			ResponseEntity.ok().body(formatMessage(new HashMap<String,String>(){{put("message",Message.USER_LOGGED_SUCSESS.getMessage());}})) :
 			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.USER_FAILED_LOGOUT.getMessage());

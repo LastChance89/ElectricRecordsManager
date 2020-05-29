@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthorizationService } from '../services/authorizationService.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {SystemSettingServiceService} from '../services/system-setting-service.service'
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import {MessageModalComponent} from '../modals/message-modal//message-modal.component'
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,18 @@ import {SystemSettingServiceService} from '../services/system-setting-service.se
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService,
+  
+  private userName: string;
+  private password: string;
+  private sucsesfulLogin: boolean;
+  private errorMsg: string;
+
+  options: NgbModalOptions = {
+    backdrop: 'static',
+    centered: true,
+  };
+
+  constructor(private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService,private modalService: NgbModal,
     private router: Router) {
       this.authorizationService.checkLogin().subscribe(response => {
         if(response['token']){
@@ -27,12 +40,6 @@ export class LoginComponent implements OnInit {
      }
 
 
-  userName: string;
-  password: string;
-  sucsesfulLogin: boolean;
-
-  errorMsg: string;
-
   ngOnInit() {}
 
   authorizeLogin(e) {
@@ -43,7 +50,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['application']);
       },
       error => {
-            this.errorMsg = error.error;
+            const modelRef = this.modalService.open(MessageModalComponent,this.options);
+            modelRef.componentInstance.message = error.error;
+            modelRef.componentInstance.isError = true;
         }
       )
   }

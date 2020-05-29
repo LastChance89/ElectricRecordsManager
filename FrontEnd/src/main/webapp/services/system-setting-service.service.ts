@@ -20,8 +20,14 @@ export class SystemSettingServiceService {
   }
 
   clearSession(){
-    sessionStorage.clear();
+    
     this.showMainMenu.next([null,false]);
+    //ONLY navigate after the sesion storage is cleared. 
+    let promise = new Promise((resolve,reject) => {
+      sessionStorage.clear();
+      resolve();
+    })
+    return promise;
   }
 
   updateToken(token){

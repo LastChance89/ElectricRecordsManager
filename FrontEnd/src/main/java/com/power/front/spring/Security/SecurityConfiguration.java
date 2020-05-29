@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 		 .antMatchers("/dist/*").permitAll()
 		 .antMatchers("/power/authorization/userLogin").permitAll()  
 		 .antMatchers("/power/authorization/createAccount").permitAll()
-		 .antMatchers("/power/checkLogin/keepAcitve").permitAll()
+		 .antMatchers("/power/checkLogin/checkLoggedIn").permitAll()
 		 .anyRequest().authenticated()
 		 .and()
 		 .addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);	 
