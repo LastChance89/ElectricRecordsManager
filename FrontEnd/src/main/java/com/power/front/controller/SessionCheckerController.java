@@ -44,8 +44,11 @@ public class SessionCheckerController {
 				return ResponseEntity.ok(response);
 			}
 		}
+		//@TODO: Fix me. 
+		Map<String, String> test = new HashMap<String, String>();
+		test.put("A", "B");
 		//Check if its Anonymous. If it is, were on the login page for the first time, dont throw the error. 
-		return isAnonymous() ? ResponseEntity.ok("initalLogin"): ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.SERVER_ERROR.getMessage());
+		return isAnonymous() ? ResponseEntity.ok(test): ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(test);
 	}
 
 	// change this to ResponseEntity so we can return error page if context holder
@@ -92,6 +95,8 @@ public class SessionCheckerController {
 		return response;
 	}
  
+	
+	
 	private boolean isAnonymous() {
 		return SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") ? true : false;
 	}

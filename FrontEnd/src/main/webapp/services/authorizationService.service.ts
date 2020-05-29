@@ -2,10 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpBackend,HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User }from '../models/User.model'
-import { map } from 'rxjs/operators';
-import { catchError } from 'rxjs/operators';
-import { ValueCache } from 'ag-grid-community';
-
 @Injectable()
 export class AuthorizationService {
 
@@ -17,7 +13,7 @@ export class AuthorizationService {
 		return this.http.post<Response>('/power/authorization/userLogin', payload)
 	}
 	checkLogin() {
-		return this.http.post('/power/checkLogin/checkLoggedIn', '');
+		return this.http.post<Observable<boolean>>('/power/checkLogin/checkLoggedIn', '');
 	}
 
 	setupContext() {
@@ -29,10 +25,7 @@ export class AuthorizationService {
 	}
 
 	validateAndRefresh(req){
-		
-		//return this.http.post<Response>('/power/checkLogin/keepAcitve', sessionStorage.getItem('token'));
-		//We use a HttpBackend handler in order for the HTTPInterceptor to not intercept and cause an infinate loop
-		return this.httpBackend.handle(new HttpRequest(<any>req.method, '/power/checkLogin/keepAcitve', sessionStorage.getItem('token')));
+		return this.http.post<Response>('/power/checkLogin/keepAcitve', sessionStorage.getItem('token'));
 	}
 	logUserOut(){
 		return this.http.post<boolean>('/power/authorization/logOut','')
