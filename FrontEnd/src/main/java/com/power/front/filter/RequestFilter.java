@@ -46,7 +46,7 @@ public class RequestFilter extends OncePerRequestFilter {
 	
 		//We know the user is logged in and good to go. 
 		//Verify this is working with the logged in user, not just what ever user is pinging the server. 
-		if( request.getHeader("Authorization") == null) {
+		if(SecurityContextHolder.getContext().getAuthentication() != null || request.getHeader("Authorization") == null) {
 			filterChain.doFilter(request,response);	
 		}
 		else {

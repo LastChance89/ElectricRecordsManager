@@ -1,10 +1,10 @@
 <div>
 	<ul>
-		<li>
+		<li *ngIf="this.userRoles.includes('ADMIN')">
 			<a href="javascript:void(0);" (click)="showShowHideModel()"> Initial load and data </a>
 		</li>
 		<li>
-			<a routerLink="user">Find User</a>
+			<a routerLink="user">Find Client</a>
 		</li>
 	</ul>
 </div>

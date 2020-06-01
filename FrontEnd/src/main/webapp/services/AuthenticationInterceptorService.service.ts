@@ -8,24 +8,23 @@ import { SystemSettingServiceService } from './system-setting-service.service'
 @Injectable()
 export class AuthenticationInterceptorService implements HttpInterceptor {
 
-  constructor(private authorizationService: AuthorizationService, private router: Router, private systemSetter: SystemSettingServiceService) {
-
-  }
-
-
+  constructor(private authorizationService: AuthorizationService, private router: Router, private systemSetter: SystemSettingServiceService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 
-    //We dont want to check some routes, logout is one of them otherwise will log us back in. DOH. 
+    //We dont want to check some routes, logout is one of them otherwise will log us back in.
     const excludeRoutes: String[] = ['/power/authorization/logOut']
+
+    //These routes we dont want to keep the token alive, but we need the token to be carried along to the next request. 
     const passAlongRoutes: String[] = ['/power/checkLogin/checkLoggedIn','/power/checkLogin/keepAcitve']
+  
     if (!excludeRoutes.includes(req.url)) {
       //Check username and token just to ensure a user was properly authenticated. 
       if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
         // Every intecept we update the experation time if the toekn is not expired.  
         const jwtHelper = new JwtHelperService();
 
-        //Ensure the token is not expired. 
+        //Ensure the token is not expired.  
         if (!jwtHelper.isTokenExpired(sessionStorage.getItem('token'))) {
           //Special case taht requires specific settings. 
           if (req.url == '/power/checkLogin/setContext') {
