@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.power.DAO.UserDao;
 import com.power.Util.AuthenticationTokenUtil;
+import com.power.dao.UserDao;
 import com.power.messages.Message;
 import com.power.models.User;
 import com.power.services.AccountService;
@@ -45,7 +45,7 @@ public class AccountServiceImpl implements AccountService {
 			try {
 				List<SimpleGrantedAuthority> roles = userDao.getRoles(user.getUserName());
 				user.setRoles(roles);
-				String token =  authenticationTokenUtil.createToken(user);
+				String token =  authenticationTokenUtil.createToken(user); 
 				//Instantiate for serializability
 				Map<String,String> responseToken = new HashMap<String,String>();
 				responseToken.put("token",token);

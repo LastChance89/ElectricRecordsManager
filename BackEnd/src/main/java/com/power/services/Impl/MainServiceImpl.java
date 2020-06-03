@@ -11,12 +11,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.power.DAO.ClientDao;
-import com.power.DAO.GridMetaDAO;
-import com.power.DAO.RecordDao;
-import com.power.DAO.UserDao;
 import com.power.Util.ClientLoaderUtil;
+import com.power.dao.ClientDao;
+import com.power.dao.DashBoardDao;
+import com.power.dao.GridMetaDAO;
+import com.power.dao.RecordDao;
+import com.power.dao.UserDao;
 import com.power.models.Client;
+import com.power.models.DashBoard;
 import com.power.models.Record;
 import com.power.services.MainService;
 
@@ -37,13 +39,13 @@ public class MainServiceImpl implements MainService {
 	@Autowired
 	GridMetaDAO gridMetaDao;
 
+	@Autowired
+	DashBoardDao dashBoardDao;
 
 	@Override
 	// Method to load a user and their data through the first time.
 	public boolean loadUserAndData(List<MultipartFile> files) {
-
 		boolean sucsesfull = false;
-
 		try {
 			setupNewUser(ClientLoaderUtil.readInData(files));
 		} catch (IOException e) {
@@ -61,24 +63,6 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public void getUserPowerData() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void insertUserInfo() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void insertRecordData() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<Map<String,Object>> getUserRecords(Long accNum) {
 		return recordDao.getClientRecords(accNum);
 	}
@@ -93,7 +77,6 @@ public class MainServiceImpl implements MainService {
 				clientDao.saveUser(client);
 				recordDao.saveClientRecords(clients.get(client));	
 		}
-
 	}
 
 	@Override
@@ -104,6 +87,11 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public List<Client> getAllUsers() {
 		return clientDao.getAllUsers();
+	}
+	
+	@Override
+	public DashBoard getDashboardData(){
+		return dashBoardDao.getDashboardData();		
 	}
 
 }

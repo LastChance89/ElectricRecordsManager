@@ -1,18 +1,6 @@
 package com.power.services.Impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-
-import com.power.DAO.RecordDao;
-import com.power.DAO.ClientDao;
-import com.power.models.Record;
-import com.power.models.Client;
-import com.power.services.DataService;
 
 @Service
 public class DataServiceImpl 

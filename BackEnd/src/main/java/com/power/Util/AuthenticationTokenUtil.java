@@ -38,12 +38,16 @@ public class AuthenticationTokenUtil  implements Serializable{
 		return getAllClaimsFromToken(token).getExpiration();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<SimpleGrantedAuthority> getRoles(String token) {
-		List<SimpleGrantedAuthority> roleList = new ArrayList<SimpleGrantedAuthority>();
-		@SuppressWarnings("unchecked")
+		List<SimpleGrantedAuthority> roleList = new ArrayList<SimpleGrantedAuthority>();	
 		ArrayList<Object> roles =  (ArrayList<Object>) getAllClaimsFromToken(token).get("roles");
 		for(Object role: roles) {
-			roleList.add(new SimpleGrantedAuthority(String.valueOf(role)));
+			/*
+			 * This is done because for some reason the roles are coming in as {authority=userRole}. 
+			 * Need to look into this but for now it works. 
+			 */
+			roleList.add(new SimpleGrantedAuthority( role.toString().replace("}", "").split("=")[1]));
 		}
 		return roleList;
 	}
