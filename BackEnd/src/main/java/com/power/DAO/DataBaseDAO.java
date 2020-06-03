@@ -1,4 +1,4 @@
-package com.power.DAO;
+package com.power.dao;
 
 /*
  * Interface that contains basic sql methods. 

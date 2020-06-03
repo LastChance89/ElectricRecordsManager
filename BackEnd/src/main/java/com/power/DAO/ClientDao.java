@@ -1,4 +1,4 @@
-package com.power.DAO;
+package com.power.dao;
 
 import java.util.List;
 import java.util.Map;
