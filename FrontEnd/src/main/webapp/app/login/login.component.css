@@ -1,0 +1,24 @@
+.login{
+    padding-left: 20%;
+    width: 100%;
+    padding-top: 8%;	
+}
+
+.buttonComponent{
+    margin-top:.5%;
+    width: 200px;
+    font-size: 15px;
+}
+
+.container{
+    width:100%;
+}
+
+
+.textFields{
+    margin-top: 8px;
+}
+
+.textFields input{
+    width: 200px;
+}

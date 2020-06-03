@@ -1,9 +1,9 @@
 import { HostListener, Component,ChangeDetectorRef  } from '@angular/core';
-import {SystemSettingServiceService} from '../services/system-setting-service.service'
-import { AuthorizationService } from '../services/authorizationService.service';
+import {SystemSettingServiceService} from './services/system-setting-service.service'
+import { AuthorizationService } from './services/authorizationService.service';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import {MessageModalComponent} from '../modals/message-modal//message-modal.component'
+import {MessageModalComponent} from './modals/message-modal//message-modal.component'
 
 @Component({
   selector: 'app-root',

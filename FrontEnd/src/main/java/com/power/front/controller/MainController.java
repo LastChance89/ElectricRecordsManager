@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.power.models.Client;
-import com.power.models.Record;
+import com.power.models.DashBoard;
 import com.power.services.MainService;
 
 //this will become a rest controller at somepoint. 
@@ -50,4 +50,9 @@ public class MainController {
 		return mainService.getUserSearch(inputMap);
 	}
 	
+	@PostMapping(value="/dashboardData")
+	public DashBoard getDashboardData(){
+		
+		return mainService.getDashboardData();
+	}
 }

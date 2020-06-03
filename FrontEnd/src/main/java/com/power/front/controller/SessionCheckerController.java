@@ -25,12 +25,12 @@ import com.power.models.User;
 @RequestMapping("/power/checkLogin")
 public class SessionCheckerController {
 
-	
-	 
-	
 	@Autowired
 	private AuthenticationTokenUtil authenticationTokenUtil;
 
+	/*
+	 * Used for multiple tab capability. 
+	 */
 	@PostMapping("/checkLoggedIn")
 	public ResponseEntity<?> checkLogin(Authentication authentication) {
 		//If its anonymousUser, authentication is null and not checked, so we check first to not throw npe.
@@ -94,8 +94,7 @@ public class SessionCheckerController {
 		}
 		return response;
 	}
- 
-	
+
 	
 	private boolean isAnonymous() {
 		return SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") ? true : false;

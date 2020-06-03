@@ -1,0 +1,14 @@
+<div>
+	<select [(ngModel)]="searchField">
+		<option value="ACC_NUM">Account Number</option>
+		<option value="NAME">Name</option>
+		<option value="SERVICE">Service</option>
+	</select> 
+	<select [(ngModel)]="searchCritera">
+		<option value="EQUAL">Equals</option>
+		<option value="LIKE">Like</option>
+		<option value="BETWEEN">Between</option>
+	</select> <input placeHolder="Enter Value Here" [(ngModel)]="inputValue" class="text-area">
+	<button (click)="getUser()" class ="search-btn">search</button>	
+</div>
+
