@@ -1,4 +1,4 @@
-package com.power.DAO.impl;
+package com.power.dao.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import com.power.DAO.ClientDao;
+import com.power.dao.ClientDao;
 import com.power.models.Client;
 import com.power.options.SearchCritera;
 import com.power.options.SearchOpt;

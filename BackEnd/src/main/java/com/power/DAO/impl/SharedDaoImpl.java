@@ -1,9 +1,8 @@
-package com.power.DAO.impl;
+package com.power.dao.impl;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;

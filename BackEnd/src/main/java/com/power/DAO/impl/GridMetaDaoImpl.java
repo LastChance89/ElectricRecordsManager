@@ -1,4 +1,4 @@
-package com.power.DAO.impl;
+package com.power.dao.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import com.power.DAO.GridMetaDAO;
+import com.power.dao.GridMetaDAO;
 import com.power.extractors.GridMetaResultsExtractor;
-import com.power.models.GridMeta;
 
 @Component
 public class GridMetaDaoImpl implements GridMetaDAO {

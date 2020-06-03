@@ -1,4 +1,4 @@
-package com.power.DAO.impl;
+package com.power.dao.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import com.power.DAO.RecordDao;
+import com.power.dao.RecordDao;
 import com.power.extractors.RecordResultsExtractor;
 import com.power.models.Record;
 

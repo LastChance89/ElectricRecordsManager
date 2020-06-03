@@ -1,4 +1,4 @@
-package com.power.DAO.impl;
+package com.power.dao.impl;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
-import com.power.DAO.UserDao;
+import com.power.dao.UserDao;
 import com.power.extractors.UserResultSetExtractor;
 import com.power.extractors.UserRoleExtractor;
 import com.power.models.User;
