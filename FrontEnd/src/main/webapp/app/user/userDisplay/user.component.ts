@@ -36,8 +36,8 @@ export class User  implements OnInit {
 	ngOnInit(){
 		this.gridService.getGridMetaData(2).subscribe(gridMeta => {
 			this.gridColumns = gridMeta;
-			this.setupColumns();
-			});
+		});
+		
 		this.clientService.getAllUsers().subscribe(userList => {
 			this._userList = userList
 		});
@@ -52,14 +52,5 @@ export class User  implements OnInit {
 	}
 
 
-	setupColumns(){
-        this.gridColumns.forEach(column => {
-          if(column.field === 'accountNumber'){
-            column.cellRendererFramework = GridRenderer;
-            column.cellRendererParams = {
-            inRouterLink: column
-            }
-          }
-        });
-	}
+
 }
