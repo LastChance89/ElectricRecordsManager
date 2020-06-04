@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.power.Util.AuthenticationTokenUtil;
+import com.power.util.AuthenticationTokenUtil;
 import com.power.dao.UserDao;
 import com.power.messages.Message;
 import com.power.models.User;

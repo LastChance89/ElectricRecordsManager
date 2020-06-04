@@ -21,7 +21,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.power.front.spring.userDetails.CustomUserDetailsService;
 import com.power.models.User;
 import com.power.services.MainService;
-import com.power.Util.AuthenticationTokenUtil;
+import com.power.util.AuthenticationTokenUtil;
 
 
 @Component

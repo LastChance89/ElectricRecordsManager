@@ -18,16 +18,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
-import org.springframework.mock.web.MockMultipartFile;
+//import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.power.Util.ClientLoaderUtil;
+import com.power.util.ClientLoaderUtil;
 import com.power.models.Client;
 import com.power.models.Record;
 
 @RunWith(PowerMockRunner.class)
 public class ClientLoaderUtilTest {
-
+/*
 	@Mock
 	private BufferedReader br;
 	
@@ -98,5 +98,5 @@ public class ClientLoaderUtilTest {
 			
 		//}
 	}
-
+*/
 }

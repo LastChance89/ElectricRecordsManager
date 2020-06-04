@@ -15,8 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.power.DAO.UserDao;
-import com.power.Util.AuthenticationTokenUtil;
+import com.power.dao.UserDao;
+import com.power.util.AuthenticationTokenUtil;
 import com.power.messages.Message;
 import com.power.models.User;
 import com.power.services.Impl.AccountServiceImpl;

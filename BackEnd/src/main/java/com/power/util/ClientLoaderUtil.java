@@ -1,4 +1,4 @@
-package com.power.Util;
+package com.power.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

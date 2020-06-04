@@ -1,4 +1,4 @@
-package com.power.Util;
+package com.power.util;
 
 import java.io.FileInputStream;
 import java.util.Properties;

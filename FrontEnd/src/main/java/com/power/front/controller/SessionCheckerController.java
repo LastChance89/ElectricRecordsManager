@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.power.Util.AuthenticationTokenUtil;
+import com.power.util.AuthenticationTokenUtil;
 import com.power.messages.Message;
 import com.power.models.User;
 
