@@ -60,9 +60,12 @@ public class ClientDaoImpl extends SharedDaoImpl implements ClientDao {
 		return currentSession.createQuery(userQuery.toString()).getResultList();		
 	}
 
-	// Add stuff to me later.
-	public void updateUser(Client user) {
-
+	@Override
+	public Client getClient(long accNum) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		return (Client) currentSession.createQuery("from Client where ACCOUNT_NUMBER = " + accNum).getSingleResult();
 	}
+
+
 
 }

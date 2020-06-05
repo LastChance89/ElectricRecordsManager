@@ -1,4 +1,4 @@
-export class ClientInfo{
+export class Client{
 	accountNumber: string; 
 	name: string; 
 	service: string; 

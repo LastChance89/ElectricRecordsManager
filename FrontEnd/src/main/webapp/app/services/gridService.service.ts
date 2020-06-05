@@ -16,10 +16,6 @@ export class GridService{
 		return this.http.post<ColDef[]>('/grid/gridMeta',payload).pipe(map(	this.formatGridData));
 	}
 
-
-
-
-	//Move me to a service 
 	formatGridData(gridMeta){
 		gridMeta.forEach(element => {
 			//setup cellRenderers to format data on the grid. 
@@ -52,9 +48,6 @@ export class GridService{
 					break;
 				}
 			}
-
-
-
 		});
 
 		//We have to set the functions here because when we call this function in the map 

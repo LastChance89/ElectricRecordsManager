@@ -11,7 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 
 @Entity
-@Table(name="Client") //@TODO: lowercase me
+@Table(name="Client")
 public class Client implements Serializable{
 
 	@Id

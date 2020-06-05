@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {ClientInfo} from '../models/ClientInfo.model'
+import {Client} from '../models/Client.model'
 import { Observable } from 'rxjs';
 import { UserRecord } from'../models/userRecord.model';
 
 @Injectable()
 export class ClientService {
-	 constructor(private http: HttpClient,  private clientInfo: ClientInfo) { }
+	 constructor(private http: HttpClient) { }
 
 	initalLoadClient(fromData): Observable<boolean>{
 		return this.http.post<boolean>('/power/data/initalize',fromData);
 	}
 	
-	getClient(searchOption,searchCritera,inputValue) : Observable<ClientInfo>{
+	getClient(searchOption,searchCritera,inputValue) : Observable<Client>{
 		let payload = {"searchOpt":searchOption,"searchCritera":searchCritera,"inputVal":inputValue}
-		return this.http.post<ClientInfo>('/power/data/userSearch',payload );
+		return this.http.post<Client>('/power/data/userSearch',payload );
 	}
 	
 	getClientRecords(accountNumber): Observable<any>{

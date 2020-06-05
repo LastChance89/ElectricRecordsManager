@@ -1,4 +1,18 @@
 <div>
-	<!--@TODO: Put user info in here somehow. -->
-	<app-grid [gridColumns] = "gridColumns" [gridRows] ="records" > </app-grid>
+	<div> 
+		<table> 
+			<tr> 
+				<th>Client: {{client.name}} </th>
+				<th>Account Address: {{client.address}}</th>
+			</tr>
+			<tr> 
+				<th> Account Number: {{client.accountNumber}}</th>
+				<th>Client service: {{client.service}}</th>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<app-grid [gridColumns] = "gridColumns" [gridRows] ="records" > </app-grid>
+	</div>	
 </div>
+

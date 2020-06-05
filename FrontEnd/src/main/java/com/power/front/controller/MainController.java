@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.power.models.Client;
+import com.power.models.ClientReport;
 import com.power.models.DashBoard;
 import com.power.services.MainService;
 
@@ -31,28 +32,30 @@ public class MainController {
 	}
 	
 	@PostMapping(value="/getAllUsers")
-	public  List<Client> retrieveAllUsers(){
+	public  List<Client> getAllUsers(){
 		return mainService.getAllUsers();
 	}
 
 	@PostMapping(value="/getRecords")
-	public 	List<Map<String,Object>> retrieveClientRecords(@RequestBody Map<String,String> jsonString){
+	public ClientReport getClientReport(@RequestBody Map<String,String> jsonString){
 		Long accNum = Long.valueOf(jsonString.get("accNum"));
-		return mainService.getUserRecords(accNum);
+		ClientReport report = new ClientReport(); 
+		report.setClient(mainService.getClient(accNum));
+		report.setRecords(mainService.getUserRecords(accNum));
+		return report;
 	}	
 	
 	@PostMapping(value="/userSearch")
-	public List<Client> retrieveUserSearch(@RequestBody Map<String,String> jsonString){
+	public List<Client> userSearch(@RequestBody Map<String,String> jsonString){
 		Map<String,String> inputMap = new HashMap<String,String>();
 		inputMap.put("inputValue", jsonString.get("inputVal").toString());
 		inputMap.put("searchCritera", jsonString.get("searchCritera").toString());
 		inputMap.put("searchField", jsonString.get("searchOpt").toString());
-		return mainService.getUserSearch(inputMap);
+		return mainService.userSearch(inputMap);
 	}
 	
 	@PostMapping(value="/dashboardData")
 	public DashBoard getDashboardData(){
-		
 		return mainService.getDashboardData();
 	}
 }

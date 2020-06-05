@@ -17,6 +17,7 @@ public interface MainService {
 	public List<SimpleGrantedAuthority> getRoles(String userName);
 	public Map<Integer,List<Map<String,String>>> getGridMeta();
 	public List<Client> getAllUsers();
-	public List<Client> getUserSearch(Map<String,String> inputMap);
+	public List<Client> userSearch(Map<String,String> inputMap);
 	public DashBoard getDashboardData();
+	public Client getClient(long accNum);
 }

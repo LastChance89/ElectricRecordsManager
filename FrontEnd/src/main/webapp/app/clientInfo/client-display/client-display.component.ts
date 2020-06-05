@@ -3,33 +3,31 @@ import { Component,OnInit,Input ,EventEmitter,Output, OnChanges, SimpleChanges }
 import {ClientService} from '../../services/ClientService.service'
 import { Observable } from 'rxjs'
 
-import {ClientInfo} from '../../models/ClientInfo.model'
+import {Client} from '../../models/client.model'
 import {GridService} from '../../services/gridService.service'
 import { ColDef } from 'ag-grid-community';
 import {GridRenderer} from '../../grid/custom-grid-renderer.component'
 
 
 @Component({
-  selector: 'user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css'],
+  selector: 'client-display',
+  templateUrl: './client-display.component.html',
+  styleUrls: ['./client-display.component.css'],
   providers:[ClientService]
 })
 
 
 
-export class User  implements OnInit {
+export class ClientDisplay  implements OnInit {
 	constructor(private clientService: ClientService, private gridService: GridService) { }
 	
 	gridColumns : ColDef[];
 	recordList: any[];
 
-
-	@Input() clientInfo: ClientInfo; 
+	@Input() client: Client; 
 
 	@Input()_userList
-	
-	
+
 	@Output() records = new EventEmitter();
 
 
@@ -43,14 +41,11 @@ export class User  implements OnInit {
 		});
 	}
 
-	//Most likely move. 
 	getUserRecords(e){
-			e.preventDefault();
-			this.clientService.getClientRecords(this.clientInfo.accountNumber).subscribe(recordList=>{
+		e.preventDefault();
+		this.clientService.getClientRecords(this.client.accountNumber).subscribe(recordList=>{
 			this.records.emit(recordList);
-			})
+		})
 	}
-
-
 
 }

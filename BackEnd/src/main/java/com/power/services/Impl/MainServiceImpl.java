@@ -57,7 +57,7 @@ public class MainServiceImpl implements MainService {
 		return sucsesfull;
 	}
 
-	public List<Client> getUserSearch(Map<String, String> inputMap) {
+	public List<Client> userSearch(Map<String, String> inputMap) {
 		List<Client> clientList = clientDao.getSearchedUsersData(inputMap);
 		return clientList;
 	}
@@ -93,5 +93,8 @@ public class MainServiceImpl implements MainService {
 	public DashBoard getDashboardData(){
 		return dashBoardDao.getDashboardData();		
 	}
-
+	@Override
+	public Client getClient(long accNum) {
+		return clientDao.getClient(accNum);
+	}
 }

@@ -18,7 +18,6 @@ public class RecordResultsExtractor implements ResultSetExtractor<	List<Map<Stri
 
 	@Override
 	public 	List<Map<String,Object>> extractData(ResultSet rs) throws SQLException, DataAccessException {
-		List<Record> recordList = new ArrayList<Record>();
 		
 		ResultSetMetaData resultMeta = rs.getMetaData();
 		
