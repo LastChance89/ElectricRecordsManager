@@ -13,6 +13,8 @@ export class GridComponent implements OnInit {
 
   @Input() gridRows : any[]
 
+  @Input() gridWidth: number;
+
   constructor() { }
 
   ngOnInit() {

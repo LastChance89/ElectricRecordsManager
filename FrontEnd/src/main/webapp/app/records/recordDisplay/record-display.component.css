@@ -1,3 +1,18 @@
 table{
-    width: 71%
+    width: 52em;
+}
+
+.values{
+    font-weight: normal;
+}
+
+.labels{
+    width: 9em;
+}
+
+.record-display-container{
+    height: 100%;
+}
+.record-grid-container{
+    height: 87.7%;
 }

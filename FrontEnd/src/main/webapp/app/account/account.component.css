@@ -3,3 +3,9 @@
     margin-left: 20%;
     margin-top: 12%;
 }
+.main-container input{
+    width: 200px;
+}
+.main-container button{
+    width: 200px;
+}

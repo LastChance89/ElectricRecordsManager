@@ -1,18 +1,18 @@
-<div>
+<div class = "record-display-container">
 	<div> 
 		<table> 
 			<tr> 
-				<th>Client: {{client.name}} </th>
-				<th>Account Address: {{client.address}}</th>
+				<th class ="labels"> Account Number:</th> <th class="values">{{client?.accountNumber}}</th>
+				<th class ="labels">Account Address:</th> <th class="values">{{client?.address}}</th>
 			</tr>
 			<tr> 
-				<th> Account Number: {{client.accountNumber}}</th>
-				<th>Client service: {{client.service}}</th>
+				<th class ="labels">Client:</th> <th class="values">{{client?.name}} </th>
+				<th class ="labels"> Client service:</th> <th class="values">{{client?.service}}</th>
 			</tr>
 		</table>
 	</div>
-	<div>
-		<app-grid [gridColumns] = "gridColumns" [gridRows] ="records" > </app-grid>
+	<div class="record-grid-container">
+		<app-grid [gridWidth] ="67" [gridColumns] = "gridColumns" [gridRows] ="records" > </app-grid>
 	</div>	
 </div>
 
