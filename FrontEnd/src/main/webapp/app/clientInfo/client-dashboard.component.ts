@@ -17,10 +17,10 @@ export class ClientDashboardComponent implements OnInit {
 	records:any
 
 	//make me a list at some point
-	client: Client;
+	client: any;
   	
-	setRetrievedUsers(user){
-		this.client = user;
+	setRetrievedClients(client){
+		this.client = client;
 	}
 	
 	setRecords(records){

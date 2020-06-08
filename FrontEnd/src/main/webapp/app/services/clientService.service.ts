@@ -14,7 +14,7 @@ export class ClientService {
 	
 	getClient(searchOption,searchCritera,inputValue) : Observable<Client>{
 		let payload = {"searchOpt":searchOption,"searchCritera":searchCritera,"inputVal":inputValue}
-		return this.http.post<Client>('/power/data/userSearch',payload );
+		return this.http.post<Client>('/power/data/clientSearch',payload );
 	}
 	
 	getClientRecords(accountNumber): Observable<any>{
@@ -22,8 +22,8 @@ export class ClientService {
 		return this.http.post<UserRecord>('/power/data/getRecords',payload );
 	}
 	
-	getAllUsers(): Observable<any>{
-		return this.http.post('/power/data/getAllUsers','');
+	getAllClients(): Observable<any>{
+		return this.http.post('/power/data/getAllClients','');
 	}
 
 	//Need to impliment me. 

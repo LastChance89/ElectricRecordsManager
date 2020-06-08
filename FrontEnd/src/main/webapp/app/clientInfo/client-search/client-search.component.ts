@@ -21,15 +21,11 @@ export class ClientSearch  {
 	inputValue: string = "";
 	searchCritera:string="EQUAL";
 	
-	setRetrievedUsers(a){
-
-	}
-
-	@Output() retrievedUsers = new EventEmitter<Client>();
+	@Output() retrievedClients = new EventEmitter<Client>();
 
 	getUser() {
-		this.clientService.getClient(this.searchField,this.searchCritera,this.inputValue).subscribe(Client => {
-			this.retrievedUsers.emit(Client);
+		this.clientService.getClient(this.searchField,this.searchCritera,this.inputValue).subscribe(clients => {
+			this.retrievedClients.emit(clients);
 		})
   	}
 }

@@ -35,5 +35,11 @@ public class LoginController {
 	public ResponseEntity<?> logOutUser(){
 		return accountService.logOutUser();
 	}
+	
+	//TODO: Implement me
+	@PostMapping(value="/getHint")
+	public ResponseEntity<String> getUserHint(){
+		return null;
+	}
 		
 }

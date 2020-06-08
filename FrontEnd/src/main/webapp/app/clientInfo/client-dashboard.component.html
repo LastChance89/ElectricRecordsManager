@@ -1,5 +1,5 @@
 
 <div class = "client-container"> 
-	<client-search (retrievedUsers)="setRetrievedUsers($event)"> </client-search>	
-	<client-display  [_userList]="this.Client" (records) ="setRecords($event)"> </client-display>
+	<client-search (retrievedClients)="setRetrievedClients($event)"> </client-search>	
+	<client-display  [_clientList]="this.client" (records) ="setRecords($event)"> </client-display>
 </div>

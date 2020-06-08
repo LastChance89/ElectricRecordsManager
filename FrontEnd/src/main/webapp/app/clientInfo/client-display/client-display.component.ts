@@ -26,7 +26,7 @@ export class ClientDisplay  implements OnInit {
 
 	@Input() client: Client; 
 
-	@Input()_userList
+	@Input()_clientList
 
 	@Output() records = new EventEmitter();
 
@@ -36,8 +36,8 @@ export class ClientDisplay  implements OnInit {
 			this.gridColumns = gridMeta;
 		});
 		
-		this.clientService.getAllUsers().subscribe(userList => {
-			this._userList = userList
+		this.clientService.getAllClients().subscribe(clientList => {
+			this._clientList = clientList
 		});
 	}
 

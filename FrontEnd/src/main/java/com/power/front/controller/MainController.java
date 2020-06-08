@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import com.power.models.Client;
 import com.power.models.ClientReport;
 import com.power.models.DashBoard;
 import com.power.services.MainService;
+import com.power.util.ResponseEntityUtil;
 
 //this will become a rest controller at somepoint. 
 @RestController
@@ -31,22 +33,14 @@ public class MainController {
 		return mainService.loadUserAndData(files);
 	}
 	
-	@PostMapping(value="/getAllUsers")
-	public  List<Client> getAllUsers(){
-		return mainService.getAllUsers();
+	@PostMapping(value="/getAllClients")
+	public  ResponseEntity<String> getAllUsers(){
+		return mainService.getAllClients();
 	}
 
-	@PostMapping(value="/getRecords")
-	public ClientReport getClientReport(@RequestBody Map<String,String> jsonString){
-		Long accNum = Long.valueOf(jsonString.get("accNum"));
-		ClientReport report = new ClientReport(); 
-		report.setClient(mainService.getClient(accNum));
-		report.setRecords(mainService.getUserRecords(accNum));
-		return report;
-	}	
-	
-	@PostMapping(value="/userSearch")
-	public List<Client> userSearch(@RequestBody Map<String,String> jsonString){
+
+	@PostMapping(value="/clientSearch")
+	public ResponseEntity<String> userSearch(@RequestBody Map<String,String> jsonString){
 		Map<String,String> inputMap = new HashMap<String,String>();
 		inputMap.put("inputValue", jsonString.get("inputVal").toString());
 		inputMap.put("searchCritera", jsonString.get("searchCritera").toString());
@@ -54,8 +48,16 @@ public class MainController {
 		return mainService.userSearch(inputMap);
 	}
 	
+	//Need to figure out how to get rid of the wildard. 
+	@PostMapping(value="/getRecords")
+	public ResponseEntity<?> getClientReport(@RequestBody Map<String,String> jsonString){
+		Long accNum = Long.valueOf(jsonString.get("accNum"));
+		return mainService.generateClientReport(accNum);
+	}	
+	
+	
 	@PostMapping(value="/dashboardData")
-	public DashBoard getDashboardData(){
-		return mainService.getDashboardData();
+	public ResponseEntity<?> getDashboardData(){
+		return 	mainService.generateDashBoardData();
 	}
 }

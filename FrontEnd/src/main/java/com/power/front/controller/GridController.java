@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class GridController {
 	PersistentData persistentData;
 	
 	@PostMapping("/gridMeta")
-	public List<Map<String,String>> getGridMetadata(@RequestBody Map<String,String> input){
+	public ResponseEntity<?> getGridMetadata(@RequestBody Map<String,String> input){
 		return persistentData.getGridMeta(Integer.valueOf(input.get("id")));
 		
 	}	
