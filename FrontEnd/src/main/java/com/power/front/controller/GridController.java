@@ -22,7 +22,7 @@ public class GridController {
 	PersistentData persistentData;
 	
 	@PostMapping("/gridMeta")
-	public ResponseEntity<?> getGridMetadata(@RequestBody Map<String,String> input){
+	public ResponseEntity<String> getGridMetadata(@RequestBody Map<String,String> input){
 		return persistentData.getGridMeta(Integer.valueOf(input.get("id")));
 		
 	}	

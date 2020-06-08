@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,15 +20,24 @@ public class ResponseEntityUtil {
 	private static final Logger logger = LogManager.getLogger(ResponseEntityUtil.class);
 			
 	public static ResponseEntity<String> createValidResponse(Map<String,String> responseBody){
-		return ResponseEntity.ok().body(formatMessageBody(responseBody));		 
+		return validResponse().body(formatMessageBody(responseBody));		 
 	}
 
 	public static ResponseEntity<String> createValidResponse(List<?> response){
-		return ResponseEntity.ok().body(formatMessageBody(response));
+		return validResponse().body(formatMessageBody(response));
 	}
 
 	public static ResponseEntity<String> createResponseMessage(HttpStatus httpStatus,Message message){
 		return ResponseEntity.status(httpStatus).body(formatMessageBody(message));
+	}
+	
+	public static ResponseEntity<Boolean> createResponseMessage(boolean sucsess){
+		return validResponse().body(sucsess);
+	}
+	
+	//Remove all the ResponseEntity.ok() with a single method.  
+	private static BodyBuilder validResponse() {
+		return ResponseEntity.ok();
 	}
 	
 	//Generic error that something has gone wrong on the server. 

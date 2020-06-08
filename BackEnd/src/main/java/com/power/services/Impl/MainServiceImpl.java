@@ -49,17 +49,18 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	// Method to load a user and their data through the first time.
-	public boolean loadUserAndData(List<MultipartFile> files) {
-		boolean sucsesfull = false;
+	public ResponseEntity<Boolean> loadUserAndData(List<MultipartFile> files) {
+		boolean sucsess = false;
 		try {
 			setupNewUser(ClientLoaderUtil.readInData(files));
+			sucsess = true;
 		} catch (IOException e) {
 			logger.error("ERROR: ",e);
 		} catch (Exception e) { 
 			logger.error("ERROR ",e);
 		}
-		sucsesfull = true;
-		return sucsesfull;
+		
+		return ResponseEntityUtil.createResponseMessage(sucsess);
 	}
 
 	public ResponseEntity<String> userSearch(Map<String, String> inputMap) {

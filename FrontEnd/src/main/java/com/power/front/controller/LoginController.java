@@ -22,17 +22,17 @@ public class LoginController {
 	AccountService accountService;
 
 	@PostMapping(value="/userLogin")
-	public ResponseEntity<?> getUserLogin(@RequestBody User user) {
+	public ResponseEntity<String> getUserLogin(@RequestBody User user) {
 		return accountService.userLogin(user);
 	}
 	
 	@PostMapping(value ="/createAccount")
-	public ResponseEntity<?> createAccount(@RequestBody User user){
+	public ResponseEntity<String> createAccount(@RequestBody User user){
 		return accountService.createUserAccount(user);
 	}
 
 	@PostMapping(value="/logOut")
-	public ResponseEntity<?> logOutUser(){
+	public ResponseEntity<String> logOutUser(){
 		return accountService.logOutUser();
 	}
 	

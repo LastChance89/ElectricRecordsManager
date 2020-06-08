@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from '../services/authorizationService.service'
 import { User } from '../models/User.model';
-import {MessageModalComponent} from '../modals/message-modal//message-modal.component'
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { ModalService } from '../services/modal-service.service';
 
 @Component({
   selector: 'app-account',
@@ -15,29 +14,18 @@ export class AccountComponent implements OnInit {
   public user: User  = new User();
   public fieldsCompelted = true;
 
-  constructor(private authorizationService :AuthorizationService,private modalService: NgbModal) { }
-
-  options: NgbModalOptions = {
-    backdrop: 'static',
-    centered: true,
-  };
+  constructor(private authorizationService :AuthorizationService,private modalService : ModalService) { }
 
   
   ngOnInit() {
   }
 
   createUser(){
-   
     this.authorizationService.createAccount(this.user).subscribe(result =>{
-      const modelRef= this.modalService.open(MessageModalComponent,this.options);
-     modelRef.componentInstance.message=result['message'];
-     modelRef.componentInstance.isError = false;
-     console.log(result);
+      this.modalService.openMessageModal(false, result['message']);
     },
     error =>{
-      const modelRef= this.modalService.open(MessageModalComponent,this.options);
-      modelRef.componentInstance.message = error.error;
-      modelRef.componentInstance.isError = true;
+      this.modalService.openMessageModal(true, error.error.message);
       }
     )
   }

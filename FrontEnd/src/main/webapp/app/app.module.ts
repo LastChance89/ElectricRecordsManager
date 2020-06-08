@@ -19,7 +19,7 @@ import {GridService} from './services/gridService.service'
 import {RecordDisplay} from './records/recordDisplay/record-display.component'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common'
 import {ClientDashboardComponent} from './clientInfo/client-dashboard.component'
-import {SharedPopupModalComponent} from './shared-popup-modal/shared-popup-modal.component'
+import {FileModalComponent} from './modals/file-modal/file-modal.component';
 import {MessageModalComponent} from './modals/message-modal/message-modal.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AccountComponent} from './account/account.component'
@@ -29,6 +29,7 @@ import {GridComponent} from './grid/grid.component'
 import {RecordService} from './services/recordServices.service'
 import {SystemSettingServiceService} from './services/system-setting-service.service'
 import{DashBoardServiceService} from './services/dash-board-service.service'
+import {ModalService} from './services/modal-service.service';
 @NgModule({
   declarations: [
     AppComponent, 
@@ -39,7 +40,7 @@ import{DashBoardServiceService} from './services/dash-board-service.service'
     MainPageComponent,
     RecordDisplay,
     ClientDashboardComponent,
-    SharedPopupModalComponent,
+    FileModalComponent,
     MessageModalComponent,
     AccountComponent,
     GridRenderer,
@@ -54,10 +55,10 @@ import{DashBoardServiceService} from './services/dash-board-service.service'
     AgGridModule,
     NgbModule,
   ],
-  entryComponents: [SharedPopupModalComponent,GridRenderer,MessageModalComponent],
+  entryComponents: [FileModalComponent,GridRenderer,MessageModalComponent],
   
   providers: [ClientService,LoggedInAuthenticatorService, DashBoardServiceService,
-  AuthorizationService,Client,GridService, RecordService,SystemSettingServiceService,
+  AuthorizationService,Client,GridService, RecordService,SystemSettingServiceService,ModalService,
   {provide: HTTP_INTERCEPTORS, useClass:AuthenticationInterceptorService ,multi: true},
   {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

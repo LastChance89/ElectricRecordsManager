@@ -29,12 +29,12 @@ public class MainController {
 	private MainService mainService;
 	
 	@PostMapping(value="/initalize")
-	public boolean loadUsersData(@RequestParam("files") List<MultipartFile> files){ //Cant use @RequestBody. 
+	public ResponseEntity<Boolean> loadUsersData(@RequestParam("files") List<MultipartFile> files){ //Cant use @RequestBody. 
 		return mainService.loadUserAndData(files);
 	}
 	
 	@PostMapping(value="/getAllClients")
-	public  ResponseEntity<String> getAllUsers(){
+	public ResponseEntity<String> getAllUsers(){
 		return mainService.getAllClients();
 	}
 
@@ -48,7 +48,8 @@ public class MainController {
 		return mainService.userSearch(inputMap);
 	}
 	
-	//Need to figure out how to get rid of the wildard. 
+	//Need to figure out how to get rid of the wildCard for teh 2 methods below.
+	//Works for now but go's against wildcard rules. 
 	@PostMapping(value="/getRecords")
 	public ResponseEntity<?> getClientReport(@RequestBody Map<String,String> jsonString){
 		Long accNum = Long.valueOf(jsonString.get("accNum"));
