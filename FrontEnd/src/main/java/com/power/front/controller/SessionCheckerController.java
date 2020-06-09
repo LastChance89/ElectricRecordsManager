@@ -46,17 +46,23 @@ public class SessionCheckerController {
 			}
 		}
 		//Check if its Anonymous. If it is, were on the login page for the first time, dont throw the error. 
-		return isAnonymous() ? ResponseEntityUtil.createResponseMessage(HttpStatus.OK,Message.SET_CONTEXT): ResponseEntityUtil.InternalResponseError();
+		return isAnonymous() ? ResponseEntityUtil.createResponseMessage(HttpStatus.OK,Message.SET_CONTEXT.getMessage()): ResponseEntityUtil.InternalResponseError();
 	}
 
 	// change this to ResponseEntity so we can return error page if context holder
 	// null / invalid.
 	//This method is so that the spring security context stays persistant after login page. 
 	@PostMapping("/setContext")
-	public ResponseEntity<Boolean> setContext() {
-		return SecurityContextHolder.getContext() != null
-				?  ResponseEntityUtil.createResponseMessage(SecurityContextHolder.getContext().getAuthentication().isAuthenticated())
-				:  ResponseEntityUtil.createResponseMessage(false);
+	public ResponseEntity<String> setContext() {
+		ResponseEntity<String> response = null;
+		if(SecurityContextHolder.getContext() != null) {
+		
+			response =  SecurityContextHolder.getContext().getAuthentication().isAuthenticated() ?
+				ResponseEntityUtil.createResponseMessage(HttpStatus.OK, Message.INITAL_LOAD_COMPLETE.getMessage()) :
+						ResponseEntityUtil.InternalResponseError();
+		}
+		return response;
+
 	}
 
 	/*
@@ -82,13 +88,13 @@ public class SessionCheckerController {
 					responseToken.put("token", updateToken);
 					response = ResponseEntityUtil.createValidResponse(responseToken);
 				} else {
-					ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.TOKEN_EXPIRED);
+					ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.TOKEN_EXPIRED.getMessage());
 				}
 			} else {
-				response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.UNAORTHOIZED);
+				response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.UNAORTHOIZED.getMessage());
 			}
 		} else {
-			response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED,Message.TOKEN_EXPIRED);
+			response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED,Message.TOKEN_EXPIRED.getMessage());
 		}
 		return response;
 	}

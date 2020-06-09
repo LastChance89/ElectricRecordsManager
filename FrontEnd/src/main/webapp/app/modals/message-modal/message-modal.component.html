@@ -1,10 +1,15 @@
-<div class="modal-header ">
-    <div class="custom-modal-body">
-        <div> 
-            {{message}}
-        </div>
-    </div>
+<div class="modal-header"
+ [ngClass]="{errorMessage: isError, sucsessMessage: !isError}">
 
+ <p *ngIf = "isError">Error</p> 
+ <p *ngIf = "!isError">Success</p> 
+
+</div>
+
+<div class="custom-modal-body">
+    <div> 
+        {{message}}
+    </div>
 </div>
 <div class="modal-footer">
     <div *ngIf="!isError"> 

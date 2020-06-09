@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.PersistenceException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,18 +51,26 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	// Method to load a user and their data through the first time.
-	public ResponseEntity<Boolean> loadUserAndData(List<MultipartFile> files) {
-		boolean sucsess = false;
+	public ResponseEntity<String> loadUserAndData(List<MultipartFile> files) {
+		
+		ResponseEntity<String> response = null;
 		try {
 			setupNewUser(ClientLoaderUtil.readInData(files));
-			sucsess = true;
+			response = ResponseEntityUtil.createResponseMessage(HttpStatus.OK, Message.INITAL_LOAD_COMPLETE.getMessage());
 		} catch (IOException e) {
+			response = ResponseEntityUtil.InternalResponseError();
 			logger.error("ERROR: ",e);
-		} catch (Exception e) { 
-			logger.error("ERROR ",e);
+		} 
+		catch(PersistenceException e) {
+			response = ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR,"ERROR: " +e.getCause().getCause().toString().split(":")[1]);
+			logger.error("ERROR ",e); 
+		}
+		catch (Exception e) { 
+			logger.error("ERROR ",e); 
+			response = ResponseEntityUtil.InternalResponseError();
 		}
 		
-		return ResponseEntityUtil.createResponseMessage(sucsess);
+		return response; // ResponseEntityUtil.createResponseMessage(sucsess);
 	}
 
 	public ResponseEntity<String> userSearch(Map<String, String> inputMap) {

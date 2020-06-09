@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ClientService } from '../../services/clientService.service';
+import { ModalService } from '../../services/modal-service.service';
 
 @Component({
   selector: 'app-file-modal',
@@ -9,7 +10,7 @@ import { ClientService } from '../../services/clientService.service';
 })
 export class FileModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal, private clientService: ClientService) { }
+  constructor(public activeModal: NgbActiveModal, private clientService: ClientService,  private modalService : ModalService) { }
 
   ngOnInit() {
   }
@@ -37,8 +38,16 @@ export class FileModalComponent implements OnInit {
     });
     this.clientService.initalLoadClient(fromData).subscribe(result => {
       console.log(result);
-      this.isLoading = result;
-    } )
+      this.isLoading = false;
+      this.modalService.openMessageModal(false, result['message']);
+      this.close();
+    },
+    error => {
+      this.modalService.openMessageModal(true, error.error.message);
+      this.close();
+    }
+    
+    )
   }
 
   close(){

@@ -1,18 +1,18 @@
 
-<div class="modal-header ">
-    <div class="custom-modal-body">
-        <div *ngIf="isLoading" class="modal-body">
-            <input type="file" (change)="updateFile($event)" name="csv" accept=".csv" multiple />
-        </div>
-        
-        <div *ngIf="!isLoading"> 
-            <p>Loading....</p>
-        </div>
+<div class="modal-header custom-modal-header">
+    <p>File Upload</p>
+ </div>
+
+ <div class="custom-modal-body">
+    <div *ngIf="isLoading" class="modal-body">
+        <input type="file" (change)="updateFile($event)" name="csv" accept=".csv" multiple />
     </div>
-
-
-
+    
+    <div *ngIf="!isLoading"> 
+        <p>Loading....</p>
+    </div>
 </div>
+
 <div class="modal-footer">
     <button [disabled] ="!isLoading" (click)="loadUsers()">Ok</button>
     <button [disabled] ="!isLoading" class = "btn-cancel" (click)="close()">Cancel</button>

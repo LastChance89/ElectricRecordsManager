@@ -29,7 +29,7 @@ public class MainController {
 	private MainService mainService;
 	
 	@PostMapping(value="/initalize")
-	public ResponseEntity<Boolean> loadUsersData(@RequestParam("files") List<MultipartFile> files){ //Cant use @RequestBody. 
+	public ResponseEntity<String> loadUsersData(@RequestParam("files") List<MultipartFile> files){ //Cant use @RequestBody. 
 		return mainService.loadUserAndData(files);
 	}
 	

@@ -24,7 +24,7 @@ export class ModalService {
   openMessageModal(isError, message){
     const modelRef = this.ngbModal.open(MessageModalComponent,this.options);
     modelRef.componentInstance.message = message;
-    modelRef.componentInstance.isError = true;
+    modelRef.componentInstance.isError = isError;
   }
 
 

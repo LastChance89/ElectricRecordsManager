@@ -13,7 +13,7 @@ import com.power.models.DashBoard;
 
 public interface MainService {
 	//public Client getUserInfo(Map<String,String> inputMap); //Repurpose me. 
-	public  ResponseEntity<Boolean>  loadUserAndData( List<MultipartFile> file);
+	public  ResponseEntity<String>  loadUserAndData( List<MultipartFile> file);
 	public List<SimpleGrantedAuthority> getRoles(String userName);
 	public Map<Integer,List<Map<String,String>>> getGridMeta();
 	public ResponseEntity<String>  getAllClients();

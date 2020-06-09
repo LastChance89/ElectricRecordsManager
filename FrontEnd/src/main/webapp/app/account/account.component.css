@@ -1,11 +1,17 @@
 .main-container{
-    display: inline-grid;
-    margin-left: 20%;
-    margin-top: 12%;
+    padding-left: 53%;
+    width: 100%;
+    padding-top: 18%;
 }
-.main-container input{
+
+.main-container button{
     width: 200px;
 }
-.main-container button{
+
+.textFields{
+    margin-top: 8px;
+}
+
+.textFields input{
     width: 200px;
 }

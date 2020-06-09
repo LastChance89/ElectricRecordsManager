@@ -50,13 +50,13 @@ public class AccountServiceImpl implements AccountService {
 			}
 			catch(Exception e) {
 				logger.error("ERROR: ",e);
-				response =ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR);
+				response =ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
 			}
 		}
 		else {
 			logger.error("Invalid Username / password for username: " + user.getUserName());
 			logger.error("Token has not been created.");
-			response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.LOGIN_FAILED);
+			response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.LOGIN_FAILED.getMessage());
 		}
 		return response;
 		
@@ -84,21 +84,21 @@ public class AccountServiceImpl implements AccountService {
 			if (!userNameExists) {
 				boolean createSuccsess = userDao.createNewUser(user);
 				if (createSuccsess) {
-					response = ResponseEntityUtil.createResponseMessage(HttpStatus.OK,Message.USER_CREATION_SUCSESS);
+					response = ResponseEntityUtil.createResponseMessage(HttpStatus.OK,Message.USER_CREATION_SUCSESS.getMessage());
 			}
 				else {
 					
-					response = ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.USER_CREATION_ERROR);
+					response = ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.USER_CREATION_ERROR.getMessage());
 				}
 			}
 			else {
 				logger.info("Username " + user.getUserName() + " already exists");
-				response = ResponseEntityUtil.createResponseMessage(HttpStatus.CONFLICT, Message.USER_EXISTS);
+				response = ResponseEntityUtil.createResponseMessage(HttpStatus.CONFLICT, Message.USER_EXISTS.getMessage());
 			}
 
 		} catch (Exception e) {
 			logger.error("ERROR: ", e);
-			response = ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR);
+			response = ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
 			
 
 		}
@@ -109,7 +109,7 @@ public class AccountServiceImpl implements AccountService {
 	public ResponseEntity<String> logOutUser() {
 		SecurityContextHolder.clearContext();	
 		return SecurityContextHolder.getContext().getAuthentication() == null ? 
-				ResponseEntityUtil.createResponseMessage(HttpStatus.OK, Message.USER_LOGGED_SUCSESS):
-				ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.USER_FAILED_LOGOUT);
+				ResponseEntityUtil.createResponseMessage(HttpStatus.OK, Message.USER_LOGGED_SUCSESS.getMessage()):
+				ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.USER_FAILED_LOGOUT.getMessage());
 	}
 }

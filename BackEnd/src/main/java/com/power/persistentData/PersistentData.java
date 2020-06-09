@@ -24,7 +24,7 @@ public class PersistentData{
 	public ResponseEntity<String> getGridMeta(int gridID) {
 		ResponseEntity<String> response; 
 		if(!gridMeta.containsKey(gridID)) {
-			response =	ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR);
+			response =	ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
 		}
 		else {
 			response = ResponseEntityUtil.createValidResponse(gridMeta.get(gridID));

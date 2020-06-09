@@ -10,3 +10,11 @@
     margin-left: 3%;
 }
 
+.custom-modal-header{
+    background-color:rgb(51, 102, 255) ;
+}
+
+p{
+    font-size: 20px;
+    color: white;
+}

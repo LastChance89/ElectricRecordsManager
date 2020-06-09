@@ -27,12 +27,14 @@ public class ResponseEntityUtil {
 		return validResponse().body(formatMessageBody(response));
 	}
 
-	public static ResponseEntity<String> createResponseMessage(HttpStatus httpStatus,Message message){
+	public static ResponseEntity<String> createResponseMessage(HttpStatus httpStatus,String message){
 		return ResponseEntity.status(httpStatus).body(formatMessageBody(message));
 	}
 	
-	public static ResponseEntity<Boolean> createResponseMessage(boolean sucsess){
-		return validResponse().body(sucsess);
+	//used for displaying error messages, and at somepoint maybe debug message if we were to 
+	//implment a developer mode. 
+	public static ResponseEntity<String> createResponseMessage(String message){
+		return validResponse().body(formatMessageBody(message));
 	}
 	
 	//Remove all the ResponseEntity.ok() with a single method.  
@@ -42,7 +44,7 @@ public class ResponseEntityUtil {
 	
 	//Generic error that something has gone wrong on the server. 
 	public static ResponseEntity<String> InternalResponseError(){
-		return ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR);
+		return ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
 	}
 	
 	/*
@@ -50,10 +52,10 @@ public class ResponseEntityUtil {
 	 * for the front end. 
 	 */
 	@SuppressWarnings("serial")
-	private static String formatMessageBody(Message message) {
+	private static String formatMessageBody(String message) {
 		String mapToStringValue = null; 
 		try {
-			mapToStringValue =new ObjectMapper().writeValueAsString(new HashMap<String,String>(){{put("message",message.getMessage());}});
+			mapToStringValue =new ObjectMapper().writeValueAsString(new HashMap<String,String>(){{put("message",message);}});
 		} catch (JsonProcessingException e) {
 			logger.error("ERROR", e);
 		}
