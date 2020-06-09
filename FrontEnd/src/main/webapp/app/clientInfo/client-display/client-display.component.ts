@@ -7,6 +7,7 @@ import {Client} from '../../models/client.model'
 import {GridService} from '../../services/gridService.service'
 import { ColDef } from 'ag-grid-community';
 import {GridRenderer} from '../../grid/custom-grid-renderer.component'
+import { ModalService } from '../../services/modal-service.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ import {GridRenderer} from '../../grid/custom-grid-renderer.component'
 
 
 export class ClientDisplay  implements OnInit {
-	constructor(private clientService: ClientService, private gridService: GridService) { }
+	constructor(private clientService: ClientService, private gridService: GridService, private modalService : ModalService) { }
 	
 	gridColumns : ColDef[];
 	recordList: any[];
@@ -34,10 +35,16 @@ export class ClientDisplay  implements OnInit {
 	ngOnInit(){
 		this.gridService.getGridMetaData(2).subscribe(gridMeta => {
 			this.gridColumns = gridMeta;
+		},
+		error =>{
+		  this.modalService.openMessageModal(true, error.error.message);
 		});
 		
 		this.clientService.getAllClients().subscribe(clientList => {
 			this._clientList = clientList
+		},
+		error =>{
+		  this.modalService.openMessageModal(true, error.error.message);
 		});
 	}
 
@@ -45,6 +52,9 @@ export class ClientDisplay  implements OnInit {
 		e.preventDefault();
 		this.clientService.getClientRecords(this.client.accountNumber).subscribe(recordList=>{
 			this.records.emit(recordList);
+		},
+		error =>{
+		  this.modalService.openMessageModal(true, error.error.message);
 		})
 	}
 

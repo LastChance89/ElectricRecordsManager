@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from '../services/authorizationService.service';
 import { DashBoardServiceService } from '../services/dash-board-service.service';
 import { DashBoard } from '../models/dash-board.model';
+import { ModalService } from '../services/modal-service.service';
 
 @Component({
   selector: 'main-page',
@@ -10,7 +11,7 @@ import { DashBoard } from '../models/dash-board.model';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private authorizationService: AuthorizationService, private daashBoardSerivce: DashBoardServiceService) { }
+  constructor(private authorizationService: AuthorizationService, private daashBoardSerivce: DashBoardServiceService,private modalService : ModalService) { }
 
 
   private dashBoard:DashBoard;
@@ -23,14 +24,17 @@ export class MainPageComponent implements OnInit {
         console.log("context initalized")
       },
       error =>{
-        console.log("Unable to setup UserContext")
+        this.modalService.openMessageModal(true, error.error.message);
       }
     );
 
     //Implement me. 
     this.daashBoardSerivce.getDashBoardData().subscribe(result =>{
       this.dashBoard = result;
-    });
+    },
+		error =>{
+		  this.modalService.openMessageModal(true, error.error.message);
+		});
 
   }
 
@@ -39,7 +43,7 @@ export class MainPageComponent implements OnInit {
     this.authorizationService.logUserOut().subscribe(result =>{
     }
     ,error => {
-      console.log("Unable to logout user.")
+      this.modalService.openMessageModal(true, error.error.message);
     })
   }
 }

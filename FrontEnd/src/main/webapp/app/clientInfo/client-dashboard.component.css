@@ -4,4 +4,5 @@
 
 client-display-container{
     height:100%;
+    position: absolute;
 }

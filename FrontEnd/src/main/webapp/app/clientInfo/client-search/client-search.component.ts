@@ -5,6 +5,7 @@ import {Client} from '../../models/client.model'
 
 
 import {Observable } from 'rxjs'
+import { ModalService } from '../../services/modal-service.service';
 
 @Component({
   selector: 'client-search',
@@ -14,7 +15,7 @@ import {Observable } from 'rxjs'
 })
 
 export class ClientSearch  {
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService, private modalService : ModalService) { }
   
 	client: any; //change to a list
 	searchField: string = "ACC_NUM";
@@ -26,6 +27,9 @@ export class ClientSearch  {
 	getUser() {
 		this.clientService.getClient(this.searchField,this.searchCritera,this.inputValue).subscribe(clients => {
 			this.retrievedClients.emit(clients);
+		},
+		error =>{
+		  this.modalService.openMessageModal(true, error.error.message);
 		})
   	}
 }

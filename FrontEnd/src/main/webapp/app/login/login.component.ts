@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   
   private userName: string;
   private password: string;
-  private sucsesfulLogin: boolean;
-  private errorMsg: string;
+
+  private position: number; 
 
   constructor(private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService,
     private modalService : ModalService, private router: Router,) {
@@ -34,7 +34,10 @@ export class LoginComponent implements OnInit {
      }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.calcPosition();
+
+  }
 
   authorizeLogin(e) {
     e.preventDefault();
@@ -52,4 +55,10 @@ export class LoginComponent implements OnInit {
   isUserLoggedIn() {
     return sessionStorage.getItem('username') !== null;
   }
+
+  calcPosition(){
+    this.position = window.innerWidth/3;
+  }
+
+
 }

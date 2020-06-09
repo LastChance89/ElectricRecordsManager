@@ -23,6 +23,9 @@ export class AppComponent {
     systemSetter.changeEmitted$.subscribe(result =>{
       this.loggedInUser = result[0];
       this.showMenu = result[1];
+    },
+    error =>{
+      this.modalService.openMessageModal(true, error.error.message);
     })
   }
   

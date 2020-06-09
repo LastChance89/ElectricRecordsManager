@@ -1,3 +1,5 @@
+<div class = "page-container"> 
+
 <div class = "header"> 
 	<div class="git-link"> 
 		<a href="https://github.com/LastChance89/BGEUserDataApplication">GitHub Source</a>
@@ -22,9 +24,13 @@
 </div>
 
 <div class = "footer" *ngIf="loggedInUser != null"> 
-	<!--Well log int eh user information here.-->
+	<div class = "version-container"> 
+		<p class = "label-text">Version: </p>
+		<p class = "version-number">1.0</p>
+	</div>
+
 	<div class="logged-in-user">
-		<p class='logged-in-text'>Logged  in as</p>
+		<p class='label-text'>Logged  in as</p>
 		<p class = "user-name"> {{loggedInUser}}</p>
 	</div>
 	<div class = "logout-link">
@@ -33,3 +39,4 @@
 	
 </div>
 
+</div>

@@ -17,7 +17,7 @@
 	margin-left: 200px;
     padding-top: 0;
     position: relative;
-    background-color: white;
+    background-color: rgb(211,211,211);
     width: 62%;
 	min-width: 803px;
 	height: 100%;
@@ -26,9 +26,9 @@
 .header{
 	padding-top: .5%;
 	text-align: left;
-	height: 11%;
 	position: relative;
 	min-width: 770px;
+	max-width: 1903px;
 }
 .header h1{
 	position: relative;
@@ -37,16 +37,19 @@
 .footer{
     width: 100%;
     bottom: 0;
-    position: fixed;
-    background: grey;
-    height: 60px;
+	background-color: rgb(211,211,211);
+	min-width: 770px;
+	max-width: 1903px;
 }
 
+
 .logged-in-user{
-	float:left;
+	/*
+	
 	margin-left: -100px;
-	left: 50%;
-	position: fixed;
+		left: 50%; 
+	*/
+	float:left;
 }
 
 .git-link{
@@ -58,7 +61,7 @@
 }
 
 
-.logged-in-text{
+.label-text{
 	font-weight: bold;
 	float: left;
 }
@@ -73,3 +76,21 @@
     font-size: 20px;
 }
 
+.page-container{
+	height: 100%;
+	width:100%;
+	overflow: auto;
+}
+
+.version{
+	float:left;
+}
+.version-number{
+	float:left; 
+}
+
+.version-container{
+	display: inline-block;
+    float: left; 
+    padding-right: 25%;
+}
