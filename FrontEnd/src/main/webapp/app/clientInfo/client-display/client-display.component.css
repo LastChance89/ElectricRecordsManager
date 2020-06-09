@@ -1,3 +1,9 @@
 .grid-container{
     height:100%;
+    overflow: auto;
+}
+
+.client-display-container{
+    height: 100%;
+    width: 100%;
 }
