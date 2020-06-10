@@ -26,7 +26,8 @@ export class AppComponent {
     },
     error =>{
       this.modalService.openMessageModal(true, error.error.message);
-    })
+    }
+)
   }
   
   logout(){

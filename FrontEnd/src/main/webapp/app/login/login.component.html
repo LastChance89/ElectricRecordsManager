@@ -1,6 +1,6 @@
-<div class="login" [ngStyle] = "{'padding-left': + position + 'px'}">
+<div class="login">
 	<div class="container"> 
-		<!-- <h1>User Screen.</h1> Replace this with a real title or something -->
+		<h3> User login </h3>
 		<div class="textFields">
 			<input (keyup.enter) = "authorizeLogin($event)" placeholder="Enter user name" [(ngModel)]="userName">
 		</div>
@@ -14,5 +14,9 @@
 		<div> 	
 			<a routerLink="createAccount" >Create Account</a>
 		</div>
+		<div> 
+			<a routerLink = "passwordHint"> Forget Password?</a>
+		</div>
 	</div>
+	
 </div>
