@@ -1,5 +1,7 @@
 .client-container{
-    height: 87.7%;
+    height: 100%;
+    width:100%;
+    padding-left: 25%;
 }
 
 client-display-container{

@@ -1,44 +1,49 @@
-<div class = "page-container"> 
+<div class = "mainContainer" > 
+	<div class = "content">
 
-<div class = "header"> 
-	<div class = "sub-header"> 
-		<div class="git-link"> 
-			<a href="https://github.com/LastChance89/BGEUserDataApplication">GitHub Source</a>
+		<div class = "header"> 
+			<div class = "sub-header"> 
+				<div class="git-link"> 
+					<a href="https://github.com/LastChance89/BGEUserDataApplication">GitHub Source</a>
+				</div>
+		
+				<div > 
+					<h1>Electricity Record Manager</h1> 
+					
+				</div>
+			</div>
+		
 		</div>
 
-		<div > 
-			<h1>Electricity Record Manager</h1> 
+
+		<div class = "menu" *ngIf="showMenu">
+			<app-navigation-menu> </app-navigation-menu>
+		</div>
+		
+		<router-outlet></router-outlet>
+
+
+
+		<div class = "footer" *ngIf="loggedInUser != null"> 
+			<div class = "version-container"> 
+				<p class = "label-text">Version: </p>
+				<p class = "version-number">1.0</p>
+			</div>
+		
+			<div class="logged-in-user">
+				<p class='label-text'>Logged  in as</p>
+				<p class = "user-name"> {{loggedInUser}}</p>
+			</div>
+			<div class = "logout-link">
+				<a href="javascript:void(0)" (click)="logout()">Logout</a>
+			</div>
 			
 		</div>
-	</div>
-
-</div>
-
-
-
-<div class = "mainContainer" > 
-	<div class = "menu" *ngIf="showMenu">
-		<app-navigation-menu> </app-navigation-menu>
-	</div>
-	<div class = "content" [ngStyle]="{'margin-left': showMenu? '200px' : '0px'}">
-		<router-outlet></router-outlet>
-	</div>
-</div>
-
-<div class = "footer" *ngIf="loggedInUser != null"> 
-	<div class = "version-container"> 
-		<p class = "label-text">Version: </p>
-		<p class = "version-number">1.0</p>
-	</div>
-
-	<div class="logged-in-user">
-		<p class='label-text'>Logged  in as</p>
-		<p class = "user-name"> {{loggedInUser}}</p>
-	</div>
-	<div class = "logout-link">
-		<a href="javascript:void(0)" (click)="logout()">Logout</a>
-	</div>
 	
-</div>
+
+
+
+	</div>
 
 </div>
+
