@@ -37,7 +37,6 @@ export class FileModalComponent implements OnInit {
       fromData.append("files", element,element.name);
     });
     this.clientService.initalLoadClient(fromData).subscribe(result => {
-      console.log(result);
       this.isLoading = false;
       this.modalService.openMessageModal(false, result['message']);
       this.close();

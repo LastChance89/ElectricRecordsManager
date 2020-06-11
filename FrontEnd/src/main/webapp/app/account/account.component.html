@@ -1,16 +1,17 @@
 <div class="main-container"> 
-    <p> Fill out the fields below to create account </p>
-    <div>
-        <input (input) = "enableButton()" placeholder="Enter User name" [(ngModel)] = "user.userName">
-    </div>
-    <div> 
-        <input (input)  = "enableButton()" placeholder="Enter New Password" type ="password" [(ngModel)] = "user.password">
-    </div>
-    <div> 
-        <input (input)  = "enableButton()" placeholder="Password Hint" [(ngModel)]="user.hint">     
-    </div>
-    <div>
-        <Button [disabled] ="fieldsCompelted" (click) ="createUser($event)"> Create Account </Button> 
+    <h3 class = "create-label-display"> Fill out the fields below to create account </h3>
+    <div class = "container"> 
+        <div>
+            <input (input) = "enableButton()" placeholder="Enter User name" [(ngModel)] = "user.userName">
+        </div>
+        <div> 
+            <input (input)  = "enableButton()" placeholder="Enter New Password" type ="password" [(ngModel)] = "user.password">
+        </div>
+        <div> 
+            <input (input)  = "enableButton()" placeholder="Password Hint" [(ngModel)]="user.hint">     
+        </div>
+        <div>
+            <Button  class = "create-acc-button" [disabled] ="fieldsCompelted" (click) ="createUser($event)"> Create Account </Button> 
+        </div> 
     </div> 
-    
 </div>

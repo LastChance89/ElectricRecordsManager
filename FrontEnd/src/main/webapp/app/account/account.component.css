@@ -1,11 +1,23 @@
 .main-container{
-    padding-left: 53%;
-    width: 100%;
-    padding-top: 18%;
+    width: 536px;
+    padding-top: 8%;
+    margin-left: 58%;
 }
 
-.main-container button{
-    width: 200px;
+
+.container{
+    border:solid;
+    width:100%;
+    border-width: thin;
+    border-radius: 20px;
+}
+
+.container div{
+    margin-top: 15px;
+}
+
+.container input{
+    width: 500px;
 }
 
 .textFields{
@@ -14,4 +26,14 @@
 
 .textFields input{
     width: 200px;
+}
+.create-label-display{
+    text-align: center;
+}
+
+.create-acc-button{
+    margin-top:.5%;
+    width: 500px;
+    font-size: 20px;
+    margin-bottom: 20px;
 }

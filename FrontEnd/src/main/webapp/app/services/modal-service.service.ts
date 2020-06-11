@@ -14,6 +14,7 @@ export class ModalService {
    options: NgbModalOptions = {
     backdrop: 'static',
     centered: true,
+    size: "dialog-centered"
   };
 
   openFileModal(){
