@@ -36,16 +36,19 @@
 
 .header{
 	width:100%;
-	min-width: 952px;
+	min-width: 1033px;
 	background-color: rgb(240,230,140);
 }
 
 .sub-header{
+	display: flex;
+	/*
 	padding-top: .5%;
 	text-align: left;
 	position: relative;
 	min-width: 770px;
 	max-width: 1920px;
+	*/
 }
 
 .header h1{
@@ -53,30 +56,34 @@
 }
 
 .footer{
-    width: 100%;
+	width: 100%;
     bottom: 0;
-	background-color: rgb(211,211,211);
+    background-color: rgb(211,211,211);
+	display: flex;
 	min-width: 770px;
 	max-width: 1920px;
+	padding-left: 25%;
+    padding-top: 11px;
+}
+
+.sub-footer{
+	position: absolute;
+    right: 50%;
 }
 
 
 .logged-in-user{
-	float:left;
+	float: left;
+    position: absolute;
+    left: 48%;
 }
 
-.git-link{
-	float: right;
-	position: relative;
-	right: 40px;	
-	z-index: 10000;
-	font-size: 20px;
-}
+
 
 
 .label-text{
-	font-weight: bold;
-	float: left;
+    font-weight: bold;
+    float: left;
 }
 
 .user-name{
@@ -84,9 +91,11 @@
 }
 
 .logout-link{
-	float: right;
-    padding-right: 10px;
+    /* float: right; */
+    position: absolute;
+    /* padding-right: 10px; */
     font-size: 20px;
+    right: 24%;
 }
 
 .page-container{
@@ -104,6 +113,14 @@
 
 .version-container{
 	display: inline-block;
-    float: left; 
-    padding-right: 25%;
+    float: left;
+    /* padding-right: 25%; */
+    height: 20px;
+    padding-right: 31px;
 }
+
+.application-info-container{
+	right: 0;
+    position: absolute;
+}
+
