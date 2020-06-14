@@ -2,7 +2,7 @@
     <h3 class = "create-label-display"> Fill out the fields below to create account </h3>
     <div class = "container"> 
         <div>
-            <input (input) = "enableButton()" placeholder="Enter User name" [(ngModel)] = "user.userName">
+            <input (input) = "enableButton()" placeholder="Enter UserName" [(ngModel)] = "user.userName">
         </div>
         <div> 
             <input (input)  = "enableButton()" placeholder="Enter New Password" type ="password" [(ngModel)] = "user.password">
@@ -14,4 +14,7 @@
             <Button  class = "create-acc-button" [disabled] ="fieldsCompelted" (click) ="createUser($event)"> Create Account </Button> 
         </div> 
     </div> 
+    <div> 
+        <a routerLink="..">Back to login page</a>
+    </div>
 </div>

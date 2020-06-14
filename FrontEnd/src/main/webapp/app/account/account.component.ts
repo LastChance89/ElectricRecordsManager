@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import {AuthorizationService} from '../services/authorizationService.service'
 import { User } from '../models/User.model';
 import { ModalService } from '../services/modal-service.service';
@@ -14,7 +15,7 @@ export class AccountComponent implements OnInit {
   public user: User  = new User();
   public fieldsCompelted = true;
 
-  constructor(private authorizationService :AuthorizationService,private modalService : ModalService) { }
+  constructor(private authorizationService :AuthorizationService,private modalService : ModalService, private location: Location) { }
 
   
   ngOnInit() {
@@ -39,6 +40,10 @@ export class AccountComponent implements OnInit {
       this.fieldsCompelted =  true;
     }
     
+  }
+
+  backToLoginPage(){
+    this.location.back();
   }
 
 }

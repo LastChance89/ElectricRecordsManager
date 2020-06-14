@@ -30,5 +30,8 @@ export class AuthorizationService {
 	logUserOut(){
 		return this.http.post<boolean>('/power/authorization/logOut','')
 	}
-
+	getUserHint(userName: String){
+		let payload = userName
+		return this.http.post<Response>('/power/authorization/getHint',userName);
+	}
 }

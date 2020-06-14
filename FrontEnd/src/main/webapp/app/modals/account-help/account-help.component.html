@@ -1,0 +1,28 @@
+<div class="modal-header">
+</div>
+
+<div class="custom-modal-body">
+    <div class = "message-container"> 
+        <p *ngIf = "!isLoading">  
+            {{message}}
+        </p>
+        <p *ngIf = "isLoading"> 
+            Loading...
+        </p>
+    </div>
+    <div *ngIf = "!userHintFound && !isLoading"> 
+        <input (input)  = "enableButton()" (keyup.enter)="getHint()" placeholder="Enter UserName" [(ngModel)]="userName">
+    </div>
+
+</div>
+<div class="modal-footer">
+    <div *ngIf = "!userHintFound"> 
+        <button [disabled] ="!(!isLoading && fieldsCompelted)" (click)="getHint()">OK</button>
+    </div>
+    <div *ngIf = "!userHintFound"> 
+        <button (click)="close()">Close</button>
+    </div>
+    <div *ngIf ="userHintFound">
+        <button (click)="close()">OK</button>
+    </div>
+</div>

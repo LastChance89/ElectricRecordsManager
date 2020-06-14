@@ -38,8 +38,8 @@ public class LoginController {
 	
 	//TODO: Implement me
 	@PostMapping(value="/getHint")
-	public ResponseEntity<String> getUserHint(){
-		return null;
+	public ResponseEntity<String> getUserHint(@RequestBody String userName){
+		return accountService.getPasswordHint(userName);
 	}
 		
 }

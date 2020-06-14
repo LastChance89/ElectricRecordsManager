@@ -112,4 +112,22 @@ public class AccountServiceImpl implements AccountService {
 				ResponseEntityUtil.createResponseMessage(HttpStatus.OK, Message.USER_LOGGED_SUCSESS.getMessage()):
 				ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.USER_FAILED_LOGOUT.getMessage());
 	}
+
+	@Override
+	public ResponseEntity<String> getPasswordHint(String userName) {
+		ResponseEntity<String> response = null;
+		try {
+			String hint = userDao.getPasswordHint(userName);
+			response =!hint.isBlank() ? ResponseEntityUtil.createResponseMessage(hint) : 
+				//Since not finding a user is ok, we put a fake error in the response. 
+				ResponseEntityUtil.createValidResponse(new HashMap<String,String>(){{put("error",""); put("message",Message.INVALID_USER_NAME.getMessage());}});
+		//	response =ResponseEntityUtil.createResponseMessage(hint);
+		}
+		catch(Exception e) {
+			logger.error("ERROR: ", e);
+			response =ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
+		}
+		
+		return response;
+	}
 }

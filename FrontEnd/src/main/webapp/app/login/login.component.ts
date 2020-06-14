@@ -35,8 +35,6 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.calcPosition();
-
   }
 
   authorizeLogin(e) {
@@ -56,8 +54,8 @@ export class LoginComponent implements OnInit {
     return sessionStorage.getItem('username') !== null;
   }
 
-  calcPosition(){
-    this.position = window.innerWidth/3;
+  showHintDialog() {
+    const modalRef = this.modalService.openHintModal();
   }
 
 

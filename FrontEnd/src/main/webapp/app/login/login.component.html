@@ -2,7 +2,7 @@
 	<h3 class="user-label-display"> User login </h3>
 	<div class="container">
 		<div>
-			<input (keyup.enter)="authorizeLogin($event)" placeholder="Enter user name" [(ngModel)]="userName">
+			<input (keyup.enter)="authorizeLogin($event)" placeholder="Enter UserName" [(ngModel)]="userName">
 		</div>
 		<div>
 			<input (keyup.enter)="authorizeLogin($event)" type="password" placeholder="Enter password" [(ngModel)]="password">
@@ -13,10 +13,7 @@
 		</div>
 		<div class= "link-container">
 			<a class = "create-link" routerLink="createAccount">Create Account</a>
-			<a routerLink="passwordHint"> Forget Password?</a>
-		</div>
-
-			
+			<a href="javascript:void(0);"  (click) ="showHintDialog()"> Forget Password?</a>
+		</div>	
 	</div>
-
 </div>

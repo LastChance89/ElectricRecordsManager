@@ -30,7 +30,9 @@ ag-grid-angular{
 
 
 .modal-content{
-    width: 400px
+	width: 400px;
+	margin-right: auto;
+    margin-left: auto;
 }
 
 

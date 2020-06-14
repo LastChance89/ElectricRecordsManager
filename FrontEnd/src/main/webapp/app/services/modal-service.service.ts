@@ -2,6 +2,7 @@ import { Injectable, Input } from '@angular/core';
 import { NgbModalOptions, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FileModalComponent } from '../modals/file-modal/file-modal.component';
 import { MessageModalComponent } from '../modals/message-modal/message-modal.component';
+import { AccountHelpComponent } from '../modals/account-help/account-help.component';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,9 @@ export class ModalService {
     modelRef.componentInstance.message = message;
     modelRef.componentInstance.isError = isError;
   }
-
+  
+  openHintModal(){
+    const modalRef = this.ngbModal.open(AccountHelpComponent, this.options);
+  }  
 
 }

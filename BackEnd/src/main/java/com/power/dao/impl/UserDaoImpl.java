@@ -13,6 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.power.dao.UserDao;
+import com.power.extractors.UserHintExtractor;
 import com.power.extractors.UserResultSetExtractor;
 import com.power.extractors.UserRoleExtractor;
 import com.power.models.User;
@@ -30,6 +31,7 @@ public class UserDaoImpl extends SharedDaoImpl implements UserDao{
 	
 	private final String userQuery = "SELECT USERNAME FROM USER WHERE USERNAME = ?";
 	private final String roleQuery = "SELECT ROLE FROM ROLES WHERE USERNAME = ?";
+	private final String hintQuery = "SELECT HINT FROM USER WHERE USERNAME = ?";
 
 	
 	@Override
@@ -65,6 +67,12 @@ public class UserDaoImpl extends SharedDaoImpl implements UserDao{
 	@Override
 	public List<SimpleGrantedAuthority> getRoles(String userName) {
 		return jdbcTemplate.query(roleQuery, new Object[] {userName}, new UserRoleExtractor());
+	}
+
+
+	@Override
+	public String getPasswordHint(String userName) {
+		return jdbcTemplate.query(hintQuery, new Object[] {userName}, new UserHintExtractor());
 	}
 
 

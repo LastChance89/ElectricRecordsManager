@@ -30,6 +30,7 @@ import {RecordService} from './services/recordServices.service'
 import {SystemSettingServiceService} from './services/system-setting-service.service'
 import{DashBoardServiceService} from './services/dash-board-service.service'
 import {ModalService} from './services/modal-service.service';
+import { AccountHelpComponent } from './modals/account-help/account-help.component';
 @NgModule({
   declarations: [
     AppComponent, 
@@ -44,7 +45,8 @@ import {ModalService} from './services/modal-service.service';
     MessageModalComponent,
     AccountComponent,
     GridRenderer,
-    GridComponent
+    GridComponent,
+    AccountHelpComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ import {ModalService} from './services/modal-service.service';
     AgGridModule,
     NgbModule,
   ],
-  entryComponents: [FileModalComponent,GridRenderer,MessageModalComponent],
+  entryComponents: [FileModalComponent,GridRenderer,MessageModalComponent,AccountHelpComponent],
   
   providers: [ClientService,LoggedInAuthenticatorService, DashBoardServiceService,
   AuthorizationService,Client,GridService, RecordService,SystemSettingServiceService,ModalService,
