@@ -2,10 +2,10 @@
 	<div class = "content">
 		<div class = "header"> 
 			<div class = "sub-header"> 	
-				<div > 
+				<div class="title"> 
 					<h1>Electricity Record Manager</h1> 
 				</div>
-				<div class ="application-info-container"> 
+				<div> 
 					<div class = "version-container"> 
 						<p class = "label-text">Version: </p>
 						<p class = "version-number">1.0</p>
@@ -14,26 +14,23 @@
 						<a href="https://github.com/LastChance89/BGEUserDataApplication">GitHub Source</a>
 					</div>
 				</div> 
-			
-			</div>
-		
-		</div>
 
+
+				<div *ngIf="loggedInUser != null" class ="login-user-container"> 
+						<div >
+							<p class='label-text'>Logged  in as</p>
+							<p class = "user-name"> {{loggedInUser}}</p>
+						</div>
+						<div>
+							<a href="javascript:void(0)" (click)="logout()">Logout</a>
+						</div>
+				</div> 
+			</div>
+		</div>
 		<div class = "menu" *ngIf="showMenu">
 			<app-navigation-menu> </app-navigation-menu>
 		</div>
-		
 		<router-outlet></router-outlet>
-		
-		<div class = "footer" *ngIf="loggedInUser != null"> 
-				<div class="logged-in-user">
-					<p class='label-text'>Logged  in as</p>
-					<p class = "user-name"> {{loggedInUser}}</p>
-				</div>
-				<div class = "logout-link">
-					<a href="javascript:void(0)" (click)="logout()">Logout</a>
-				</div>
-		</div>
 	</div>
 </div>
 

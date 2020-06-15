@@ -83,9 +83,6 @@ public class MainServiceImpl implements MainService {
 		}
 	}
 
-
-
-
 	@Override
 	public Map<Integer, List<Map<String, String>>> getGridMeta() {
 		return gridMetaDao.getGridMeta();

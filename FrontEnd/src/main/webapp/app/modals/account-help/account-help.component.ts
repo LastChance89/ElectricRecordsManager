@@ -28,7 +28,7 @@ export class AccountHelpComponent implements OnInit {
     this.isLoading = true; 
     return this.authorizationService.getUserHint(this.userName).subscribe(result =>{
       if(result["error"] != undefined){
-        this.message = "User Not found";
+        this.message = result["error"];
         this.userHintFound = false; 
         this.isLoading = false;
       }

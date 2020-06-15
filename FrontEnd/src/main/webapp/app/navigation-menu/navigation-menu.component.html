@@ -1,6 +1,11 @@
 <div>
-	<ul>
-		<a *ngIf="this.userRoles.includes('ADMIN')" href="javascript:void(0);" (click)="showShowHideModel()"> Initial load and data </a>
+	<div class="menu-header"> 
+		<p> Menu </p>
+	</div>
+	<div *ngIf="this.userRoles.includes('ADMIN')"> 
+		<a  href="javascript:void(0);" (click)="showShowHideModel()"> Initial load and data </a>
+	</div>
+	<div>
 		<a routerLink="client">Find Client</a>
-	</ul>
+	</div>
 </div>

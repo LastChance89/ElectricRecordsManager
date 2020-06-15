@@ -120,7 +120,7 @@ public class AccountServiceImpl implements AccountService {
 			String hint = userDao.getPasswordHint(userName);
 			response =!hint.isBlank() ? ResponseEntityUtil.createResponseMessage(hint) : 
 				//Since not finding a user is ok, we put a fake error in the response. 
-				ResponseEntityUtil.createValidResponse(new HashMap<String,String>(){{put("error",""); put("message",Message.INVALID_USER_NAME.getMessage());}});
+				ResponseEntityUtil.createValidResponse(new HashMap<String,String>(){{put("error",Message.USER_NOT_FOUND.getMessage());}});
 		//	response =ResponseEntityUtil.createResponseMessage(hint);
 		}
 		catch(Exception e) {

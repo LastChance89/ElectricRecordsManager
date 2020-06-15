@@ -87,7 +87,7 @@
               "src/main/webapp/styles.css"
             ],
             "scripts": [
-              "/src/main/webapp/assets/jquery-3.4.1.min.js"
+              "./src/main/webapp/assets/jquery-3.4.1.min.js"
             ],
             "assets": [
               "src/main/webapp/favicon.ico",

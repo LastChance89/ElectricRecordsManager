@@ -13,7 +13,7 @@ public enum Message {
 	TOKEN_EXPIRED("Your session has expired. Please log in again."),
 	USER_LOGGED_SUCSESS("You have been logged out successfully."),
 	USER_FAILED_LOGOUT("User logout has failed. Contact your administrator"),
-	INVALID_USER_NAME("User does not exist"),
+	USER_NOT_FOUND("User Not found"),
 	SET_CONTEXT("Setting context");
 	;
 	
