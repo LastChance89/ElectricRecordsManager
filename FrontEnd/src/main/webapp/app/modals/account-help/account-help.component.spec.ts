@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AccountHelpComponent } from './account-help.component';
+import { FormsModule } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthorizationService } from '../../services/authorizationService.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AccountHelpComponent', () => {
   let component: AccountHelpComponent;
@@ -8,7 +12,9 @@ describe('AccountHelpComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccountHelpComponent ]
+      imports: [FormsModule,HttpClientTestingModule],
+      declarations: [ AccountHelpComponent ],
+      providers: [NgbActiveModal,AuthorizationService]
     })
     .compileComponents();
   }));

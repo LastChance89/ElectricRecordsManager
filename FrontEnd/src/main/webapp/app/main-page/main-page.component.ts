@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from '../services/authorizationService.service';
-import { DashBoardServiceService } from '../services/dash-board-service.service';
+import { DashBoardService } from '../services/dash-board-service.service';
 import { DashBoard } from '../models/dash-board.model';
 import { ModalService } from '../services/modal-service.service';
 
@@ -11,7 +11,7 @@ import { ModalService } from '../services/modal-service.service';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private authorizationService: AuthorizationService, private daashBoardSerivce: DashBoardServiceService,private modalService : ModalService) { }
+  constructor(private authorizationService: AuthorizationService, private daashBoardSerivce: DashBoardService,private modalService : ModalService) { }
 
 
   private dashBoard:DashBoard;

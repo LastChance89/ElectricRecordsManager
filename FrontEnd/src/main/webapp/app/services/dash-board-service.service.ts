@@ -5,7 +5,7 @@ import { DashBoard } from '../models/dash-board.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DashBoardServiceService {
+export class DashBoardService {
 
   constructor(private http: HttpClient) { }
 

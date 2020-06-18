@@ -1,13 +1,12 @@
 import { Component,OnInit,Input ,EventEmitter,Output, OnChanges, SimpleChanges } from '@angular/core';
 
 import {ClientService} from '../../services/ClientService.service'
-import { Observable } from 'rxjs'
 
 import {Client} from '../../models/client.model'
 import {GridService} from '../../services/gridService.service'
 import { ColDef } from 'ag-grid-community';
-import {GridRenderer} from '../../grid/custom-grid-renderer.component'
 import { ModalService } from '../../services/modal-service.service';
+import { UserRecord } from '../../models/userRecord.model';
 
 
 @Component({
@@ -23,11 +22,11 @@ export class ClientDisplay  implements OnInit {
 	constructor(private clientService: ClientService, private gridService: GridService, private modalService : ModalService) { }
 	
 	gridColumns : ColDef[];
-	recordList: any[];
+	recordList: Array<UserRecord>;
 
 	@Input() client: Client; 
 
-	@Input()_clientList
+	@Input()_clientList: Array<Client>
 
 	@Output() records = new EventEmitter();
 

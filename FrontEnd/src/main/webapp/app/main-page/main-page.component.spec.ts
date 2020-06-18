@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainPageComponent } from './main-page.component';
+import { AuthorizationService } from '../services/authorizationService.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('MainPageComponent', () => {
   let component: MainPageComponent;
@@ -8,7 +10,9 @@ describe('MainPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageComponent ]
+      declarations: [ MainPageComponent ],
+      providers: [AuthorizationService],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   }));

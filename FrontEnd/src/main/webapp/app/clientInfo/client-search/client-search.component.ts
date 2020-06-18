@@ -6,6 +6,7 @@ import {Client} from '../../models/client.model'
 
 import {Observable } from 'rxjs'
 import { ModalService } from '../../services/modal-service.service';
+import { Console } from 'console';
 
 @Component({
   selector: 'client-search',
@@ -17,19 +18,22 @@ import { ModalService } from '../../services/modal-service.service';
 export class ClientSearch  {
   constructor(private clientService: ClientService, private modalService : ModalService) { }
   
-	client: any; //change to a list
+
 	searchField: string = "ACC_NUM";
 	inputValue: string = "";
 	searchCritera:string="EQUAL";
 	
-	@Output() retrievedClients = new EventEmitter<Client>();
+	@Output() retrievedClients = new EventEmitter<Array<Client>>();
 
-	getUser() {
-		this.clientService.getClient(this.searchField,this.searchCritera,this.inputValue).subscribe(clients => {
+	getClients() {
+		this.clientService.getClients(this.searchField,this.searchCritera,this.inputValue).subscribe(clients => {
 			this.retrievedClients.emit(clients);
+			console.log("???")
 		},
 		error =>{
 		  this.modalService.openMessageModal(true, error.error.message);
+		  console.log("Anything?????????? " + error)
 		})
+		console.log("FUck me");
   	}
 }

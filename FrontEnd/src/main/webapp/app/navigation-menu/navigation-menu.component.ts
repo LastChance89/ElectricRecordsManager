@@ -19,13 +19,14 @@ export class NavigationMenuComponent implements OnInit  {
   }
 
   ngOnInit() {
-    let roles = JSON.parse(atob(sessionStorage.getItem('token').split('.')[1]))['roles'];
-    //@TODO: change this so it only happens once.
-    for(var key in Object.keys(roles)){   
-      this.userRoles.push(roles[key]['authority']);
+    //Check for null, this is for tests. Wont showup otherwise. 
+    if(sessionStorage.getItem('token')){
+      let roles = JSON.parse(atob(sessionStorage.getItem('token').split('.')[1]))['roles'];
+      //@TODO: change this so it only happens once.
+      for(var key in Object.keys(roles)){   
+        this.userRoles.push(roles[key]['authority']);
+      }
     }
-   
-   
   }
 
 

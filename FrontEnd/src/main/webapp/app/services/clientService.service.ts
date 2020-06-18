@@ -12,18 +12,19 @@ export class ClientService {
 		return this.http.post<boolean>('/power/data/initalize',fromData);
 	}
 	
-	getClient(searchOption,searchCritera,inputValue) : Observable<Client>{
+	getClients(searchOption,searchCritera,inputValue) : Observable<Array<Client>>{
 		let payload = {"searchOpt":searchOption,"searchCritera":searchCritera,"inputVal":inputValue}
-		return this.http.post<Client>('/power/data/clientSearch',payload );
+		let x = this.http.post<Array<Client>>('/power/data/clientSearch',payload );
+		return x;
 	}
 	
-	getClientRecords(accountNumber): Observable<any>{
+	getClientRecords(accountNumber): Observable<Array<UserRecord>>{
 		let payload = {"accountNumber":accountNumber}
-		return this.http.post<UserRecord>('/power/data/getRecords',payload );
+		return this.http.post<Array<UserRecord>>('/power/data/getRecords',payload );
 	}
 	
-	getAllClients(): Observable<any>{
-		return this.http.post('/power/data/getAllClients','');
+	getAllClients(): Observable<Array<Client>>{
+		return this.http.post<Array<Client>>('/power/data/getAllClients','');
 	}
 
 	//Need to impliment me. 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from '../models/Client.model';
+import { UserRecord } from '../models/userRecord.model';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -12,18 +14,14 @@ export class ClientDashboardComponent implements OnInit {
 	ngOnInit() {
 	}
 	
-	records:any
-
-	//make me a list at some point
-	client: any;
+	records:Array<UserRecord>
+	clients: Array<Client>;
   	
-	setRetrievedClients(client){
-		this.client = client;
+	setRetrievedClients(clients){
+		this.clients = clients;
 	}
 	
 	setRecords(records){
 		this.records = records;
 	}
-
-
 }

@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FileModalComponent } from './file-modal.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ClientService } from '../../services/clientService.service';
+import { ModalService } from '../../services/modal-service.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('FileModalComponent', () => {
   let component: FileModalComponent;
@@ -8,7 +12,9 @@ describe('FileModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FileModalComponent ]
+      declarations: [ FileModalComponent ],
+      providers: [NgbActiveModal, ClientService, ModalService],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   }));

@@ -28,7 +28,7 @@ import {GridRenderer} from './grid/custom-grid-renderer.component'
 import {GridComponent} from './grid/grid.component'
 import {RecordService} from './services/recordServices.service'
 import {SystemSettingServiceService} from './services/system-setting-service.service'
-import{DashBoardServiceService} from './services/dash-board-service.service'
+import{DashBoardService} from './services/dash-board-service.service'
 import {ModalService} from './services/modal-service.service';
 import { AccountHelpComponent } from './modals/account-help/account-help.component';
 @NgModule({
@@ -46,7 +46,7 @@ import { AccountHelpComponent } from './modals/account-help/account-help.compone
     AccountComponent,
     GridRenderer,
     GridComponent,
-    AccountHelpComponent
+    AccountHelpComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +59,7 @@ import { AccountHelpComponent } from './modals/account-help/account-help.compone
   ],
   entryComponents: [FileModalComponent,GridRenderer,MessageModalComponent,AccountHelpComponent],
   
-  providers: [ClientService,LoggedInAuthenticatorService, DashBoardServiceService,
+  providers: [ClientService,LoggedInAuthenticatorService, DashBoardService,
   AuthorizationService,Client,GridService, RecordService,SystemSettingServiceService,ModalService,
   {provide: HTTP_INTERCEPTORS, useClass:AuthenticationInterceptorService ,multi: true},
   {provide: LocationStrategy, useClass: HashLocationStrategy}],
