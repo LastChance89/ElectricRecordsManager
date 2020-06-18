@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { LoggedInAuthenticatorService } from './logged-in-authenticator.service';
 import { Router } from '@angular/router';
-import { AuthorizationService } from './authorizationService.service';
+import { AuthorizationService } from './authorization-service.service';
 import { SystemSettingServiceService } from './system-setting-service.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';

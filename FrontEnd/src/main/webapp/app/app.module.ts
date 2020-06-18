@@ -4,15 +4,15 @@ import {RouterModule, Routes} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/http";
-import {ClientService} from './services/clientService.service'
-import {AuthorizationService} from './services/authorizationService.service';
+import {ClientService} from './services/client-service.service'
+import {AuthorizationService} from './services/authorization-service.service';
 import {ClientDisplay} from './clientInfo/client-display/client-display.component';
 import {ClientSearch} from './clientInfo/client-search/client-search.component'
 import {Client} from './models/Client.model'
 import { FormsModule } from '@angular/forms';
 import {LoginComponent} from './login/login.component';
 import {LoggedInAuthenticatorService} from './services/logged-in-authenticator.service'
-import {AuthenticationInterceptorService} from './services/AuthenticationInterceptorService.service'
+import {AuthenticationInterceptorService} from './services/authentication-interceptor-service.service'
 import {MainPageComponent}  from './main-page/main-page.component'
 import {AgGridModule} from 'ag-grid-angular';
 import {GridService} from './services/gridService.service'

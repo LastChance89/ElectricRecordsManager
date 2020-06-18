@@ -1,6 +1,6 @@
 import { HostListener, Component,ChangeDetectorRef  } from '@angular/core';
 import {SystemSettingServiceService} from './services/system-setting-service.service'
-import { AuthorizationService } from './services/authorizationService.service';
+import { AuthorizationService } from './services/authorization-service.service';
 import { Router } from '@angular/router';
 import {MessageModalComponent} from './modals/message-modal//message-modal.component'
 import { ModalService } from './services/modal-service.service';

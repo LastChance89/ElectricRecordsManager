@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ClientDisplay } from './client-display.component';
 import { ModalService } from '../../services/modal-service.service';
 import { GridService } from '../../services/gridService.service';
-import { ClientService } from '../../services/clientService.service';
+import { ClientService } from '../../services/client-service.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { GridComponent } from '../../grid/grid.component';
 

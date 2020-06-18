@@ -4,7 +4,7 @@ import { AccountComponent } from './account.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ModalService } from '../services/modal-service.service';
-import { AuthorizationService } from '../services/authorizationService.service';
+import { AuthorizationService } from '../services/authorization-service.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { User } from '../models/User.model';
 import { userInfo } from 'os';

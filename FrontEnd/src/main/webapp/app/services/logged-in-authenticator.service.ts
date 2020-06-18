@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { AuthorizationService } from '../services/authorizationService.service';
+import { AuthorizationService } from '../services/authorization-service.service';
 import { SystemSettingServiceService } from './system-setting-service.service'
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';

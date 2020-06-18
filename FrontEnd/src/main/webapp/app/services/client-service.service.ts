@@ -14,8 +14,7 @@ export class ClientService {
 	
 	getClients(searchOption,searchCritera,inputValue) : Observable<Array<Client>>{
 		let payload = {"searchOpt":searchOption,"searchCritera":searchCritera,"inputVal":inputValue}
-		let x = this.http.post<Array<Client>>('/power/data/clientSearch',payload );
-		return x;
+		return this.http.post<Array<Client>>('/power/data/clientSearch',payload );
 	}
 	
 	getClientRecords(accountNumber): Observable<Array<UserRecord>>{

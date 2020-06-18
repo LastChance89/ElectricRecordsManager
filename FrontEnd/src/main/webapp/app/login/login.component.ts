@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from '../services/authorizationService.service';
+import { AuthorizationService } from '../services/authorization-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {SystemSettingServiceService} from '../services/system-setting-service.service'
 import { ModalService } from '../services/modal-service.service';

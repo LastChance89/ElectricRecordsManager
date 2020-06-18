@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from '../../services/authorizationService.service';
+import { AuthorizationService } from '../../services/authorization-service.service';
 import { ModalService } from '../../services/modal-service.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 

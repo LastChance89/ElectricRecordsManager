@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FileModalComponent } from './file-modal.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ClientService } from '../../services/clientService.service';
+import { ClientService } from '../../services/client-service.service';
 import { ModalService } from '../../services/modal-service.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 

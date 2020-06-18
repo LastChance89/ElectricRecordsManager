@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpResponse } from '@angular/common/http';
-import { AuthorizationService } from './authorizationService.service';
+import { AuthorizationService } from './authorization-service.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { Router } from '@angular/router';
 import { SystemSettingServiceService } from './system-setting-service.service'

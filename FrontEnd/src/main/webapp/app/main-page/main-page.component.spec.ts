@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainPageComponent } from './main-page.component';
-import { AuthorizationService } from '../services/authorizationService.service';
+import { AuthorizationService } from '../services/authorization-service.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('MainPageComponent', () => {

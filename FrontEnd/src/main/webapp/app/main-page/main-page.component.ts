@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthorizationService} from '../services/authorizationService.service';
+import {AuthorizationService} from '../services/authorization-service.service';
 import { DashBoardService } from '../services/dash-board-service.service';
 import { DashBoard } from '../models/dash-board.model';
 import { ModalService } from '../services/modal-service.service';

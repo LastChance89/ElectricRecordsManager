@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import {AuthorizationService} from '../services/authorizationService.service'
+import {AuthorizationService} from '../services/authorization-service.service'
 import { User } from '../models/User.model';
 import { ModalService } from '../services/modal-service.service';
 

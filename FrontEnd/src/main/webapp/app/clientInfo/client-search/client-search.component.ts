@@ -1,12 +1,9 @@
 import { Component,OnInit,EventEmitter,Output} from '@angular/core';
-import {ClientService} from '../../services/ClientService.service'
+import {ClientService} from '../../services/client-service.service'
 
 import {Client} from '../../models/client.model'
 
-
-import {Observable } from 'rxjs'
 import { ModalService } from '../../services/modal-service.service';
-import { Console } from 'console';
 
 @Component({
   selector: 'client-search',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ClientService } from '../../services/clientService.service';
+import { ClientService } from '../../services/client-service.service';
 import { ModalService } from '../../services/modal-service.service';
 
 @Component({

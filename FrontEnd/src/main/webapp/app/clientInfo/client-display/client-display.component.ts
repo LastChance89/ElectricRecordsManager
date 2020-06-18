@@ -1,6 +1,6 @@
 import { Component,OnInit,Input ,EventEmitter,Output, OnChanges, SimpleChanges } from '@angular/core';
 
-import {ClientService} from '../../services/ClientService.service'
+import {ClientService} from '../../services/client-service.service'
 
 import {Client} from '../../models/client.model'
 import {GridService} from '../../services/gridService.service'
