@@ -28,12 +28,9 @@ export class ClientSearch  {
 	getClients() {
 		this.clientService.getClients(this.searchField,this.searchCritera,this.inputValue).subscribe(clients => {
 			this.retrievedClients.emit(clients);
-			console.log("???")
 		},
 		error =>{
 		  this.modalService.openMessageModal(true, error.error.message);
-		  console.log("Anything?????????? " + error)
 		})
-		console.log("FUck me");
   	}
 }

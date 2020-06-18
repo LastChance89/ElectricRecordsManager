@@ -41,8 +41,8 @@ describe('ClientSearch', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should fucking work', ()=>{
+  it('should  work', ()=>{
     component.getClients();
-    expect( component.retrievedClients.emit).toEqual([ ]);
+    expect( component.retrievedClients.emit).toHaveBeenCalled();
   })
 });
