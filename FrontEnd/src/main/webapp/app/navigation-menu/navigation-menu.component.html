@@ -3,9 +3,9 @@
 		<p> Menu </p>
 	</div>
 	<div *ngIf="this.userRoles.includes('ADMIN')"> 
-		<a  href="javascript:void(0);" (click)="showShowHideModel()"> Initial load and data </a>
+		<a id="fileLoadLink"  href="javascript:void(0);" (click)="showShowHideModel()"> Initial load and data </a>
 	</div>
 	<div>
-		<a routerLink="client">Find Client</a>
+		<a id="clientLink" routerLink="client">Find Client</a>
 	</div>
 </div>

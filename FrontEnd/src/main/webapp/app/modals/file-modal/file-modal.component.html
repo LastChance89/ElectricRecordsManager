@@ -5,7 +5,7 @@
 
  <div class="custom-modal-body">
     <div *ngIf="isLoading" class="modal-body">
-        <input type="file" (change)="updateFile($event)" name="csv" accept=".csv" multiple />
+        <input id = 'fileInput' type="file" (change)="updateFile($event)" name="csv" accept=".csv" multiple />
     </div>
     
     <div *ngIf="!isLoading"> 
@@ -14,6 +14,6 @@
 </div>
 
 <div class="modal-footer">
-    <button [disabled] ="!isLoading" (click)="loadUsers()">Ok</button>
-    <button [disabled] ="!isLoading" class = "btn-cancel" (click)="close()">Cancel</button>
+    <button id = "loadUsersButton" [disabled] ="!isLoading" (click)="loadUsers()">Ok</button>
+    <button id = "cancelButton" [disabled] ="!isLoading" class = "btn-cancel" (click)="close()">Cancel</button>
 </div>

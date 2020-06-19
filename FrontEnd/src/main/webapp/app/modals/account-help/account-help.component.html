@@ -11,18 +11,18 @@
         </p>
     </div>
     <div *ngIf = "!userHintFound && !isLoading"> 
-        <input (input)  = "enableButton()" (keyup.enter)="getHint()" placeholder="Enter UserName" [(ngModel)]="userName">
+        <input id = "userNameInput" (input)  = "enableButton()" (keyup.enter)="getHint()" placeholder="Enter UserName" [(ngModel)]="userName">
     </div>
 
 </div>
 <div class="modal-footer">
     <div *ngIf = "!userHintFound"> 
-        <button [disabled] ="!(!isLoading && fieldsCompelted)" (click)="getHint()">OK</button>
+        <button id = "gitHintButton" [disabled] ="!(!isLoading && fieldsCompelted)" (click)="getHint()">OK</button>
     </div>
     <div *ngIf = "!userHintFound"> 
-        <button (click)="close()">Close</button>
+        <button id = "closeModalButton"  (click)="close()">Close</button>
     </div>
     <div *ngIf ="userHintFound">
-        <button (click)="close()">OK</button>
+        <button id ="closeMOdalButtonAfterSucsess" (click)="close()">OK</button>
     </div>
 </div>

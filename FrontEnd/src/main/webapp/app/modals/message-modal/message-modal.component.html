@@ -1,8 +1,8 @@
 <div class="modal-header"
  [ngClass]="{errorMessage: isError, sucsessMessage: !isError}">
 
- <p *ngIf = "isError">Error</p> 
- <p *ngIf = "!isError">Success</p> 
+ <p id = "errorMessage" *ngIf = "isError">Error</p> 
+ <p id = "SuccessMessage" *ngIf = "!isError">Success</p> 
 
 </div>
 
@@ -13,10 +13,10 @@
 </div>
 <div class="modal-footer">
     <div *ngIf="!isError"> 
-        <button [disabled] ="!isLoading" (click)="navigateHome()">Ok</button>
+        <button id = "okButton" [disabled] ="!isLoading" (click)="navigateHome()">Ok</button>
     </div>
     <div *ngIf ="isError">
-        <button [disabled] ="!isLoading" (click)="closeModel()">Ok</button>
+        <button id = "errorButton" [disabled] ="!isLoading" (click)="closeModel()">Ok</button>
     </div>
     
 </div>

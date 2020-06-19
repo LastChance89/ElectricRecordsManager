@@ -19,7 +19,7 @@
 				<div *ngIf="loggedInUser != null" class ="login-user-container"> 
 						<div >
 							<p class='label-text'>Logged  in as</p>
-							<p class = "user-name"> {{loggedInUser}}</p>
+							<p id="loggedInUser" class = "user-name"> {{loggedInUser}}</p>
 						</div>
 						<div>
 							<a href="javascript:void(0)" (click)="logout()">Logout</a>

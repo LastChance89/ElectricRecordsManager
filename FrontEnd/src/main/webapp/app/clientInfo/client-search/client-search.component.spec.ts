@@ -42,6 +42,7 @@ describe('ClientSearch', () => {
   });
 
   it('should  work', ()=>{
+    spyOn(component.retrievedClients,'emit');
     component.getClients();
     expect( component.retrievedClients.emit).toHaveBeenCalled();
   })
