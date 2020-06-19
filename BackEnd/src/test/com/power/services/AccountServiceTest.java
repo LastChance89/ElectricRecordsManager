@@ -13,10 +13,12 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.power.DAO.UserDao;
-import com.power.Util.AuthenticationTokenUtil;
+import com.power.dao.UserDao;
+import com.power.util.AuthenticationTokenUtil;
 import com.power.messages.Message;
 import com.power.models.User;
 import com.power.services.Impl.AccountServiceImpl;
@@ -34,10 +36,11 @@ public class AccountServiceTest {
 	@InjectMocks
 	private AccountServiceImpl accountService;
 	
-
+	
 	
 	private User user;
 	private String json;
+	private UsernamePasswordAuthenticationToken upToken;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -45,6 +48,8 @@ public class AccountServiceTest {
 		user = new User("user", "password", "hint");
 		ObjectMapper obj = new ObjectMapper();
 		json = obj.writeValueAsString(user);
+		upToken = new UsernamePasswordAuthenticationToken(
+				user,null,user.getRoles());
 	}
 
 	@After
@@ -58,44 +63,76 @@ public class AccountServiceTest {
 		  assertEquals(response.getStatusCode(), HttpStatus.OK);
 	}
 	@Test
-	public void userLoginFaukTest() throws Exception {
+	public void userLoginFailTest() throws Exception {
 		  PowerMockito.when(accountService, "authenticate",user).thenReturn(false);
-		  ResponseEntity<?> response = accountService.userLogin(user);
+		  ResponseEntity<String> response = accountService.userLogin(user);
+		  String [] responseBody = setupResponseBodyValue(response);
 		  assertEquals(response.getStatusCode(), HttpStatus.UNAUTHORIZED);
-		  assertEquals(response.getBody(),Message.LOGIN_FAILED.getMessage());
+		  assertEquals(responseBody[0],"message");
+		  assertEquals(responseBody[1],Message.LOGIN_FAILED.getMessage());
 	}
 
 	@Test
 	public void userCreationSucsessTest() throws Exception {
 		  Mockito.when(userDao.checkUserNameExists(Mockito.anyString())).thenReturn(false);
 		  Mockito.when(userDao.createNewUser(user)).thenReturn(true);
-		  
-		  ResponseEntity<?> response = accountService.createUserAccount(user);
-		  
+		  ResponseEntity<String> response = accountService.createUserAccount(user);
+		  String [] responseBody = setupResponseBodyValue(response);
 		  assertEquals(response.getStatusCode(), HttpStatus.OK);
-		  assertEquals(response.getBody(),Message.USER_CREATION_SUCSESS.getMessage());
+		  assertEquals(responseBody[0],"message");
+		  assertEquals(responseBody[1],Message.USER_CREATION_SUCSESS.getMessage());
 	}
 	
 	@Test
 	public void userCreationFailTest() throws Exception {
 		  Mockito.when(userDao.checkUserNameExists(Mockito.anyString())).thenReturn(false);
 		  Mockito.when(userDao.createNewUser(user)).thenReturn(false);
-		  
-		  ResponseEntity<?> response = accountService.createUserAccount(user);
-		  
+		  ResponseEntity<String> response = accountService.createUserAccount(user);
+		  String [] responseBody = setupResponseBodyValue(response);
 		  assertEquals(response.getStatusCode(), HttpStatus.INTERNAL_SERVER_ERROR);
-		  assertEquals(response.getBody(),Message.USER_CREATION_ERROR.getMessage());
+		  assertEquals(responseBody[0],"message");
+		  assertEquals(responseBody[1],Message.USER_CREATION_ERROR.getMessage());
 	}
 	
 	@Test
-	public void userExistsTest() {
+	public void userCreationFailWhenExistsTest() {
 		  Mockito.when(userDao.checkUserNameExists(Mockito.anyString())).thenReturn(true);
-
-		  ResponseEntity<?> response = accountService.createUserAccount(user);
-		  
-		  assertEquals(response.getStatusCode(), HttpStatus.OK);
-		  assertEquals(response.getBody(),Message.USER_EXISTS.getMessage());
+		  ResponseEntity<String> response = accountService.createUserAccount(user);
+		  String [] responseBody = setupResponseBodyValue(response);
+		  assertEquals(response.getStatusCode(), HttpStatus.CONFLICT);
+		  assertEquals(responseBody[0],"message");
+		  assertEquals(responseBody[1],Message.USER_EXISTS.getMessage());
 	}
 	
+	@Test
+	public void userLogoutSucsess() {
+		SecurityContextHolder.getContext().setAuthentication(upToken);
+		ResponseEntity<String> response = accountService.logOutUser();
+		String [] responseBody = setupResponseBodyValue(response);
+		assertEquals(response.getStatusCode(), HttpStatus.OK);
+		assertEquals(responseBody[0],"message");
+		assertEquals(responseBody[1],Message.USER_LOGGED_SUCSESS.getMessage());
+	}
 	
+	@Test
+	public void testUserGetHintSucsess() {
+		Mockito.when(userDao.getPasswordHint(user.getUserName())).thenReturn("hint");
+		ResponseEntity<String> response = accountService.getPasswordHint(user.getUserName());
+		String [] responseBody = setupResponseBodyValue(response);
+		assertEquals(responseBody[0],"message");
+		assertEquals(responseBody[1],"hint");
+	}
+	
+	@Test
+	public void testUserGetHintNoUserFound() {
+		Mockito.when(userDao.getPasswordHint(user.getUserName())).thenReturn("");
+		ResponseEntity<String> response = accountService.getPasswordHint(user.getUserName());
+		String [] responseBody = setupResponseBodyValue(response); 
+		assertEquals(responseBody[0],"error");
+		assertEquals(responseBody[1],Message.USER_NOT_FOUND.getMessage());
+	}
+	
+	private String[] setupResponseBodyValue(ResponseEntity<String> response){
+		return response.getBody().replace("{","").replace("}","").replaceAll("\"", "").split(":");
+	}
 }

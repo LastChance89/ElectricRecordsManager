@@ -21,7 +21,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.power.Util.ClientLoaderUtil;
+import com.power.util.ClientLoaderUtil;
 import com.power.models.Client;
 import com.power.models.Record;
 

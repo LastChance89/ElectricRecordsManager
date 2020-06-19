@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs'
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import { SharedPopupModalComponent } from '../shared-popup-modal/shared-popup-modal.component'
-import { JwtHelperService } from "@auth0/angular-jwt";
+import {Subject } from 'rxjs'
+import { ModalService } from '../services/modal-service.service';
 
 
 @Component({
@@ -16,29 +14,24 @@ export class NavigationMenuComponent implements OnInit  {
   userRoles  = new Array(2);
   subject = new Subject<boolean>();
   showAdminRoutes: boolean;
+  constructor(private modalService : ModalService) {
+
+  }
 
   ngOnInit() {
-    let roles = JSON.parse(atob(sessionStorage.getItem('token').split('.')[1]))['roles'];
-    //@TODO: change this so it only happens once.
-    for(var key in Object.keys(roles)){   
-      this.userRoles.push(roles[key]['authority']);
+    //Check for null, this is for tests. Wont showup otherwise. 
+    if(sessionStorage.getItem('token')){
+      let roles = JSON.parse(atob(sessionStorage.getItem('token').split('.')[1]))['roles'];
+      //@TODO: change this so it only happens once.
+      for(var key in Object.keys(roles)){   
+        this.userRoles.push(roles[key]['authority']);
+      }
     }
-   
-   
   }
 
-  constructor(private modalService: NgbModal) {
 
-  }
 
-  
-
-  //might not need this based on input?
   showShowHideModel() {
-    let options: NgbModalOptions = {
-      backdrop: 'static',
-      centered: true,
-    };
-    const modalRef = this.modalService.open(SharedPopupModalComponent, options);
+    const modalRef = this.modalService.openFileModal();
   }
 }

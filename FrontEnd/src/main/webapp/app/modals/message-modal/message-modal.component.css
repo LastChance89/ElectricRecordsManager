@@ -7,3 +7,16 @@
     margin-left: 4.2%;
 }
 
+
+.errorMessage{
+    background-color: rgb(139, 0, 0);
+}
+
+.sucsessMessage{
+    background-color: rgb(34,139,34);
+}
+
+p{
+    font-size: 20px;
+    color: white;
+}

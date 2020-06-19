@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { LoggedInAuthenticatorService } from './services/logged-in-authenticator.service'
 import { MainPageComponent } from './main-page/main-page.component'
-import { UserDashboardComponent } from './user/user-dashboard.component'
+import { ClientDashboardComponent } from './clientInfo/client-dashboard.component'
 import { AccountComponent } from './account/account.component'
 import {RecordDisplay} from './records/recordDisplay/record-display.component'
 
@@ -11,7 +11,7 @@ const routes: Routes = [
 	{path: '', redirectTo: 'login', pathMatch: 'full'},
 	{path: 'login',component: LoginComponent,},
 	{path: 'login/createAccount',component: AccountComponent,},
-	{path: 'user',component: UserDashboardComponent,canActivate: [LoggedInAuthenticatorService]},
+	{path: 'client',component: ClientDashboardComponent,canActivate: [LoggedInAuthenticatorService]},
 	{path: 'application',component: MainPageComponent,canActivate: [LoggedInAuthenticatorService]},
 	{path: 'records/:accNum',component: RecordDisplay,canActivate: [LoggedInAuthenticatorService]}
 ];

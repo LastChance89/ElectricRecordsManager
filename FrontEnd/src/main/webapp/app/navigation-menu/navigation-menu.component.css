@@ -1,0 +1,14 @@
+a{
+    font-size: 20px;
+}
+
+.menu-header{
+    text-align: center;
+    border-bottom: solid;
+    border-width: thin;
+    font-size: 20px;
+}
+
+div{
+    margin-bottom: 6px;
+}

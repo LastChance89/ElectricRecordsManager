@@ -1,39 +1,133 @@
 .menu{
 	width:10%;
-	position:fixed;
-	height:100%;
+	position:relative;
 	overflow: auto;
-	padding-top: 2%;
+	padding-top: 10px;
+	min-width: 200px;
+	float:left;
+	border-right: solid;
+	height: 100%;
 }
 
+
 .mainContainer{
-	height:80%;
+	height: 100%;
+	width: 100%;
 }
 
 .content{
-	margin-left:26%;
-	height:100%;
-	padding-top: 2%;
+    padding-top: 0;
+    position: relative;
+    background-color: rgb(211,211,211);
+    width: 100%;
+	min-width: 803px;
+	height: 94%;
 }
 
+
+.content-no-margin{
+	margin-left: 0px;
+    padding-top: 0;
+    position: relative;
+    background-color: rgb(211,211,211);
+    width: 62%;
+	min-width: 803px;
+	height: 100%;
+}
+
+
 .header{
+	width:100%;
+	min-width: 1033px;
+	background-color: rgb(240,230,140);
+	height: 52px;
+}
+
+.sub-header{
+	display: flex;
+	/*
 	padding-top: .5%;
 	text-align: left;
-	height: 11%;
+	position: relative;
+	min-width: 770px;
+	max-width: 1920px;
+	*/
+}
+
+.header h1{
+	position: relative;
 }
 
 .footer{
-	height: 8.5%;
-}
-.logged-in-user{
-	float:left;
-	margin-left: -100px;
-	left: 50%;
-	position: fixed;
+	width: 100%;
+    bottom: 0;
+    background-color: rgb(211,211,211);
+	display: flex;
+	min-width: 770px;
+	max-width: 1920px;
+	padding-left: 25%;
+    padding-top: 11px;
 }
 
-.git-link{
-	float: right;
-	position: relative;
-	right: 40px;	
+.sub-footer{
+	position: absolute;
+    right: 50%;
+}
+
+
+.logged-in-user{
+	float: left;
+    position: absolute;
+    left: 48%;
+}
+
+
+
+
+.label-text{
+    font-weight: bold;
+	float: left;
+	margin-bottom: 0px;
+}
+
+.user-name{
+	padding-left: 105px;
+	margin-bottom: 0px;
+}
+
+.logout-link{
+    /* float: right; */
+    position: absolute;
+    /* padding-right: 10px; */
+    font-size: 20px;
+    right: 24%;
+}
+
+.page-container{
+	height: 100%;
+	width:100%;
+	overflow: auto;
+}
+
+.version{
+	float:left;
+}
+.version-number{
+	float:left; 
+}
+
+.version-container{
+	display: inline-block;
+    /* padding-right: 25%; */
+    height: 20px;
+    padding-right: 31px;
+}
+
+.login-user-container{
+	right: 15px;
+    position: absolute;
+}
+
+.title{
+	margin-right:15px;
 }

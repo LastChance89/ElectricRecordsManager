@@ -16,7 +16,8 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.power.Util.AuthenticationTokenUtil;
+import com.power.util.AuthenticationTokenUtil;
+import com.power.util.ResponseEntityUtil;
 import com.power.dao.UserDao;
 import com.power.messages.Message;
 import com.power.models.User;
@@ -25,10 +26,6 @@ import com.power.services.AccountService;
 @Component
 public class AccountServiceImpl implements AccountService {
 	private final Logger logger = LogManager.getLogger(AccountServiceImpl.class);
-
-	/*
-	 * @Autowired private CustomAuthenticator authenticator;
-	 */
 	
 	@Autowired
 	private AuthenticationTokenUtil authenticationTokenUtil;
@@ -36,11 +33,10 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private UserDao userDao;
 
-	
 	@Override
-	public  ResponseEntity<?> userLogin(User user) {
+	public  ResponseEntity<String> userLogin(User user) {
 		//boolean authenticated = authenticate(user);
-		ResponseEntity<?> response = null;
+		ResponseEntity<String> response = null;
 		if (authenticate(user)) {
 			try {
 				List<SimpleGrantedAuthority> roles = userDao.getRoles(user.getUserName());
@@ -49,17 +45,18 @@ public class AccountServiceImpl implements AccountService {
 				//Instantiate for serializability
 				Map<String,String> responseToken = new HashMap<String,String>();
 				responseToken.put("token",token);
-				response= ResponseEntity.status(HttpStatus.OK).body(responseToken);
+				response =ResponseEntityUtil.createValidResponse(responseToken);
+
 			}
 			catch(Exception e) {
 				logger.error("ERROR: ",e);
-				response= ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.SERVER_ERROR.getMessage());
+				response =ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
 			}
 		}
 		else {
 			logger.error("Invalid Username / password for username: " + user.getUserName());
 			logger.error("Token has not been created.");
-			response= ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Message.LOGIN_FAILED.getMessage());
+			response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.LOGIN_FAILED.getMessage());
 		}
 		return response;
 		
@@ -85,23 +82,24 @@ public class AccountServiceImpl implements AccountService {
 		try {
 			boolean userNameExists = userDao.checkUserNameExists(user.getUserName());
 			if (!userNameExists) {
-				
 				boolean createSuccsess = userDao.createNewUser(user);
 				if (createSuccsess) {
-					response = ResponseEntity.ok(formatMessage(new HashMap<String,String>(){{put("message",Message.USER_CREATION_SUCSESS.getMessage());}}));
-				}
+					response = ResponseEntityUtil.createResponseMessage(HttpStatus.OK,Message.USER_CREATION_SUCSESS.getMessage());
+			}
 				else {
-					response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.USER_CREATION_ERROR.getMessage());
+					
+					response = ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.USER_CREATION_ERROR.getMessage());
 				}
 			}
 			else {
 				logger.info("Username " + user.getUserName() + " already exists");
-				response = ResponseEntity.status(HttpStatus.CONFLICT).body(Message.USER_EXISTS.getMessage());
+				response = ResponseEntityUtil.createResponseMessage(HttpStatus.CONFLICT, Message.USER_EXISTS.getMessage());
 			}
 
 		} catch (Exception e) {
 			logger.error("ERROR: ", e);
-			response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.SERVER_ERROR.getMessage());
+			response = ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
+			
 
 		}
 		return response;
@@ -111,20 +109,25 @@ public class AccountServiceImpl implements AccountService {
 	public ResponseEntity<String> logOutUser() {
 		SecurityContextHolder.clearContext();	
 		return SecurityContextHolder.getContext().getAuthentication() == null ? 
-			ResponseEntity.ok().body(formatMessage(new HashMap<String,String>(){{put("message",Message.USER_LOGGED_SUCSESS.getMessage());}})) :
-			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Message.USER_FAILED_LOGOUT.getMessage());
+				ResponseEntityUtil.createResponseMessage(HttpStatus.OK, Message.USER_LOGGED_SUCSESS.getMessage()):
+				ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.USER_FAILED_LOGOUT.getMessage());
 	}
-	
-	//Created this because did not want to go about making it to a Map method when the only thing im 
-	//really returning is a message. 
-	public String formatMessage(Map<String,String> outputString) {
-		String mapToStringValue = null; 
+
+	@Override
+	public ResponseEntity<String> getPasswordHint(String userName) {
+		ResponseEntity<String> response = null;
 		try {
-			mapToStringValue =new ObjectMapper().writeValueAsString(outputString);
-		} catch (JsonProcessingException e) {
-			logger.error("ERROR", e);
+			String hint = userDao.getPasswordHint(userName);
+			response =!hint.isBlank() ? ResponseEntityUtil.createResponseMessage(hint) : 
+				//Since not finding a user is ok, we put a fake error in the response. 
+				ResponseEntityUtil.createValidResponse(new HashMap<String,String>(){{put("error",Message.USER_NOT_FOUND.getMessage());}});
+		//	response =ResponseEntityUtil.createResponseMessage(hint);
 		}
-		return mapToStringValue;
+		catch(Exception e) {
+			logger.error("ERROR: ", e);
+			response =ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
+		}
+		
+		return response;
 	}
-	
 }

@@ -1,0 +1,21 @@
+table{
+    width: 52em;
+}
+
+.values{
+    font-weight: normal;
+}
+
+.labels{
+    width: 9em;
+}
+
+.record-display-container{
+    height: 98%;
+    width: 100%;
+    padding-left: 25%;
+}
+.record-grid-container{
+    height: 89%;
+    overflow: auto;
+}

@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.power.Util.AuthenticationTokenUtil;
+import com.power.util.AuthenticationTokenUtil;
+import com.power.util.ResponseEntityUtil;
 import com.power.messages.Message;
 import com.power.models.User;
 
@@ -32,7 +33,7 @@ public class SessionCheckerController {
 	 * Used for multiple tab capability. 
 	 */
 	@PostMapping("/checkLoggedIn")
-	public ResponseEntity<?> checkLogin(Authentication authentication) {
+	public ResponseEntity<String> checkLogin(Authentication authentication) {
 		//If its anonymousUser, authentication is null and not checked, so we check first to not throw npe.
 		if(!isAnonymous()){
 			if (authentication.isAuthenticated())  {
@@ -41,33 +42,36 @@ public class SessionCheckerController {
 				User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 				response.put("token", authenticationTokenUtil.createToken(user.getUserName(), roles));
 				response.put("user", user.getUserName());
-				return ResponseEntity.ok(response);
+				return ResponseEntityUtil.createValidResponse(response);
 			}
 		}
-		//@TODO: Fix me. 
-		Map<String, String> test = new HashMap<String, String>();
-		test.put("A", "B");
 		//Check if its Anonymous. If it is, were on the login page for the first time, dont throw the error. 
-		return isAnonymous() ? ResponseEntity.ok(test): ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(test);
+		return isAnonymous() ? ResponseEntityUtil.createResponseMessage(HttpStatus.OK,Message.SET_CONTEXT.getMessage()): ResponseEntityUtil.InternalResponseError();
 	}
 
 	// change this to ResponseEntity so we can return error page if context holder
 	// null / invalid.
 	//This method is so that the spring security context stays persistant after login page. 
 	@PostMapping("/setContext")
-	public boolean setContext() {
-		return SecurityContextHolder.getContext() != null
-				? SecurityContextHolder.getContext().getAuthentication().isAuthenticated()
-				: false;
+	public ResponseEntity<String> setContext() {
+		ResponseEntity<String> response = null;
+		if(SecurityContextHolder.getContext() != null) {
+		
+			response =  SecurityContextHolder.getContext().getAuthentication().isAuthenticated() ?
+				ResponseEntityUtil.createResponseMessage(HttpStatus.OK, Message.INITAL_LOAD_COMPLETE.getMessage()) :
+						ResponseEntityUtil.InternalResponseError();
+		}
+		return response;
+
 	}
 
 	/*
 	 * Might need to adjust flow so this is not silly.
 	 */
 	@PostMapping(value = "/keepAcitve")
-	public ResponseEntity<?> validateAndRefresh(@RequestBody String token) {
+	public ResponseEntity<String> validateAndRefresh(@RequestBody String token) {
 
-		ResponseEntity<?> response = null;
+		ResponseEntity<String> response = null;
 		authenticationTokenUtil.isTokenExpired(token);
 		// Context exists and is authenticated
 		if (!authenticationTokenUtil.isTokenExpired(token)) {
@@ -77,27 +81,28 @@ public class SessionCheckerController {
 			{
 				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 				User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+				//If token and the logged in user are the same, we create a new refresh token and send to the user. 
 				if (authenticationTokenUtil.getUserNameFromToken(token).equals(user.getUserName())) {
 					String updateToken = authenticationTokenUtil.createToken(user);
 					Map<String, String> responseToken = new HashMap<String, String>();
 					responseToken.put("token", updateToken);
-					response = ResponseEntity.status(HttpStatus.OK).body(responseToken);
+					response = ResponseEntityUtil.createValidResponse(responseToken);
 				} else {
-					response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Message.TOKEN_EXPIRED);
+					ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.TOKEN_EXPIRED.getMessage());
 				}
 			} else {
-				response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Message.UNAORTHOIZED);
+				response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED, Message.UNAORTHOIZED.getMessage());
 			}
 		} else {
-			response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Message.TOKEN_EXPIRED);
+			response =ResponseEntityUtil.createResponseMessage(HttpStatus.UNAUTHORIZED,Message.TOKEN_EXPIRED.getMessage());
 		}
 		return response;
 	}
 
 	
 	private boolean isAnonymous() {
-		return SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") ? true : false;
+		return SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser") ? 
+				true : false;
 	}
 	
 }

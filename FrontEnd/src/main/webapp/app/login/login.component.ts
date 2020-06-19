@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizationService } from '../services/authorizationService.service';
+import { AuthorizationService } from '../services/authorization-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {SystemSettingServiceService} from '../services/system-setting-service.service'
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import {MessageModalComponent} from '../modals/message-modal//message-modal.component'
+import { ModalService } from '../services/modal-service.service';
 
 @Component({
   selector: 'app-login',
@@ -15,16 +14,11 @@ export class LoginComponent implements OnInit {
   
   private userName: string;
   private password: string;
-  private sucsesfulLogin: boolean;
-  private errorMsg: string;
 
-  options: NgbModalOptions = {
-    backdrop: 'static',
-    centered: true,
-  };
+  private position: number; 
 
-  constructor(private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService,private modalService: NgbModal,
-    private router: Router) {
+  constructor(private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService,
+    private modalService : ModalService, private router: Router,) {
       this.authorizationService.checkLogin().subscribe(response => {
         if(response['token']){
           this.systemSetter.setupSession(response['user'],response['token']);
@@ -40,7 +34,8 @@ export class LoginComponent implements OnInit {
      }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   authorizeLogin(e) {
     e.preventDefault();
@@ -50,9 +45,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['application']);
       },
       error => {
-            const modelRef = this.modalService.open(MessageModalComponent,this.options);
-            modelRef.componentInstance.message = error.error;
-            modelRef.componentInstance.isError = true;
+            this.modalService.openMessageModal(true, error.error.message);
         }
       )
   }
@@ -60,4 +53,10 @@ export class LoginComponent implements OnInit {
   isUserLoggedIn() {
     return sessionStorage.getItem('username') !== null;
   }
+
+  showHintDialog() {
+    const modalRef = this.modalService.openHintModal();
+  }
+
+
 }

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GridComponent } from './grid.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 describe('GridComponent', () => {
   let component: GridComponent;
@@ -8,6 +9,7 @@ describe('GridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [AgGridModule],
       declarations: [ GridComponent ]
     })
     .compileComponents();

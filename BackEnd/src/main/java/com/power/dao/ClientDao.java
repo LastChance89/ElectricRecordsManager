@@ -8,10 +8,7 @@ import com.power.models.Client;
 public interface ClientDao {
 	
 	public List<Client> getSearchedUsersData (Map<String,String> inputMap);
-
-	public void updateUser(Client user);
-	
 	public void saveUser(Client user);
-	public  List<Client> getAllUsers();
-	
+	public List<Client> getAllUsers();
+	public Client getClient(long accNum);
 }

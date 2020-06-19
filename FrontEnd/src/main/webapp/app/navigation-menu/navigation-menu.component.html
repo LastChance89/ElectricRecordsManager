@@ -1,10 +1,11 @@
 <div>
-	<ul>
-		<li *ngIf="this.userRoles.includes('ADMIN')">
-			<a href="javascript:void(0);" (click)="showShowHideModel()"> Initial load and data </a>
-		</li>
-		<li>
-			<a routerLink="user">Find Client</a>
-		</li>
-	</ul>
+	<div class="menu-header"> 
+		<p> Menu </p>
+	</div>
+	<div *ngIf="this.userRoles.includes('ADMIN')"> 
+		<a id="fileLoadLink"  href="javascript:void(0);" (click)="showShowHideModel()"> Initial load and data </a>
+	</div>
+	<div>
+		<a id="clientLink" routerLink="client">Find Client</a>
+	</div>
 </div>

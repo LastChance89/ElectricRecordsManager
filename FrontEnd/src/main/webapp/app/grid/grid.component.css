@@ -1,3 +1,8 @@
 .grid-container{
-    width:70%;
+    width: 68%;
+    height: 100%;
+    /*
+    Turn this off, breaks on client page. Turn this on, breaks record grid. 
+    position: absolute;
+    */
 }
