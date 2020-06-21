@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication()
 @ComponentScan("com.power.services,"
-		+ "com.power.DAO,"
+		+ "com.power.dao,"
 		+ "com.power.front,"
 		+ "com.power.util,"
 		+ "com.power.persistentData")

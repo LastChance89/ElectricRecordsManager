@@ -49,7 +49,7 @@ export class ClientDisplay  implements OnInit {
 
 	getUserRecords(e){
 		e.preventDefault();
-		this.clientService.getClientRecords(this.client.accountNumber).subscribe(recordList=>{
+		this.clientService.getClientRecords(this.client.accountnumber).subscribe(recordList=>{
 			this.records.emit(recordList);
 		},
 		error =>{

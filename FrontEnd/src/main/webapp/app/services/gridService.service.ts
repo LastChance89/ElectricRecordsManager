@@ -37,7 +37,7 @@ export class GridService{
 
 			//Setup hyperlink for accountNumber. 
 			switch(element.field){
-				case('accountNumber'):{
+				case('accountnumber'):{
 					element.cellRendererFramework = GridRenderer;
 					element.cellRendererParams = {
 					inRouterLink: element

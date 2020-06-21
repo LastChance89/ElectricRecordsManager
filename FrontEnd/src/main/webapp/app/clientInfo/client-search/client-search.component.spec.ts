@@ -41,9 +41,9 @@ describe('ClientSearch', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should  work', ()=>{
+  it('should call getClients Method', ()=>{
     spyOn(component.retrievedClients,'emit');
-    component.getClients();
+    fixture.nativeElement.querySelector('#searchButton').click();
     expect( component.retrievedClients.emit).toHaveBeenCalled();
   })
 });

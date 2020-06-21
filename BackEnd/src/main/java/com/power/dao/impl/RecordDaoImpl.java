@@ -25,7 +25,7 @@ public class RecordDaoImpl extends SharedDaoImpl implements RecordDao {
 	private SessionFactory sessionFactory;
 	
 	//TODO Setup this as a string builder so we can make this dynamic. 
-	private final String getRecordsMonthSum = "SELECT DATE_FORMAT(RECORD_DATE,'%m/%d/%y') as DATE, SUM(COST) AS COST, SUM(POWER_USAGE) AS POWER_USAGE " + 
+	private final String getRecordsMonthSum = "SELECT DATE_FORMAT(RECORD_DATE,'%m/%d/%y') as date, SUM(COST) AS cost, SUM(POWER_USAGE) AS power_usage " + 
 			"FROM RECORDS " + 
 			"WHERE ACCOUNT_NUMBER = ? " + 
 			"GROUP BY DATE";

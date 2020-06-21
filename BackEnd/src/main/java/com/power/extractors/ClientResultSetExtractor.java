@@ -19,10 +19,10 @@ public class ClientResultSetExtractor implements ResultSetExtractor<List<Client>
 		List<Client> clientList = new ArrayList<Client>();
 		while(rs.next()){
 			Client client = new Client();
-			client.setAccountNumber(rs.getLong("ACCOUNT_NUMBER"));
+			client.setAccountNumber(rs.getLong("ACCOUNTNUMBER"));
 			client.setName(rs.getString("NAME"));
 			client.setAddress(rs.getString("ADDRESS"));
-			client.setService(rs.getString("service"));
+			client.setService(rs.getString("SERVICE"));
 			clientList.add(client);
 		}
 		return clientList;

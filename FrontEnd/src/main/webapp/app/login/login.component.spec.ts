@@ -8,27 +8,46 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { of } from 'rxjs';
+
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let mockAuthorizationService : any;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       providers: [AuthorizationService,SystemSettingServiceService,ModalService,NgbActiveModal],
       imports: [RouterTestingModule, FormsModule,HttpClientTestingModule]
-    })
-    .compileComponents();
+    });
+  //  TestBed.overrideProvider(AuthorizationService, {useValue: mockAuthorizationService});
+    TestBed.compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+  fixture.detectChanges();
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should set Session Object on login', ()=>{
+        let mockResponse = {token: 'token', user: 'mockUser' }
+
+        mockAuthorizationService =jasmine.createSpyObj(['checkLogin','submitAuthorization']);
+
+    mockAuthorizationService.checkLogin.and.returnValue(of(mockResponse));
+    mockAuthorizationService.submitAuthorization.and.returnValue(of(mockResponse));
+  
+    fixture.nativeElement.querySelector("#createAccountLink").click();
+
+  })
+
 });

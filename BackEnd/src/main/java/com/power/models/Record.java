@@ -6,22 +6,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "records")
+@Table(name = "RECORDS")
 public class Record {
 	
 	//our composite key. 
 	@Id
 	private RecordKey recordKey;
 	
-	@Column(name="type")
+	@Column(name="TYPE")
 	private String type; 
-	@Column(name = "power_usage")
+	@Column(name = "POWER_USAGE")
 	private Double powerUsage;
-	@Column(name="units")
+	@Column(name="UNITS")
 	private String units;
-	@Column(name="cost")
+	@Column(name="COST")
 	private Double cost;
-	@Column(name="notes")
+	@Column(name="NOTES")
 	private String note;
 	
 	public Record() {	

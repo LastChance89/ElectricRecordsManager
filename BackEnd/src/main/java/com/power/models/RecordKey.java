@@ -13,7 +13,7 @@ public class RecordKey implements Serializable{
 	
 	@NotNull
 	@Column(name = "account_number")
-	public Long accountNumber;
+	public Long accountnumber;
 	
 	@NotNull
 	@Column(name = "record_date")
@@ -28,11 +28,11 @@ public class RecordKey implements Serializable{
 	public String endTime;
 	
 	public RecordKey(Long accountNumber) {
-		this.accountNumber = accountNumber;
+		this.accountnumber = accountNumber;
 	}
 	
 	public RecordKey(Long accountNumber, Date recordDate, String startTime, String endTime) {
-		this.accountNumber = accountNumber;
+		this.accountnumber = accountNumber;
 		this.recordDate = recordDate;
 		this.startTime = startTime; 
 		this.endTime = endTime; 
@@ -40,10 +40,10 @@ public class RecordKey implements Serializable{
 	
 	
 	public Long getAccountNumber() {
-		return accountNumber;
+		return accountnumber;
 	}
-	public void setAccountNumber(Long accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setAccountNumber(Long accountnumber) {
+		this.accountnumber = accountnumber;
 	}
 	public Date getRecordDate() {
 		return recordDate;
