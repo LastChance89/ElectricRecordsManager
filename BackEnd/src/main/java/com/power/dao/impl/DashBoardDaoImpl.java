@@ -3,6 +3,8 @@ package com.power.dao.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,9 @@ import com.power.models.DashBoard;
 
 @Component
 public class DashBoardDaoImpl implements DashBoardDao {
-
+	
+	private final Logger logger = LogManager.getLogger(DashBoardDao.class);
+	
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -25,20 +29,28 @@ public class DashBoardDaoImpl implements DashBoardDao {
 	
 	private final String getClientCount = "select count(*) from Client";
 	private final String getRecordCount = "select count(*) from Record";
-	//Cant use untion all. Change or move ot result set sextractor. 
-	private final String getRecordRange = "select min(record_date) as date from records UNION ALL select max(record_date)as date from RECORDS;";
+	//Cant use untion all. Change or move ot result set extractor. 
+	private final String getRecordRange = "select min(record_date) as date from RECORDS UNION ALL select max(record_date)as date from RECORDS";
 	@Override
 	public DashBoard getDashboardData() {
-		
-		Session session = sessionFactory.openSession();
-		
-		//TODO: Make a view rather than these 3 queries. Then Convert ot hibernate quiery. 
-		long clientCount = (long)session.createQuery(getClientCount).getSingleResult();
-		long recordCount = (long)session.createQuery(getRecordCount).getSingleResult();	
+		try {
+			Session session = sessionFactory.openSession();
 			
-		List<String> recordRange = jdbctemplate.query(getRecordRange, new Object[] {}, new DateRangeExtractor());
+			//TODO: Make a view rather than these 3 queries. Then Convert ot hibernate quiery. 
+			long clientCount = (long)session.createQuery(getClientCount).getSingleResult();
+			long recordCount = (long)session.createQuery(getRecordCount).getSingleResult();	
+				
+			List<String> recordRange = jdbctemplate.query(getRecordRange, new Object[] {}, new DateRangeExtractor());
+			
+			return new DashBoard(clientCount, recordCount, recordRange);
+		}
 		
-		return new DashBoard(clientCount, recordCount, recordRange);
+		catch(Exception e) {
+			logger.error("ERROR :", e);
+			//Fix me
+			return null;
+		}
+	
 	}
 
 	
