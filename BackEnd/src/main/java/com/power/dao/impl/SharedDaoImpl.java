@@ -27,10 +27,6 @@ public class SharedDaoImpl{
 	@Bean 
 	public JdbcTemplate getTemplate() {
 		JdbcTemplate template = new JdbcTemplate();
-		JndiDataSourceLookup jndiLookup = new JndiDataSourceLookup();
-		
-		//DataSource ds = jndiLookup.getDataSource("java:/mysql/power");
-		
 		template.setDataSource(dataSource);
 		return template;
 	}

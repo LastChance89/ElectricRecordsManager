@@ -8,6 +8,9 @@ public class DataServiceImpl
 {
 
 	/*
+	 * Old class. Keeping as reference. 
+	 * 
+	 * 
 	 * @Autowired ClientDao userDao;
 	 * 
 	 * @Autowired RecordDao recordDao;

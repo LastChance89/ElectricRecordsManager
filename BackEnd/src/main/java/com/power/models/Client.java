@@ -7,16 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicUpdate;
-
 
 @Entity
-@Table(name="Client")
+@Table(name="CLIENT")
 public class Client implements Serializable{
 
 	@Id
 	@Column(name="ACCOUNT_NUMBER")
-	private long accountNumber;
+	private long accountnumber;
 	
 	
 	@Column(name="NAME")
@@ -32,10 +30,10 @@ public class Client implements Serializable{
 		
 	}
 	
-	public Client(String name, String address, long accountNumber, String service) {
+	public Client(String name, String address, long accountnumber, String service) {
 		this.name = name; 
 		this.address = address; 
-		this.accountNumber = accountNumber; 
+		this.accountnumber = accountnumber; 
 		this.service = service;
 	}
 	
@@ -52,11 +50,11 @@ public class Client implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public long getAccountNumber() {
-		return accountNumber;
+	public long getAccountnumber() {
+		return accountnumber;
 	}
-	public void setAccountNumber(long accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setAccountNumber(long accountnumber) {
+		this.accountnumber = accountnumber;
 	}
 	public String getService() {
 		return service;

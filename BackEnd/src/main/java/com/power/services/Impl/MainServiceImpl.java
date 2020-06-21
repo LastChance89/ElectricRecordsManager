@@ -55,7 +55,7 @@ public class MainServiceImpl implements MainService {
 		
 		ResponseEntity<String> response = null;
 		try {
-			setupNewUser(ClientLoaderUtil.readInData(files));
+			setupNewClient(ClientLoaderUtil.readInData(files));
 			response = ResponseEntityUtil.createResponseMessage(HttpStatus.OK, Message.INITAL_LOAD_COMPLETE.getMessage());
 		} catch (IOException e) {
 			response = ResponseEntityUtil.InternalResponseError();
@@ -88,9 +88,9 @@ public class MainServiceImpl implements MainService {
 		return gridMetaDao.getGridMeta();
 	}
 
-	public void setupNewUser(Map<Client,List<Record>> clients) {
+	public void setupNewClient(Map<Client,List<Record>> clients) {
 		for(Client client : clients.keySet()) {
-				clientDao.saveUser(client);
+				clientDao.saveClient(client);
 				recordDao.saveClientRecords(clients.get(client));	
 		}
 	}
@@ -102,7 +102,7 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	public ResponseEntity<String> getAllClients() {
-		return ResponseEntityUtil.createValidResponse(clientDao.getAllUsers());
+		return ResponseEntityUtil.createValidResponse(clientDao.getAllClients());
 	}
 	
 	@Override

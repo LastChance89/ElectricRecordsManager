@@ -17,18 +17,13 @@ export class ClientService {
 		return this.http.post<Array<Client>>('/power/data/clientSearch',payload );
 	}
 	
-	getClientRecords(accountNumber): Observable<Array<UserRecord>>{
-		let payload = {"accountNumber":accountNumber}
+	getClientRecords(accountnumber): Observable<Array<UserRecord>>{
+		let payload = {"accountNumber":accountnumber}
 		return this.http.post<Array<UserRecord>>('/power/data/getRecords',payload );
 	}
 	
 	getAllClients(): Observable<Array<Client>>{
 		return this.http.post<Array<Client>>('/power/data/getAllClients','');
-	}
-
-	//Need to impliment me. 
-	public handleError(){
-	console.log("bleh");
 	}
 
 }

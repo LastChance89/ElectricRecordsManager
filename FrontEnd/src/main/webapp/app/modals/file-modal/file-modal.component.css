@@ -12,9 +12,9 @@
 
 .custom-modal-header{
     background-color:rgb(51, 102, 255) ;
+    color: white;
 }
 
 p{
     font-size: 20px;
-    color: white;
 }

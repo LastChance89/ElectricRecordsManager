@@ -107,7 +107,7 @@ public class ClientLoaderUtil {
 			
 			//This is the composite   key for each record. 
 			RecordKey key = new RecordKey(
-					client.getAccountNumber(),
+					client.getAccountnumber(),
 					format.parse(currentLineColumns[colMap.get("DATE")]),
 					currentLineColumns[colMap.get("START TIME")],
 					currentLineColumns[colMap.get("END TIME")]

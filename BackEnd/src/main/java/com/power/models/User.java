@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 public class User {
 	
 	@Id

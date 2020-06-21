@@ -10,14 +10,12 @@
 			description here
 		</meta>
 
-		<id name="accountNumber" type="long" column="ACCOUNT_NUMBER">
+		<id name="accountnumber" type="long" column="ACCOUNT_NUMBER">
 			<generator class="identity" />
 		</id>
 
 		<property name="name" column="NAME" type="string" />
 		<property name="address" column="ADDRESS" type="string" />
-		<!-- <property name = "accountNumber" column = "ACCOUNT_NUMBER" type = 
-			"long"/> -->
 		<property name="service" column="SERVICE" type="string" />
 
 	</class>
