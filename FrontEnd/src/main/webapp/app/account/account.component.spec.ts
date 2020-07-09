@@ -7,22 +7,23 @@ import { ModalService } from '../services/modal-service.service';
 import { AuthorizationService } from '../services/authorization-service.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { User } from '../models/User.model';
-import { userInfo } from 'os';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { of, Observable,throwError  } from 'rxjs';
+import {MessageModalComponent} from '../modals/message-modal/message-modal.component'
 
 describe('AccountComponent', () => {
   let component: AccountComponent;
   let fixture: ComponentFixture<AccountComponent>;
-
-
+  let mockAuthorizationService : any;
+   
   beforeEach(async(() => {
+    mockAuthorizationService = jasmine.createSpyObj(['createAccount'])
     TestBed.configureTestingModule({
       imports: [FormsModule,HttpClientTestingModule,RouterTestingModule ],
-      declarations: [ AccountComponent ],
+      declarations: [ AccountComponent,MessageModalComponent ],
       providers: [ ModalService, Location,AuthorizationService]
-    })
-    .compileComponents();
+    });
+    TestBed.overrideProvider(AuthorizationService, {useValue: mockAuthorizationService});
+    TestBed.compileComponents();
   }));
 
   beforeEach(() => {
@@ -45,9 +46,23 @@ describe('AccountComponent', () => {
     component.enableButton();
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('#accButton').disabled).toBeFalsy();
-    
-
   }))
-  
 
+  it('should display success message modal on account created', () => {
+      let mockResponse = { message: 'success message' }
+      let mockModalService = TestBed.get(ModalService);
+      spyOn(mockModalService,'openMessageModal').and.returnValue(null);
+      mockAuthorizationService.createAccount.and.returnValue(of(mockResponse));
+      component.createUser();
+      expect(mockModalService.openMessageModal).toHaveBeenCalledWith(false,'success message');
+  })
+  
+  it('should display error message modal on account creation error',()=>{
+    let mockModalService = TestBed.get(ModalService);
+    spyOn(mockModalService,'openMessageModal').and.returnValue(null);
+    mockAuthorizationService.createAccount.and.callFake((()=> throwError({error: {message:'error'}})) );
+    component.createUser();
+    expect(mockModalService.openMessageModal).toHaveBeenCalledWith(true,'error');
+  })
+  
 });

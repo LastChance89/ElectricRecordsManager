@@ -9,8 +9,6 @@ import { GridRenderer } from '../grid/custom-grid-renderer.component';
 export class GridService{
 	constructor(private http: HttpClient){}
 
-	values; 
-	
 	getGridMetaData(gridId){
 		let payload ={"id": gridId};
 		return this.http.post<ColDef[]>('/grid/gridMeta',payload).pipe(map(	this.formatGridData));
@@ -51,7 +49,7 @@ export class GridService{
 		});
 
 		//We have to set the functions here because when we call this function in the map 
-		//we cant access fields outside. 
+		//we cant access fields or methods outside the method. 
 		function currencyFormatter(params: any){
 			return '$'+ params.value; 
 		}
