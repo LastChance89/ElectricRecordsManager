@@ -28,7 +28,6 @@ export class MainPageComponent implements OnInit {
       }
     );
 
-    //Implement me. 
     this.daashBoardSerivce.getDashBoardData().subscribe(result =>{
       this.dashBoard = result;
     },

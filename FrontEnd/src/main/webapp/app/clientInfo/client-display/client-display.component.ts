@@ -1,7 +1,5 @@
 import { Component,OnInit,Input ,EventEmitter,Output, OnChanges, SimpleChanges } from '@angular/core';
-
-import {ClientService} from '../../services/client-service.service'
-
+import { ClientService } from "../../services/client-service.service";
 import {Client} from '../../models/client.model'
 import {GridService} from '../../services/gridService.service'
 import { ColDef } from 'ag-grid-community';
@@ -13,7 +11,6 @@ import { UserRecord } from '../../models/userRecord.model';
   selector: 'client-display',
   templateUrl: './client-display.component.html',
   styleUrls: ['./client-display.component.css'],
-  providers:[ClientService]
 })
 
 
@@ -39,15 +36,9 @@ export class ClientDisplay  implements OnInit {
 		  this.modalService.openMessageModal(true, error.error.message);
 		});
 		
-		this.clientService.getAllClients().subscribe(clientList => {
-			this._clientList = clientList
-		},
-		error =>{
-		  this.modalService.openMessageModal(true, error.error.message);
-		});
 	}
 
-	getUserRecords(e){
+	getClientRecords(e){
 		e.preventDefault();
 		this.clientService.getClientRecords(this.client.accountnumber).subscribe(recordList=>{
 			this.records.emit(recordList);

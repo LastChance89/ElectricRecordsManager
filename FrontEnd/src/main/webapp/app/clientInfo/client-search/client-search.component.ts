@@ -1,18 +1,15 @@
 import { Component,OnInit,EventEmitter,Output} from '@angular/core';
-import {ClientService} from '../../services/client-service.service'
-
+import { ClientService } from "../../services/client-service.service";
 import {Client} from '../../models/client.model'
-
 import { ModalService } from '../../services/modal-service.service';
 
 @Component({
   selector: 'client-search',
   templateUrl: './client-search.component.html',
-  styleUrls: ['./client-search.component.css',],
-  providers:[ClientService]
+  styleUrls: ['./client-search.component.css',]
 })
 
-export class ClientSearch  {
+export class ClientSearch implements OnInit  {
   constructor(private clientService: ClientService, private modalService : ModalService) { }
   
 
@@ -21,6 +18,16 @@ export class ClientSearch  {
 	searchCritera:string="EQUAL";
 	
 	@Output() retrievedClients = new EventEmitter<Array<Client>>();
+
+	ngOnInit(){
+		this.clientService.getAllClients().subscribe(clientList => {
+			this.retrievedClients.emit(clientList);
+		},
+		error =>{
+		  this.modalService.openMessageModal(true, error.error.message);
+		});
+	}
+
 
 	getClients() {
 		this.clientService.getClients(this.searchField,this.searchCritera,this.inputValue).subscribe(clients => {

@@ -8,6 +8,7 @@ import { GridComponent } from '../grid/grid.component';
 import {AgGridModule} from 'ag-grid-angular';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GridService } from '../services/gridService.service';
+import { ClientService } from '../services/client-service.service';
 describe('ClientDashboardComponent', () => {
   let component: ClientDashboardComponent;
   let fixture: ComponentFixture<ClientDashboardComponent>;
@@ -15,8 +16,8 @@ describe('ClientDashboardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule,AgGridModule,HttpClientTestingModule],
-      declarations: [ ClientDashboardComponent,ClientSearch, ClientDisplay,GridComponent],
-      providers: [GridService]
+      declarations: [ ClientDashboardComponent,ClientSearch, ClientDisplay,GridComponent, ClientSearch],
+      providers: [GridService,ClientService]
     })
     .compileComponents();
   }));

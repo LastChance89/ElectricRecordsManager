@@ -4,7 +4,6 @@ import {RouterModule, Routes} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/http";
-import {ClientService} from './services/client-service.service'
 import {AuthorizationService} from './services/authorization-service.service';
 import {ClientDisplay} from './clientInfo/client-display/client-display.component';
 import {ClientSearch} from './clientInfo/client-search/client-search.component'
@@ -31,6 +30,7 @@ import {SystemSettingServiceService} from './services/system-setting-service.ser
 import{DashBoardService} from './services/dash-board-service.service'
 import {ModalService} from './services/modal-service.service';
 import { AccountHelpComponent } from './modals/account-help/account-help.component';
+import { ClientService } from "./services/client-service.service";
 @NgModule({
   declarations: [
     AppComponent, 

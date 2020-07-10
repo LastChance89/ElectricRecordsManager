@@ -32,7 +32,7 @@ export class RecordDisplay{
 		});
 		
 		if(this.accNum != undefined){
-			this.recordService.getUserRecords(this.accNum).subscribe(clientReport => {
+			this.recordService.getClientRecords(this.accNum).subscribe(clientReport => {
 				this.records = clientReport.records;
 				this.client = clientReport.client;
 			})

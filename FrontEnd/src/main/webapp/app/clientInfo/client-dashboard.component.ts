@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../models/Client.model';
 import { UserRecord } from '../models/userRecord.model';
+import { ClientService } from '../services/client-service.service';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -9,7 +10,7 @@ import { UserRecord } from '../models/userRecord.model';
 })
 export class ClientDashboardComponent implements OnInit {
 
-	constructor() { }
+	constructor(private clientService: ClientService ) {}
 
 	ngOnInit() {
 	}

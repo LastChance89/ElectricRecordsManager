@@ -5,7 +5,7 @@ import { ClientReport } from '../models/client-report.model';
 @Injectable()
 export class RecordService{
 	constructor(private http: HttpClient) { }
-	getUserRecords(accNum: number){
+	getClientRecords(accNum: number){
 		let payload = {"accNum":accNum}
 		return this.http.post<ClientReport>('/power/data/getRecords',payload);
 	}
