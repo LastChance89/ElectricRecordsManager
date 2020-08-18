@@ -1,4 +1,4 @@
-# ElectricRecrodsManager
+# ElectricRecordsManager
 Website made to load BGE custom formatted CSV files and display loaded data. <br />
 
 ### Current Version 
