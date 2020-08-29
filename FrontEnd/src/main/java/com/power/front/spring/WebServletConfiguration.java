@@ -1,5 +1,6 @@
 package com.power.front.spring;
 
+//Reference. 
 public class WebServletConfiguration 
 //implements WebApplicationInitializer
 {

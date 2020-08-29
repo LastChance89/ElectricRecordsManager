@@ -1,6 +1,8 @@
 package com.power.front.spring;
 
 /*
+ * Reference. 
+ * 
  * @ComponentScan(basePackages = "main.java," + "com.power.services," +
  * "com.power.services.impl," + "com.power.DAO," +
  * "org.springframework.jdbc.core," + "main.java.spring," + "main.java.filter" +

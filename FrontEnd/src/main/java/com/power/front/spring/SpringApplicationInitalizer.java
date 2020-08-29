@@ -1,5 +1,6 @@
 package com.power.front.spring;
 
+//References.
 public class SpringApplicationInitalizer //extends AbstractAnnotationConfigDispatcherServletInitializer 
 {
 
