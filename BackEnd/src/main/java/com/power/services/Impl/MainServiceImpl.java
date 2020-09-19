@@ -127,4 +127,19 @@ public class MainServiceImpl implements MainService {
 			return ResponseEntityUtil.InternalResponseError();
 		}
 	}
+	
+	//
+	/*
+	 * Upcoming methods
+	 * Methods I should create 
+	 * Compare day/months/year (same user) 
+	 * Compare day/months/year  (different user) 
+	 * returns grid showing 
+	 * User 1 usage and Cost VS user 2 Usage and Cost 
+	 * +/- how much the second user has compared to the 1'st
+	 * green for less, red for more. 
+	 * 
+	 */
+	
+	
 }
