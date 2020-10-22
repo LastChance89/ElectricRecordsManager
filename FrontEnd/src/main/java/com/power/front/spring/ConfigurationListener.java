@@ -37,8 +37,8 @@ public class ConfigurationListener implements ApplicationListener<ApplicationPre
 	@Override
 	public void onApplicationEvent(ApplicationPreparedEvent event) {
 
-		// Only look for the AWS credentials if we are not usiling application
-		// properites.
+		// Only look for the AWS credentials if we are not using application
+		// properties.
 		// This is in so I can do my local testing.
 		if (!Stream.of(event.getArgs()).anyMatch(element -> element.equals("useAppProps"))) {
 

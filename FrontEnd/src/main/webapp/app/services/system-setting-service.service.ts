@@ -15,6 +15,8 @@ export class SystemSettingServiceService {
   setupSession(username, token){
     sessionStorage.setItem('username',username);
     sessionStorage.setItem('token',token);
+    //Add toekn, if no token in local storage, clear it all. 
+    localStorage.setItem('token',token);
 
     this.showMainMenu.next([username,true]);
   }
@@ -25,6 +27,8 @@ export class SystemSettingServiceService {
     //ONLY navigate after the sesion storage is cleared. 
     let promise = new Promise((resolve,reject) => {
       sessionStorage.clear();
+      localStorage.clear();
+      this.turnOffMenu();
       resolve();
     })
     return promise;
@@ -35,8 +39,11 @@ export class SystemSettingServiceService {
   }
 
   //Needed so the menu keeps staying during refresh. 
-  keepMenuOn(){
+  turnOnMenu(){
     this.showMainMenu.next([sessionStorage.getItem('username'),true]);
+  }
+  turnOffMenu(){
+    this.showMainMenu.next([null,false]);
   }
  
 }

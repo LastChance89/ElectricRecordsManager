@@ -11,6 +11,11 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
   constructor(private authorizationService: AuthorizationService, private router: Router, private systemSetter: SystemSettingServiceService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
+    return this.sessionHandler(req, next);
+  }
+
+  //Handles the session, split out from the intercept for testing purposes. 
+  sessionHandler(req: HttpRequest<any>, next: HttpHandler){
 
     //We dont want to check some routes, logout is one of them otherwise will log us back in.
     const excludeRoutes: String[] = ['/power/authorization/logOut']
@@ -20,7 +25,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
   
     if (!excludeRoutes.includes(req.url)) {
       //Check username and token just to ensure a user was properly authenticated. 
-      if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
+      if (sessionStorage.getItem('username') && sessionStorage.getItem('token') && localStorage.getItem('token')) {
         // Every intecept we update the experation time if the toekn is not expired.  
         const jwtHelper = new JwtHelperService();
 
@@ -61,7 +66,7 @@ export class AuthenticationInterceptorService implements HttpInterceptor {
 
 
   keepState(req){
-    this.systemSetter.keepMenuOn();
+    this.systemSetter.turnOnMenu();
     return this.setupNewRequest(req);
   }
 
