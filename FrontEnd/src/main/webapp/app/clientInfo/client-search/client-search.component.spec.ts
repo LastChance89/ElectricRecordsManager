@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ClientService } from '../../services/client-service.service';
 import { ModalService } from '../../services/modal-service.service';
 import { ClientSearch } from './client-search.component';
-import { Client } from '../../models/Client.model';
+import { Client } from '../../models/client.model';
 import { of, throwError } from 'rxjs';
 
 describe('ClientSearch', () => {

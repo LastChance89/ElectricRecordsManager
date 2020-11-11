@@ -4,7 +4,7 @@ import {AgGridModule } from 'ag-grid-angular';
 import {GridService} from '../../services/gridService.service'
 import { ActivatedRoute } from "@angular/router";
 import { map } from 'rxjs/operators';
-import {Client} from '../../models/Client.model'
+import {Client} from '../../models/client.model'
 import {RecordService} from '../../services/recordServices.service';
 import { ModalService } from '../../services/modal-service.service';
 

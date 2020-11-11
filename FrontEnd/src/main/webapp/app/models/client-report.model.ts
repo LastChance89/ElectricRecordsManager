@@ -1,4 +1,4 @@
-import { Client } from "./Client.model";
+import { Client } from "./client.model";
 
 export class ClientReport {
     client: Client;

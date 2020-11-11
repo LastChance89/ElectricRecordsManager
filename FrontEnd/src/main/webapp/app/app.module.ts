@@ -7,7 +7,7 @@ import {HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthorizationService} from './services/authorization-service.service';
 import {ClientDisplay} from './clientInfo/client-display/client-display.component';
 import {ClientSearch} from './clientInfo/client-search/client-search.component'
-import {Client} from './models/Client.model'
+import {Client} from './models/client.model'
 import { FormsModule } from '@angular/forms';
 import {LoginComponent} from './login/login.component';
 import {LoggedInAuthenticatorService} from './services/logged-in-authenticator.service'

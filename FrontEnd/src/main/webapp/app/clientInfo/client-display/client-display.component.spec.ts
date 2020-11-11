@@ -9,7 +9,7 @@ import { GridService } from '../../services/gridService.service';
 import { ClientService } from '../../services/client-service.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { GridComponent } from '../../grid/grid.component';
-import { Client } from '../../models/Client.model';
+import { Client } from '../../models/client.model';
 import { of, throwError } from 'rxjs';
 import { UserRecord } from '../../models/userRecord.model';
 
