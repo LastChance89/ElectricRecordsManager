@@ -3,17 +3,17 @@
     <div> 
         <div> 
             <p>
-                Current number of clients in system:   {{this.dashBoard?.clientCount}}
+                Current number of clients in system:   getClients()
             </p>
         </div>
         <div> 
             <p> 
-                Current number of records: {{this.dashBoard?.recordCount}}
+                Current number of records: {{getRecords()}}
             </p>
         </div>
         <div>
             <p> 
-                Date Ranges covered from {{this.dashBoard?.dateRange[0]}} to {{this.dashBoard?.dateRange[1]}}
+                Date Ranges covered from {{getFromDate()}} to getToDate()
             </p>    
         </div>
     </div>

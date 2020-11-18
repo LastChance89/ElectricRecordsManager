@@ -15,8 +15,8 @@ import { ModalService } from './services/modal-service.service';
 export class AppComponent {
 
   private  title = 'app';
-  private showMenu = false;
-  private loggedInUser = null;
+  showMenu = false;
+  loggedInUser = null;
   constructor(private systemSetter: SystemSettingServiceService, private authorizationService: AuthorizationService, private router: Router,private modalService : ModalService){
     //Observable that once sessionStorage is set which means user is logged in,
     //displays the menu and the logged in user. . 

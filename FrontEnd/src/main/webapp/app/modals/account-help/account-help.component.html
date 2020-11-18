@@ -3,26 +3,26 @@
 
 <div class="custom-modal-body">
     <div class = "message-container"> 
-        <p *ngIf = "!isLoading">  
-            {{message}}
+        <p *ngIf = "!isLoading()">  
+            {{getMessage()}}
         </p>
-        <p *ngIf = "isLoading"> 
+        <p *ngIf = "isLoading()"> 
             Loading...
         </p>
     </div>
-    <div *ngIf = "!userHintFound && !isLoading"> 
+    <div *ngIf = "!isHintFound() && !isLoading()"> 
         <input id = "userNameInput" (input)  = "enableButton()" (keyup.enter)="getHint()" placeholder="Enter UserName" [(ngModel)]="userName">
     </div>
 
 </div>
 <div class="modal-footer">
-    <div *ngIf = "!userHintFound"> 
-        <button id = "gitHintButton" [disabled] ="!(!isLoading && fieldsCompelted)" (click)="getHint()">OK</button>
+    <div *ngIf = "!isHintFound()"> 
+        <button id = "gitHintButton" [disabled] ="!(!isLoading() && fieldsCompelted)" (click)="getHint()">OK</button>
     </div>
-    <div *ngIf = "!userHintFound"> 
+    <div *ngIf = "!isHintFound()"> 
         <button id = "closeModalButton"  (click)="close()">Close</button>
     </div>
-    <div *ngIf ="userHintFound">
+    <div *ngIf ="isHintFound()">
         <button id ="closeMOdalButtonAfterSucsess" (click)="close()">OK</button>
     </div>
 </div>

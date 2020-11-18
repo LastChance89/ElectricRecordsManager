@@ -13,29 +13,29 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class AccountHelpComponent implements OnInit {
 
 
-  private userName: String;
+  
   private message: String = "Enter UserName."; 
   private userHintFound: boolean = false;
-  private isLoading: boolean = false;
+  private loading: boolean = false;
   fieldsCompelted : boolean = false;
-
+  userName: String;
   constructor(public activeModal: NgbActiveModal, private authorizationService: AuthorizationService, private modalService : ModalService) { }
 
   ngOnInit() {
   }
 
   getHint(){
-    this.isLoading = true; 
+    this.loading = true; 
     return this.authorizationService.getUserHint(this.userName).subscribe(result =>{
       if(result["error"] != undefined){
         this.message = result["error"];
         this.userHintFound = false; 
-        this.isLoading = false;
+        this.loading = false;
       }
       else{
         this.message = "Password Hint: "+ result["message"];
         this.userHintFound = true; 
-        this.isLoading = false;
+        this.loading = false;
       }
     
     },
@@ -50,4 +50,17 @@ export class AccountHelpComponent implements OnInit {
   enableButton(){
     this.fieldsCompelted = this.userName !== undefined && this.userName !== "" ? true : false;
   }
+
+  getMessage(){
+    return this.message;
+  }
+
+  isHintFound(){
+    return this.userHintFound;
+  }
+
+  isLoading(){
+    return this.loading;
+  }
+
 }

@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class MainExecution  extends SpringBootServletInitializer
 {
-	//Create spring initalizer to start oading things after main execution is called. 
+	//Create spring initalizer to start loading things after main execution is called. 
 	public static void main(String[] args) {
 		SpringApplication.run(MainExecution.class, args);
 	}
