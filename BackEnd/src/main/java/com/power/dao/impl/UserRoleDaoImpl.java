@@ -9,7 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.power.dao.UserRoleDao;
-import com.power.extractors.UserRoleExtractor;
+import com.sec.extractor.UserRoleExtractor;
 
 @Component
 public class UserRoleDaoImpl implements UserRoleDao {

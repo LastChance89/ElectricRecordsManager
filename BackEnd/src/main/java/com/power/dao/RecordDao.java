@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.power.models.Record;
 
-public interface RecordDao {
+public interface RecordDao  {
 	
 	public void saveClientRecords(List<Record> records);
 	

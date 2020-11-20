@@ -16,7 +16,7 @@ import com.power.models.Record;
 
 @Component
 
-public class RecordDaoImpl extends SharedDaoImpl implements RecordDao {
+public class RecordDaoImpl implements RecordDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;

@@ -16,8 +16,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import com.power.util.AuthenticationTokenUtil;
-import com.power.models.User;
+import com.sec.util.AuthenticationTokenUtil;
+import com.sec.model.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
