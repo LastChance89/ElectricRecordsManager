@@ -8,12 +8,12 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import com.sec.security.SecurityConfiguration;
 
 //Reference. 
-public class WebServletConfiguration implements WebApplicationInitializer
+public class WebServletConfiguration 
+//implements WebApplicationInitializer
 {
-	
+/*	
 	  @Override public void onStartup(ServletContext context) throws
 	  ServletException {
 	  
@@ -26,6 +26,6 @@ public class WebServletConfiguration implements WebApplicationInitializer
 	 // servlet.setLoadOnStartup(1); servlet.addMapping("/power/*");
 	  
 	  }
-	 
+	 */
 
 }

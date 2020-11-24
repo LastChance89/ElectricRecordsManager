@@ -12,7 +12,9 @@ import org.springframework.context.annotation.ComponentScan;
 		+ "com.power.util,"
 		+ "com.power.persistentData,"
 		+ "com.sec.util,"
-		+ "com.sec.dao")
+		+ "com.sec.dao,"
+		+ "com.sec.service,"
+		+ "com.sec.filter")
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class MainExecution  extends SpringBootServletInitializer
 {
