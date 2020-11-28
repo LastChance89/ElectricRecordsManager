@@ -15,12 +15,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import com.power.front.filter.RequestFilter;
+//import com.power.front.filter.RequestFilter;
 
 public class SpringSecurityTest {
 	
-
-	
+/*
+	Move into security jar.
 	@Autowired 
 	 private RequestFilter requestFilter;
 
@@ -45,5 +45,5 @@ public class SpringSecurityTest {
 				.contentType(MediaType.APPLICATION_JSON)).
 		andExpect(MockMvcResultMatchers.status().isOk());
 	}
-	
+	*/
 }

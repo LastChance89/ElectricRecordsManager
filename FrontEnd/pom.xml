@@ -69,7 +69,7 @@
 							<goal>npm</goal>
 						</goals>
 						<configuration>
-							<arguments>run build</arguments>
+							<arguments>${build.profile.mode}</arguments>
 						</configuration>
 					</execution>
 				</executions>
@@ -99,6 +99,26 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<build.profile.mode>run build:prod</build.profile.mode>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<build.profile.mode>run build</build.profile.mode>
+			</properties>
+		</profile>
+	</profiles>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>com.power</groupId>

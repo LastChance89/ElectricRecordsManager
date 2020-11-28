@@ -2,7 +2,8 @@ package com.power.services;
 
 import org.springframework.http.ResponseEntity;
 
-import com.power.models.User;
+import com.sec.model.User;
+
 
 public interface AccountService {
 	public ResponseEntity<String> userLogin(User user);

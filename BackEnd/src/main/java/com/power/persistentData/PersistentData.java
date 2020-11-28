@@ -7,8 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import com.power.messages.Message;
-import com.power.models.GridMeta;
+import com.global.message.Message;
 import com.power.util.ResponseEntityUtil;
 
 @Component

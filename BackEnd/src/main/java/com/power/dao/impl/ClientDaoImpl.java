@@ -15,7 +15,7 @@ import com.power.options.SearchCritera;
 import com.power.options.SearchOpt;
 
 @Component
-public class ClientDaoImpl extends SharedDaoImpl implements ClientDao {
+public class ClientDaoImpl implements ClientDao {
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;

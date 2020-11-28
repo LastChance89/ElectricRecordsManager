@@ -14,14 +14,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.power.util.AuthenticationTokenUtil;
-import com.power.util.ResponseEntityUtil;
-import com.power.dao.UserDao;
-import com.power.messages.Message;
-import com.power.models.User;
+import com.global.message.Message;
 import com.power.services.AccountService;
+import com.power.util.ResponseEntityUtil;
+import com.sec.dao.UserDao;
+import com.sec.model.User;
+import com.sec.util.AuthenticationTokenUtil;
 
 @Component
 public class AccountServiceImpl implements AccountService {

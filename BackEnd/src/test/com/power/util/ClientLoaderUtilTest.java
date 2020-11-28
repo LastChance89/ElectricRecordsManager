@@ -1,5 +1,5 @@
 package com.power.util;
-/*
+
 import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
@@ -17,6 +17,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,15 +25,16 @@ import org.springframework.web.multipart.MultipartFile;
 import com.power.util.ClientLoaderUtil;
 import com.power.models.Client;
 import com.power.models.Record;
-*/
+
 
 /*
  * Test commented out due to the  org.springframework.mock.web dependency injecting a jar file 
  * that casues tomcat to not start. Exclusions, <test> scope dont seem to fix. Need to evaluate. 
  */
-//@RunWith(PowerMockRunner.class)
+@PowerMockIgnore("javax.management.*")
+@RunWith(PowerMockRunner.class)
 public class ClientLoaderUtilTest {
-/*
+
 	@Mock
 	private BufferedReader br;
 	
@@ -81,7 +83,7 @@ public class ClientLoaderUtilTest {
 		//for(Client client : readInData.keySet()) {
 		Client client = readInData.keySet().stream().collect(Collectors.toList()).get(0);
 		//Client client = readInData.get();
-		assertEquals(client.getAccountNumber(),55414114);
+		assertEquals(client.getAccountnumber(),55414114);
 		assertEquals(client.getAddress(),"222 way Drive, Somewhere1 MD");
 		assertEquals(client.getName(),"Guy 2");
 		assertEquals(client.getService(),"Service 1");
@@ -103,5 +105,5 @@ public class ClientLoaderUtilTest {
 			
 		//}
 	}
-*/
+
 }

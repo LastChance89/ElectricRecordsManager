@@ -15,12 +15,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.global.message.Message;
 import com.power.dao.ClientDao;
 import com.power.dao.DashBoardDao;
 import com.power.dao.GridMetaDAO;
 import com.power.dao.RecordDao;
-import com.power.dao.UserDao;
-import com.power.messages.Message;
 import com.power.models.Client;
 import com.power.models.ClientReport;
 import com.power.models.DashBoard;
@@ -28,6 +27,7 @@ import com.power.models.Record;
 import com.power.services.MainService;
 import com.power.util.ClientLoaderUtil;
 import com.power.util.ResponseEntityUtil;
+import com.sec.dao.UserDao;
 
 @Service
 public class MainServiceImpl implements MainService {

@@ -21,7 +21,9 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
   }
 
-  createUser(){
+  createUser(e){
+    e.preventDefault;
+    
     this.authorizationService.createAccount(this.user).subscribe(result =>{
       this.modalService.openMessageModal(false, result['message']);
     },
