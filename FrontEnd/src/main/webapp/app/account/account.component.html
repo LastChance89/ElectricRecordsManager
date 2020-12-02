@@ -11,7 +11,7 @@
             <input id="hintInput" (input)  = "enableButton()" placeholder="Password Hint" [(ngModel)]="user.hint">     
         </div>
         <div>
-            <Button id ='accButton' class = "create-acc-button" [disabled] ="fieldsCompelted" (click) ="createUser($event)"> Create Account </Button> 
+            <Button id ="accButton" class = "create-acc-button" [disabled] ="fieldsCompelted" (click)= "createUser($event)"> Create Account </Button> 
         </div> 
     </div> 
     <div> 

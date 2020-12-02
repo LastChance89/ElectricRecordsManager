@@ -45,4 +45,21 @@ export class MainPageComponent implements OnInit {
       this.modalService.openMessageModal(true, error.error.message);
     })
   }
+
+  getClients(){
+    return this.dashBoard.clientCount;
+  }
+
+  getRecords(){
+    return this.dashBoard.recordCount;
+  }
+
+  getFromDate(){
+    return this.dashBoard.dateRange[0]
+  }
+
+  getToDate(){
+    return this.dashBoard.dateRange[1]
+  }
+
 }

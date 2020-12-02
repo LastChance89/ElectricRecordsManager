@@ -1,4 +1,4 @@
-package com.power.front.spring.Security;
+package com.power.front.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,8 +11,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.power.front.filter.RequestFilter;
-import com.power.front.spring.userDetails.CustomUserDetailsService;
+import com.sec.filter.RequestFilter;
+import com.sec.security.CustomBasicAuthenticationEntryPoint;
+import com.sec.service.impl.CustomUserDetailsServiceImpl;
+
 
 
 
@@ -21,7 +23,7 @@ import com.power.front.spring.userDetails.CustomUserDetailsService;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter  
 {
 	@Autowired 
-	private CustomUserDetailsService userDetailsService;
+	private CustomUserDetailsServiceImpl userDetailsService;
 	 
 	@Autowired 
 	private RequestFilter requestFilter;

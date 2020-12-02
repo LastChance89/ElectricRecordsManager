@@ -13,7 +13,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.power.models.Client;
 import com.power.models.Record;
-import com.power.models.User;
+import com.sec.model.User;
+
 
 
 

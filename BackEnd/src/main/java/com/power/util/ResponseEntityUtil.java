@@ -12,8 +12,7 @@ import org.springframework.http.ResponseEntity.BodyBuilder;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.power.messages.Message;
-import com.power.models.ClientReport;
+import com.global.message.Message;
 
 public class ResponseEntityUtil {
 

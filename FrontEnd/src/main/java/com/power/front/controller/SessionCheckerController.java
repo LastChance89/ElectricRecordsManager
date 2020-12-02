@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.power.util.AuthenticationTokenUtil;
+import com.global.message.Message;
 import com.power.util.ResponseEntityUtil;
-import com.power.messages.Message;
-import com.power.models.User;
+import com.sec.model.User;
+import com.sec.util.AuthenticationTokenUtil;
 
 @RestController
 @CrossOrigin

@@ -12,8 +12,8 @@ import { ModalService } from '../services/modal-service.service';
 export class LoginComponent implements OnInit {
 
   
-  private userName: string;
-  private password: string;
+  userName: string;
+  password: string;
 
 
   constructor(private authorizationService: AuthorizationService, private systemSetter: SystemSettingServiceService,
@@ -56,6 +56,5 @@ export class LoginComponent implements OnInit {
   showHintDialog() {
     const modalRef = this.modalService.openHintModal();
   }
-
 
 }

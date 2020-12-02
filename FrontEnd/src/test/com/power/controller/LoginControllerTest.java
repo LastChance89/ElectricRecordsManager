@@ -21,8 +21,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.power.front.controller.LoginController;
-import com.power.models.User;
-
+import com.sec.model.User;
 
 @ContextConfiguration
 //This is the key to getting this to run, otherwise null pointers 
