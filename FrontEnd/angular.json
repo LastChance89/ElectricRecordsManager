@@ -13,12 +13,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "src/main/webapp/dist/",
+            "outputPath": "src/main/webapp/app/dist/",
             "index": "src/main/webapp/index.html",
             "main": "src/main/webapp/main.ts",
             "polyfills": "src/main/webapp/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "deployUrl": "dist/",
+            "deployUrl": "app/dist/",
             "assets": [
               "src/main/webapp/favicon.ico",
               "src/main/webapp/assets"

@@ -90,7 +90,7 @@
 							<outputDirectory>${project.build.directory}/classes/resources/</outputDirectory>
 							<resources>
 								<resource>
-									<directory>/src/main/webapp/dist</directory>
+									<directory>${project.basedir}/src/main/webapp/app/dist</directory>
 								</resource>
 							</resources>
 						</configuration>

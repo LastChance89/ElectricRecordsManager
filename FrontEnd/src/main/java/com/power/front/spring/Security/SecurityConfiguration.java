@@ -51,7 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 		 .antMatchers("/#/account").permitAll()
 		 .antMatchers("/").permitAll()
 		 .antMatchers("/assets/*").permitAll()
-		 .antMatchers("/dist/*").permitAll()
+		 .antMatchers("/app/dist/*").permitAll()
 		 .antMatchers("/power/authorization/userLogin").permitAll()  
 		 .antMatchers("/power/authorization/createAccount").permitAll()
 		 .antMatchers("/power/checkLogin/checkLoggedIn").permitAll()
