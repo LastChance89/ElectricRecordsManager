@@ -31,14 +31,16 @@ public class DashBoardDaoImpl implements DashBoardDao {
 	private final String getRecordCount = "select count(*) from Record";
 	//Cant use untion all. Change or move ot result set extractor. 
 	private final String getRecordRange = "select min(record_date) as date from RECORDS UNION ALL select max(record_date)as date from RECORDS";
+	
+
 	@Override
 	public DashBoard getDashboardData() {
 		try {
-			Session session = sessionFactory.openSession();
+			Session currentSession = sessionFactory.openSession();
 			
 			//TODO: Make a view rather than these 3 queries. Then Convert ot hibernate quiery. 
-			long clientCount = (long)session.createQuery(getClientCount).getSingleResult();
-			long recordCount = (long)session.createQuery(getRecordCount).getSingleResult();	
+			long clientCount = (long)currentSession.createQuery(getClientCount).getSingleResult();
+			long recordCount = (long)currentSession.createQuery(getRecordCount).getSingleResult();	
 				
 			List<String> recordRange = jdbctemplate.query(getRecordRange, new Object[] {}, new DateRangeExtractor());
 			
@@ -50,7 +52,7 @@ public class DashBoardDaoImpl implements DashBoardDao {
 			//Fix me
 			return null;
 		}
-	
+
 	}
 
 	

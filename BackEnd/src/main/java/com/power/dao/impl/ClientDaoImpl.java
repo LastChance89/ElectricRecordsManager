@@ -54,6 +54,9 @@ public class ClientDaoImpl implements ClientDao {
 		case LIKE:
 			clientQuery.append(" "+critera.getCritera()+ " '%" + inputMap.get("inputValue") + "%'");
 			break;
+		//Ill add a real default later. 	
+		default: 
+			break;
 		}
 		return currentSession.createQuery(clientQuery.toString()).getResultList();		
 	}

@@ -13,11 +13,15 @@ import org.springframework.stereotype.Component;
 import com.power.dao.RecordDao;
 import com.power.extractors.RecordResultsExtractor;
 import com.power.models.Record;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Component
 
 public class RecordDaoImpl implements RecordDao {
 
+	private static final Logger logger = LogManager.getLogger(RecordDaoImpl.class);
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -33,25 +37,30 @@ public class RecordDaoImpl implements RecordDao {
 	
 	@Override
 	public void saveClientRecords(List<Record> records) {
-		
-		Session session = sessionFactory.openSession();
-		
-		Transaction transaction = session.beginTransaction();
-		
-		int counter = 0;
-		
-		for(Record record: records) {
-			counter ++;
-			session.save(record);
-			if(counter%5000 ==0) {
-				session.flush();
-				session.clear();
-			}
+		try {
+			Session currentSession = sessionFactory.getCurrentSession();
 			
+			Transaction transaction = currentSession.beginTransaction();
+			
+			int counter = 0;
+			
+			for(Record record: records) {
+				counter ++;
+				currentSession.save(record);
+				if(counter%5000 ==0) {
+					currentSession.flush();
+					currentSession.clear();
+				}
+				
+			}
+			transaction.commit();
 		}
-		transaction.commit();
 		
+		catch(Exception e) {
+			logger.error("ERROR :", e);
+		}		
 	}
+	
 	@Override
 	public 	List<Map<String,Object>> getClientRecords(Long accNum){  
 		return  jdbcTemplate.query(getRecordsMonthSum, new Object[] {accNum}, new RecordResultsExtractor());

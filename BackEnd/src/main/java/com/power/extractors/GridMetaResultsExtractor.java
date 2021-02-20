@@ -16,6 +16,9 @@ import com.power.models.GridMeta;
 
 public class GridMetaResultsExtractor implements ResultSetExtractor<Map<Integer,List<Map<String,String>>>> {
 
+	
+	
+	private final String gridID = "GRID_ID";
 	@Override
 	public Map<Integer,List<Map<String,String>>> extractData(ResultSet rs) throws SQLException, DataAccessException {
 			
@@ -30,11 +33,11 @@ public class GridMetaResultsExtractor implements ResultSetExtractor<Map<Integer,
 			gridMap.put("cellRenderer", rs.getString("TYPE"));
 			
 			
-			if(!gridDefinitions.containsKey(rs.getInt("GRID_ID"))) {
-				gridDefinitions.put(rs.getInt("GRID_ID"),Stream.of(gridMap).collect(Collectors.toList()) );
+			if(!gridDefinitions.containsKey(rs.getInt(gridID))) {
+				gridDefinitions.put(rs.getInt(gridID),Stream.of(gridMap).collect(Collectors.toList()) );
 			}
 			else {
-				gridDefinitions.get(rs.getInt("GRID_ID")).add(gridMap);
+				gridDefinitions.get(rs.getInt(gridID)).add(gridMap);
 			}
 		}
 		return gridDefinitions;

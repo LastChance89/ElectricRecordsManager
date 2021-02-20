@@ -18,6 +18,8 @@ public class ResponseEntityUtil {
 
 	private static final Logger logger = LogManager.getLogger(ResponseEntityUtil.class);
 			
+	private static final String errorPostFix = "ERROR: ";
+	
 	public static ResponseEntity<String> createValidResponse(Map<String,String> responseBody){
 		return validResponse().body(formatMessageBody(responseBody));		 
 	}
@@ -56,7 +58,7 @@ public class ResponseEntityUtil {
 		try {
 			mapToStringValue =new ObjectMapper().writeValueAsString(new HashMap<String,String>(){{put("message",message);}});
 		} catch (JsonProcessingException e) {
-			logger.error("ERROR", e);
+			logger.error(errorPostFix, e);
 		}
 		return mapToStringValue;
 	}
@@ -66,7 +68,7 @@ public class ResponseEntityUtil {
 		try {
 			mapToStringValue =new ObjectMapper().writeValueAsString(responseBody);
 		} catch (JsonProcessingException e) {
-			logger.error("ERROR", e);
+			logger.error(errorPostFix, e);
 		}
 		return mapToStringValue;
 	}
@@ -77,7 +79,7 @@ public class ResponseEntityUtil {
 		try {
 			mapToStringValue =new ObjectMapper().writeValueAsString(responseBody);
 		} catch (JsonProcessingException e) {
-			logger.error("ERROR", e);
+			logger.error(errorPostFix, e);
 		}
 		return mapToStringValue;
 	}

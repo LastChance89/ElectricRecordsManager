@@ -2,17 +2,17 @@
     <h1>Current System Stats </h1>
     <div> 
         <div> 
-            <p>
+            <p *ngIf ="dashBoard">
                 Current number of clients in system:   {{getClients()}}
             </p>
         </div>
         <div> 
-            <p> 
+            <p *ngIf ="dashBoard"> 
                 Current number of records: {{getRecords()}}
             </p>
         </div>
         <div>
-            <p> 
+            <p *ngIf ="dashBoard"> 
                 Date Ranges covered from {{getFromDate()}} to {{getToDate()}}
             </p>    
         </div>

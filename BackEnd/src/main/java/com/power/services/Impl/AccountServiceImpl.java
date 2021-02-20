@@ -31,9 +31,10 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private UserDao userDao;
 
+	private final String errorPostfix = "ERROR: ";
+	
 	@Override
 	public  ResponseEntity<String> userLogin(User user) {
-		//boolean authenticated = authenticate(user);
 		ResponseEntity<String> response = null;
 		if (authenticate(user)) {
 			try {
@@ -47,7 +48,7 @@ public class AccountServiceImpl implements AccountService {
 
 			}
 			catch(Exception e) {
-				logger.error("ERROR: ",e);
+				logger.error(errorPostfix,e);
 				response =ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
 			}
 		}
@@ -95,7 +96,7 @@ public class AccountServiceImpl implements AccountService {
 			}
 
 		} catch (Exception e) {
-			logger.error("ERROR: ", e);
+			logger.error(errorPostfix, e);
 			response = ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
 			
 
@@ -116,13 +117,12 @@ public class AccountServiceImpl implements AccountService {
 		ResponseEntity<String> response = null;
 		try {
 			String hint = userDao.getPasswordHint(userName);
-			response =!hint.isBlank() ? ResponseEntityUtil.createResponseMessage(hint) : 
+			response =! hint.isBlank() ? ResponseEntityUtil.createResponseMessage(hint) : 
 				//Since not finding a user is ok, we put a fake error in the response. 
 				ResponseEntityUtil.createValidResponse(new HashMap<String,String>(){{put("error",Message.USER_NOT_FOUND.getMessage());}});
-		//	response =ResponseEntityUtil.createResponseMessage(hint);
 		}
 		catch(Exception e) {
-			logger.error("ERROR: ", e);
+			logger.error(errorPostfix, e);
 			response =ResponseEntityUtil.createResponseMessage(HttpStatus.INTERNAL_SERVER_ERROR, Message.SERVER_ERROR.getMessage());
 		}
 		

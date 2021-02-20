@@ -30,14 +30,16 @@ public class ClientLoaderUtil {
 	public static Map<Client,List<Record>> readInData(List<MultipartFile> files) throws IOException {
 	
 		BufferedReader br = null;
-		
+		InputStreamReader input = null;
 		userRecordMapping = new HashMap<Client,List<Record>>(); 
 		
 		try {
 		for(MultipartFile mFile: files) {
 				logger.info("Reading in file" + mFile.getResource().getFilename());
 			
-				br = new BufferedReader(new InputStreamReader(mFile.getInputStream()));
+				input  = new InputStreamReader(mFile.getInputStream());
+				
+				br = new BufferedReader(input);
 				
 				String currentLine;
 				client = new Client();
@@ -67,6 +69,9 @@ public class ClientLoaderUtil {
 				logger.debug("Closing buffered reader");
 				br.close();
 			}
+			if(input != null) {
+				input.close();
+			}
 		}
 		return userRecordMapping;
 	}
@@ -84,6 +89,7 @@ public class ClientLoaderUtil {
 				break;
 			case "service":
 				client.setService(currentLineColumns[1]);
+				break;
 			default:
 				break;
 		}	

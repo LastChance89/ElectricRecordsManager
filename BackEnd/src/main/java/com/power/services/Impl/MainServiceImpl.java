@@ -70,7 +70,7 @@ public class MainServiceImpl implements MainService {
 			response = ResponseEntityUtil.InternalResponseError();
 		}
 		
-		return response; // ResponseEntityUtil.createResponseMessage(sucsess);
+		return response;
 	}
 
 	public ResponseEntity<String> userSearch(Map<String, String> inputMap) {
